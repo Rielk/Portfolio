@@ -1,0 +1,15 @@
+﻿.buffer {
+    position: fixed;
+    background-color: var(--background--light);
+    padding: 15rem 15rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    overflow: hidden;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    width: 100%;
+}

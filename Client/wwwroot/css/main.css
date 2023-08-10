@@ -1,0 +1,7 @@
+﻿.page_content {
+    display: inline-block;
+    background-color: var(--background--light-2);
+    position: relative;
+    margin-top: 40rem;
+    width: 100%;
+}

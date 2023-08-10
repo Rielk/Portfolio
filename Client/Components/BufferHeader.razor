@@ -1,0 +1,20 @@
+﻿<div class="buffer">
+	<h1>
+		@Header
+	</h1>
+	<div>
+		@Body
+	</div>
+	<div>
+		@SubContent
+	</div>
+</div>
+
+@code {
+	[Parameter, EditorRequired]
+	public RenderFragment? Header { get; set; }
+	[Parameter, EditorRequired]
+	public RenderFragment? Body { get; set; }
+	[Parameter, EditorRequired]
+	public RenderFragment? SubContent { get; set; }
+}
