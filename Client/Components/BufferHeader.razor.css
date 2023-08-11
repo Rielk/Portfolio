@@ -13,3 +13,7 @@
 
     width: 100%;
 }
+
+::deep strong {
+    color: var(--colors-primary);
+}
