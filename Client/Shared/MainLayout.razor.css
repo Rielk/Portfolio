@@ -13,11 +13,19 @@ main {
     background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
 }
 
+.top-row, img.logo {
+    --top-row-height: 3.5rem;
+}
+
+img.logo {
+    height: var(--top-row-height);
+}
+
 .top-row {
-    background-color: #f7f7f7;
-    border-bottom: 1px solid #d6d5d5;
+    background-color: var(--background--dark);
+    border-bottom: 1px solid var(--background--light);
     justify-content: flex-end;
-    height: 3.5rem;
+    height: var(--top-row-height);
     display: flex;
     align-items: center;
 }
