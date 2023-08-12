@@ -9,41 +9,85 @@ main {
     flex: 1;
 }
 
-.sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
-}
-
-.top-row, img.logo {
-    --top-row-height: 3.5rem;
+.top-row, img.logo, .logo-circle, .nav-item {
+    --top-row-height: 3.0rem;
 }
 
 img.logo {
-    height: var(--top-row-height);
+    height: calc(var(--top-row-height) * 1.05);
+    margin: 1rem;
+}
+
+.logo-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background--light-2);
+    min-width: 1em;
+    border-radius: 50%;
+    border-bottom: 1px solid var(--background);
+    vertical-align: middle;
 }
 
 .top-row {
     background-color: var(--background--dark);
-    border-bottom: 1px solid var(--background--light);
-    justify-content: flex-end;
+    border-bottom: 1px solid var(--background);
     height: var(--top-row-height);
     display: flex;
     align-items: center;
 }
 
-    .top-row ::deep a, .top-row ::deep .btn-link {
+.link-collection {
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+}
+
+    .link-collection ::deep a, .link-collection ::deep .btn-link {
         white-space: nowrap;
         margin-left: 1.5rem;
         text-decoration: none;
     }
 
-    .top-row ::deep a:hover, .top-row ::deep .btn-link:hover {
-        text-decoration: underline;
+        .link-collection ::deep a:hover, .link-collection ::deep .btn-link:hover {
+            text-decoration: underline;
+        }
+
+        .link-collection ::deep a:first-child {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+.nav-item {
+    font-size: 1rem;
+    --padding-bottom: 0.5rem;
+    padding-bottom: var(--padding-bottom);
+}
+
+    .nav-item:first-of-type {
+        padding-left: 1rem;
     }
 
-    .top-row ::deep a:first-child {
-        overflow: hidden;
-        text-overflow: ellipsis;
+    .nav-item:last-of-type {
+        padding-right: 1rem;
     }
+
+    .nav-item ::deep a {
+        color: var(--colors-text--invert);
+        border-radius: 4px;
+        height: calc(var(--top-row-height) - var(--padding-bottom));
+        display: flex;
+        align-items: center;
+        line-height: calc(var(--top-row-height) - var(--padding-bottom));
+    }
+
+        .nav-item ::deep a:hover {
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        .nav-item ::deep a.active {
+            background-color: rgba(255,255,255,0.1);
+        }
 
 @media (max-width: 640.98px) {
     .top-row:not(.auth) {
@@ -62,13 +106,6 @@ img.logo {
 @media (min-width: 641px) {
     .page {
         flex-direction: row;
-    }
-
-    .sidebar {
-        width: 250px;
-        height: 100vh;
-        position: sticky;
-        top: 0;
     }
 
     .top-row {
