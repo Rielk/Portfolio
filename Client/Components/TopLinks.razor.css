@@ -1,13 +1,13 @@
 ﻿.menu-btn {
     background-color: transparent;
     border: none;
-    color: var(--colors-text--invert)
+    color: var(--colors-text)
 }
 
 .menu-content {
     display: block;
     position: absolute;
-    background-color: var(--background);
+    background-color: var(--colors-light3);
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     top: 20%;
@@ -46,18 +46,18 @@
 }
 
     .nav-item ::deep a {
-        color: var(--colors-text--invert);
+        color: var(--colors-text);
         border-radius: .3rem;
         display: flex;
         align-items: center;
     }
 
-        .nav-item ::deep a:hover {
-            background-color: rgba(255,255,255,0.05);
+        .nav-item ::deep a.active {
+            background-color: rgba(255,255,255,0.2);
         }
 
-        .nav-item ::deep a.active {
-            background-color: rgba(255,255,255,0.1);
+        .nav-item ::deep a:hover {
+            background-color: rgba(0,0,0,0.05);
         }
 
 .nav-item-large {

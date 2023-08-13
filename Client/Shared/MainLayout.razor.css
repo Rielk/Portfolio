@@ -2,7 +2,7 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    background: var(--background--light-2);
+    background: var(--colors-light1);
 }
 
 main {
@@ -11,6 +11,10 @@ main {
 
 .top-row, img.logo {
     --top-row-height: 3.0rem;
+}
+
+.top-row, .logo-circle {
+    --border-color: var(--colors-dark);
 }
 
 img.logo {
@@ -22,8 +26,8 @@ img.logo {
     position: sticky;
     top: 0;
     z-index: 1;
-    background-color: var(--background--dark);
-    border-bottom: 2px solid var(--background);
+    background-color: var(--colors-light3);
+    border-bottom: 2px solid var(--border-color);
     height: var(--top-row-height);
     display: flex;
     align-items: center;
@@ -40,10 +44,10 @@ img.logo {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--background--light-2);
+    background-color: var(--colors-light1);
     min-width: 1em;
     border-radius: 50%;
-    border-bottom: 4px solid var(--background);
+    border-bottom: 4px solid var(--border-color);
     vertical-align: middle;
     margin-top: 1.2rem;
 }

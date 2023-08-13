@@ -1,19 +1,24 @@
 ﻿.buffer {
     position: fixed;
-    background-color: var(--background--light);
+    background-color: var(--colors-light2);
     padding: 15rem 15rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
     border-radius: .25rem;
     overflow: hidden;
-
+    /*
+    background-image: url("./images/Background_Tile.png");
+    background-size: 128px;
+    background-repeat: repeat;
+    background-position: 0 0;
+    background-position: -3px -3px;
+    */
     align-items: center;
     justify-content: center;
     text-align: center;
-
     width: 100%;
 }
 
 ::deep strong {
-    color: var(--colors-primary);
+    color: var(--colors-colorful);
 }

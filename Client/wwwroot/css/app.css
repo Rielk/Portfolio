@@ -1,6 +1,7 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
+    color: var(--colors-text);
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -9,7 +10,7 @@ h1:focus {
 }
 
 a, .btn-link {
-    color: #0077cc;
+    color: var(--colors-look-at-me);
 }
 
 .btn-primary {
