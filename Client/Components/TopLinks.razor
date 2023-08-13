@@ -1,0 +1,65 @@
+﻿<div class="link-collection link-collection-large">
+	@foreach (var detail in NavLinks)
+	{
+		<div class="nav-item nav-item-large">
+			@if (detail.MatchAll)
+			{
+				<NavLink class="nav-link" href="@detail.HRef" Match="NavLinkMatch.All">
+					@detail.Content
+				</NavLink>
+			}
+			else
+			{
+				<NavLink class="nav-link" href="@detail.HRef">
+					@detail.Content
+				</NavLink>
+			}
+		</div>
+	}
+</div>
+
+<div class="link-collection link-collection-small">
+	<button class="menu-btn" @onclick="ToggleMenu"><span class="oi oi-menu" aria-hidden="true"></span></button>
+	<div class="menu-content" hidden="@MenuHidden">
+		@foreach (var detail in NavLinks)
+		{
+			<div class="nav-item">
+				@if (detail.MatchAll)
+				{
+					<NavLink class="nav-link" href="@detail.HRef" Match="NavLinkMatch.All">
+						@detail.Content
+					</NavLink>
+				}
+				else
+				{
+					<NavLink class="nav-link" href="@detail.HRef">
+						@detail.Content
+					</NavLink>
+				}
+			</div>
+		}
+	</div>
+</div>
+
+@code {
+	[Parameter, EditorRequired]
+	public List<NavLinkDetails> NavLinks { get; set; } = new();
+
+	[Parameter]
+	public bool MenuHidden { get; set; } = true;
+
+	private bool IgnoreNextHide = false;
+
+	public void ToggleMenu()
+	{
+		MenuHidden = !MenuHidden;
+		IgnoreNextHide = true;
+	}
+
+	public void HideMenu()
+	{
+		if (!IgnoreNextHide)
+			MenuHidden = true;
+		IgnoreNextHide = false;
+	}
+}

@@ -1,33 +1,12 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
+<div class="page" @onclick="PageClicked">
 	<main>
 		<div class="top-row px-4">
 			<span class="logo-circle">
 				<a href=""><img class="logo" alt="Logo" src="images/willsuldev_logo.png" /></a>
 			</span>
-			<div class="link-collection" style="flex-grow:1;">
-				<div class="nav-item">
-					<NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-						HOME
-					</NavLink>
-				</div>
-				<div class="nav-item">
-					<NavLink class="nav-link" href="about">
-						ABOUT
-					</NavLink>
-				</div>
-				<div class="nav-item">
-					<NavLink class="nav-link" href="projects">
-						PROJECTS
-					</NavLink>
-				</div>
-				<div class="nav-item">
-					<NavLink class="nav-link" href="contact">
-						CONTACT
-					</NavLink>
-				</div>
-			</div>
+			<TopLinks @ref="TopBarLinks" NavLinks="@(new() {new("", "HOME", true), new("about", "ABOUT"), new("projects", "PROJECTS"), new("contact", "CONTACT")})" />
 		</div>
 
 		<article class="content px-4">
@@ -35,3 +14,13 @@
 		</article>
 	</main>
 </div>
+
+@code
+{
+	TopLinks? TopBarLinks;
+
+	private void PageClicked()
+	{
+		TopBarLinks?.HideMenu();
+	}
+}
