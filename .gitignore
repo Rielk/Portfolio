@@ -343,3 +343,6 @@ healthchecksdb
 /test-results/
 /playwright-report/
 /playwright/.cache/
+
+#Files that don't need tracking
+/Untracked

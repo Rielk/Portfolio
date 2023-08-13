@@ -21,8 +21,4 @@
     <None Include="wwwroot\css\main.css" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\images\" />
-  </ItemGroup>
-
 </Project>
