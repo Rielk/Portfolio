@@ -17,6 +17,8 @@
     justify-content: center;
     text-align: center;
     width: 100%;
+    /**/
+    font-family: var(--font-family--Roboto-Mono);
 }
 
 ::deep strong {
