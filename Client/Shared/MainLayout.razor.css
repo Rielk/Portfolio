@@ -38,9 +38,9 @@ main {
     --top-row-height: 3.0rem;
 }
 
-.top-row, .logo-circle {
-    --border-color: var(--colors-dark);
-}
+/*.top-row, .logo-circle {
+    --border-color: var(--colors-blackish);
+}*/
 
 img.logo {
     height: var(--top-row-height);
@@ -51,8 +51,8 @@ img.logo {
     position: sticky;
     top: 0;
     z-index: 1;
-    background-color: var(--colors-light3);
-    border-bottom: 2px solid var(--border-color);
+    background-color: var(--colors-light2);
+    /*border-bottom: 2px solid var(--border-color);*/
     height: var(--top-row-height);
     display: flex;
     align-items: center;
@@ -69,10 +69,10 @@ img.logo {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--colors-light1);
+    background-color: var(--colors-light2);
     min-width: 1em;
     border-radius: 50%;
-    border-bottom: 4px solid var(--border-color);
+    /*border-bottom: 2px solid var(--border-color);*/
     vertical-align: middle;
     margin-top: 1.2rem;
 }
