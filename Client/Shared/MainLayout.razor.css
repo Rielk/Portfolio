@@ -5,6 +5,31 @@
     background: var(--colors-light1);
 }
 
+.hero {
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero, .hero-space {
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero-space {
+    visibility: hidden;
+}
+
+.content {
+    padding-top: 2rem;
+}
+
+.cover {
+    position: relative;
+    background: var(--colors-light1);
+    width: 100%;
+}
+
 main {
     flex: 1;
 }

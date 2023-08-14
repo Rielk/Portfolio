@@ -1,11 +1,9 @@
 ﻿.buffer {
-    position: fixed;
     background-color: var(--colors-light2);
     padding: 15rem 15rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
     border-radius: .25rem;
-    overflow: hidden;
     /*
     background-image: url("./images/Background_Tile.png");
     background-size: 128px;

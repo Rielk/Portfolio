@@ -1,26 +1,47 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page" @onclick="PageClicked">
-	<main>
-		<div class="top-row px-4">
-			<span class="logo-circle">
-				<a href=""><img class="logo" alt="Logo" src="images/WillSullDev_Logo.png" /></a>
-			</span>
-			<TopLinks @ref="TopBarLinks" NavLinks="@(new() {new("", "HOME", true), new("about", "ABOUT"), new("projects", "PROJECTS"), new("contact", "CONTACT")})" />
-		</div>
+<CascadingValue Value="this">
+	<div class="page" @onclick="PageClicked">
+		<main>
+			<div class="top-row px-4">
+				<span class="logo-circle">
+					<a href=""><img class="logo" alt="Logo" src="images/WillSullDev_Logo.png" /></a>
+				</span>
+				<TopLinks @ref="TopBarLinks" NavLinks="@(new() {new("", "HOME", true), new("about", "ABOUT"), new("projects", "PROJECTS"), new("contact", "CONTACT")})" />
+			</div>
 
-		<article class="content px-4">
-			@Body
-		</article>
-	</main>
-</div>
+			<div class="hero">
+				@Hero
+			</div>
+
+			@* This feels like a hacky fix to create space for the Hero. BUt I can't find a better way right now.*@
+			<div class="hero-space">
+				@Hero
+			</div>
+
+			<div class="cover">
+				<article class="content px-4">
+					@Body
+				</article>
+			</div>
+		</main>
+	</div>
+</CascadingValue>
 
 @code
 {
-	TopLinks? TopBarLinks;
+	private TopLinks? TopBarLinks;
+
+	private RenderFragment? Hero { get; set; }
 
 	private void PageClicked()
 	{
 		TopBarLinks?.HideMenu();
+	}
+
+	public void SetHero(RenderFragment? hero)
+	{
+		Hero = hero;
+		StateHasChanged();
 	}
 }
