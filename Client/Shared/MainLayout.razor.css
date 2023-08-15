@@ -50,7 +50,8 @@ img.logo {
 }
 
 .top-row {
-    position: sticky;
+    position: fixed;
+    width: 100%;
     top: 0;
     z-index: 1;
     background-color: var(--colors-light2);
@@ -82,4 +83,5 @@ img.logo {
 .footer {
     justify-content: center;
     background-color: var(--colors-light2);
+    z-index:1;
 }
