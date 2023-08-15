@@ -2,14 +2,13 @@
 
 <CascadingValue Value="this">
 	<div class="page" @onclick="PageClicked">
+		<div class="top-row px-4">
+			<span class="logo-circle">
+				<a href=""><img class="logo" alt="Logo" src="images/WillSullDev_Logo.png" /></a>
+			</span>
+			<TopLinks @ref="TopBarLinks" NavLinks="@NavLinks" />
+		</div>
 		<main>
-			<div class="top-row px-4">
-				<span class="logo-circle">
-					<a href=""><img class="logo" alt="Logo" src="images/WillSullDev_Logo.png" /></a>
-				</span>
-				<TopLinks @ref="TopBarLinks" NavLinks="@NavLinks" />
-			</div>
-
 			<div class="hero">
 				@Hero
 			</div>
@@ -25,15 +24,21 @@
 				</article>
 			</div>
 		</main>
+
+		<div class="footer">
+			<div>
+				<a href=""><img class="logo" alt="Logo" src="images/WillSullDev_Logo.png" /></a>
+			</div>
+		</div>
 	</div>
 </CascadingValue>
 
 @code
 {
-	private List<NavLinkDetails> NavLinks = new() { 
-		new("", "HOME", true), 
-		new("about", "ABOUT"), 
-		new("projects", "PROJECTS"), 
+	private List<NavLinkDetails> NavLinks = new() {
+		new("", "HOME", true),
+		new("about", "ABOUT"),
+		new("projects", "PROJECTS"),
 		new("contact", "CONTACT") };
 
 	private TopLinks? TopBarLinks;
