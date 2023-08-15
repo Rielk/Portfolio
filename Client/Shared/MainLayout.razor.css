@@ -7,8 +7,6 @@
 
 .hero {
     position: fixed;
-    width: 100%;
-    overflow: hidden;
 }
 
 .hero, .hero-space {

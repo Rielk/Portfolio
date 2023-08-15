@@ -7,7 +7,7 @@
 				<span class="logo-circle">
 					<a href=""><img class="logo" alt="Logo" src="images/WillSullDev_Logo.png" /></a>
 				</span>
-				<TopLinks @ref="TopBarLinks" NavLinks="@(new() {new("", "HOME", true), new("about", "ABOUT"), new("projects", "PROJECTS"), new("contact", "CONTACT")})" />
+				<TopLinks @ref="TopBarLinks" NavLinks="@NavLinks" />
 			</div>
 
 			<div class="hero">
@@ -30,6 +30,12 @@
 
 @code
 {
+	private List<NavLinkDetails> NavLinks = new() { 
+		new("", "HOME", true), 
+		new("about", "ABOUT"), 
+		new("projects", "PROJECTS"), 
+		new("contact", "CONTACT") };
+
 	private TopLinks? TopBarLinks;
 
 	private RenderFragment? Hero { get; set; }
