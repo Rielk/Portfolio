@@ -4,15 +4,16 @@
     flex-direction: column;
     background: var(--colors-light1);
     height: 100%;
+    width: 100%;
 }
 
 .hero {
     position: fixed;
-    overflow: hidden;
 }
 
 .hero, .hero-space {
     width: 100%;
+    overflow: hidden;
 }
 
 .hero-space {
@@ -34,6 +35,7 @@ main {
     flex: 1;
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .top-row, img.logo {
@@ -84,4 +86,5 @@ img.logo {
     justify-content: center;
     background-color: var(--colors-light2);
     z-index:1;
+    width: 100%;
 }
