@@ -1,8 +1,6 @@
 ﻿.buffer {
-    background-color: var(--colors-light2);
-    padding: 15rem 15rem;
-    border: 1px solid transparent;
-    border-radius: .25rem;
+    padding-top: 15rem;
+    padding-bottom: 15rem;
     /*
     background-image: url("./images/Background_Tile.png");
     background-size: 128px;
@@ -13,7 +11,6 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 100%;
     /**/
     font-family: var(--font-family--Roboto-Mono);
 }

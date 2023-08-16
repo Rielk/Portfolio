@@ -8,12 +8,7 @@
 }
 
 .hero {
-    position: fixed;
-}
-
-.hero, .hero-space {
-    width: 100%;
-    overflow: hidden;
+    background-color: var(--colors-light2);
 }
 
 .hero-space {
@@ -40,7 +35,7 @@ main {
     width: 100%;
 }
 
-.top-row, img.logo {
+.top-row, img.logo, .top-row-space {
     --top-row-height: 3.0rem;
 }
 
@@ -71,6 +66,11 @@ img.logo {
         text-align: right;
         width: 0;
     }
+
+.top-row-space {
+    min-height: var(--top-row-height);
+    visibility: hidden;
+}
 
 .logo-circle {
     display: inline-flex;
