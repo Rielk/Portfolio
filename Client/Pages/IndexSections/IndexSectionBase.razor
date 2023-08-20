@@ -1,8 +1,16 @@
-﻿<h3>IndexSectionBase</h3>
-
-@ChildContent
+﻿<div class="@(EvenSection ? "evenSection" : "oddSection")">
+	<div class="container pt-3 pt-lg-4 pt-xl-5 pb-3 pb-lg-4 pb-xl-5">
+		<div class="bg-white rounded-3 p-xl-5 p-lg-4 p-3">
+			@ChildContent
+		</div>
+	</div>
+</div>
 
 @code {
 	[Parameter]
 	public RenderFragment? ChildContent { get; set; }
+	[Parameter, EditorRequired]
+	public int PositionIndex { get; set; }
+
+	private bool EvenSection => PositionIndex % 2 == 0;
 }
