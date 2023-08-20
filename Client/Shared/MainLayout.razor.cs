@@ -4,7 +4,7 @@ namespace BlazorApp.Client.Shared;
 
 public class MainLayoutSetter : ComponentBase
 {
-	[CascadingParameter]
+	[CascadingParameter(Name = "Layout")]
 	public MainLayout Layout { get; set; } = null!;
 
 	[Parameter, EditorRequired]
