@@ -1,0 +1,23 @@
+﻿@inject IJSRuntime JS
+
+<script src="./components/DownloadButton.razor.js"></script>
+
+<button @onclick=DownloadFile>@DisplayText<span class="oi oi-data-transfer-download ms-1" aria-hidden="true" hidden="@(!ShowIcon)"></span></button>
+
+@code {
+    [Parameter]
+    public string? Text { get; set; }
+    private string DisplayText => Text ?? FileName;
+
+    [Parameter]
+    public bool ShowIcon { get; set; } = true;
+    [Parameter, EditorRequired]
+    public string URL { get; set; } = null!;
+    [Parameter, EditorRequired]
+    public string FileName { get; set; } = null!;
+
+    private async Task DownloadFile()
+    {
+        await JS.InvokeVoidAsync("triggerFileDownload", FileName, URL);
+    }
+}

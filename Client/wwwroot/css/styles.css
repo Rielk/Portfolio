@@ -1,0 +1,14 @@
+﻿a {
+    color: var(--colors-look-at-me);
+}
+
+button {
+    background-color: var(--colors-look-at-me);
+    color: var(--colors-text--invert);
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    border-radius: 1.5rem;
+    border: 0;
+}
