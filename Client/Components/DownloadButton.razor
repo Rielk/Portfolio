@@ -1,7 +1,5 @@
 ﻿@inject IJSRuntime JS
 
-<script src="./components/DownloadButton.razor.js"></script>
-
 <button @onclick=DownloadFile>@DisplayText<span class="oi oi-data-transfer-download ms-1" aria-hidden="true" hidden="@(!ShowIcon)"></span></button>
 
 @code {
@@ -16,8 +14,17 @@
     [Parameter, EditorRequired]
     public string FileName { get; set; } = null!;
 
-    private async Task DownloadFile()
+    private IJSObjectReference? module;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await JS.InvokeVoidAsync("triggerFileDownload", FileName, URL);
-    }
+		if (firstRender)
+			module = await JS.InvokeAsync<IJSObjectReference>("import", "./Components/DownloadButton.razor.js");
+		await base.OnAfterRenderAsync(firstRender);
+	}
+
+	private async Task DownloadFile()
+	{
+		if (module is not null)
+			await module.InvokeVoidAsync("triggerFileDownload", FileName, URL);
+	}
 }
