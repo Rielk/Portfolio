@@ -14,17 +14,17 @@
     [Parameter, EditorRequired]
     public string FileName { get; set; } = null!;
 
-    private IJSObjectReference? module;
+    private IJSObjectReference? ComponentScriptModule;
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
 		if (firstRender)
-			module = await JS.InvokeAsync<IJSObjectReference>("import", "./Components/DownloadButton.razor.js");
+			ComponentScriptModule = await JS.InvokeAsync<IJSObjectReference>("import", "./Components/DownloadButton.razor.js");
 		await base.OnAfterRenderAsync(firstRender);
 	}
 
 	private async Task DownloadFile()
 	{
-		if (module is not null)
-			await module.InvokeVoidAsync("triggerFileDownload", FileName, URL);
+		if (ComponentScriptModule is not null)
+			await ComponentScriptModule.InvokeVoidAsync("triggerFileDownload", FileName, URL);
 	}
 }
