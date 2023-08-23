@@ -1,5 +1,11 @@
-﻿<IndexSectionBase PositionIndex="@PositionIndex">
+﻿@using System.Text;
+@using System.Net.Mime;
+@inject HttpClient Http
+
+<IndexSectionBase PositionIndex="@PositionIndex">
 	<h3>Contact</h3>
+
+	<button @onclick=SendEmail>Submit</button>
 
 	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor nulla nec tellus bibendum imperdiet. Nam elementum fermentum odio, at posuere dui tristique ac. Donec orci lorem, volutpat eu elit sed, aliquet sodales dolor. Nulla ex turpis, pulvinar sit amet dolor ac, pellentesque luctus tellus. Pellentesque congue elementum tortor, et pharetra metus. Suspendisse dignissim, diam nec malesuada sollicitudin, diam sem sagittis ex, a convallis lacus dolor nec libero. Sed rutrum varius lorem, ut mollis massa laoreet non. Curabitur et tellus est. Suspendisse augue mauris, suscipit non neque et, pretium suscipit erat.</p>
 
@@ -11,4 +17,24 @@
 @code {
 	[Parameter, EditorRequired]
 	public int PositionIndex { get; set; }
+
+	async Task SendEmail()
+	{
+		try
+		{
+			ContactMessage message = new()
+				{
+					Name = "test",
+					Email = "test@WilliamSullivan.dev",
+					Message = "test",
+				};
+
+			var response = await Http.PostAsJsonAsync("/api/SendMessage", message) ?? new() { };
+			Console.WriteLine(await response.Content.ReadAsStringAsync());
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine(ex.ToString());
+		}
+	}
 }
