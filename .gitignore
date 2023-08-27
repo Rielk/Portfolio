@@ -346,3 +346,6 @@ healthchecksdb
 
 #Files that don't need tracking
 /Untracked
+
+#Don't track file locks
+.~lock*

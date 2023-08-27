@@ -3,11 +3,12 @@
 :root {
     --font-family--Roboto: 'Roboto', 'Gill Sans', 'Gill Sans MT', 'Calibri', 'sans-serif';
     --font-family--Roboto-Mono: 'Roboto Mono', Consolas, monaco, monospace;
-}
-
-html, body {
-    color: var(--colors-text);
-    font-family: var(--font-family--Roboto);
+    /**/
+    --bs-font-sans-serif: var(--font-family--Roboto);
+    --bs-font-monospace: var (--font-family--Roboto-Mono);
+    --bs-body-color: var(--colors-text);
+    /**/
+    --bs-gutter-x: 0rem;
 }
 
 #app, html, body {

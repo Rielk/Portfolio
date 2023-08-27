@@ -1,6 +1,6 @@
 ﻿@inject IJSRuntime JS
 
-<button @onclick=DownloadFile>@DisplayText<span class="oi oi-data-transfer-download ms-1" aria-hidden="true" hidden="@(!ShowIcon)"></span></button>
+<button @onclick=DownloadFile>@DisplayText<iconify-icon class="ms-1" icon="oi:data-transfer-download" hidden="@(!ShowIcon)"></iconify-icon></button>
 
 @code {
     [Parameter]
