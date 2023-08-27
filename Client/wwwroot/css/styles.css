@@ -2,6 +2,10 @@
     color: var(--colors-look-at-me);
 }
 
+    a:hover {
+        color: var(--colors-look-at-me-hover)
+    }
+
 button {
     background-color: var(--colors-look-at-me);
     color: var(--colors-text--invert);
@@ -12,3 +16,7 @@ button {
     border-radius: 1.5rem;
     border: 0;
 }
+
+    button:hover {
+        background-color: var(--colors-look-at-me-hover);
+    }

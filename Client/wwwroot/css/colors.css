@@ -6,22 +6,10 @@
     --colors-dark: #1D142E;
     --colors-blackish: #040306;
     --colors-colorful: #7743DB;
+    --colors-colorful-hover: #CA054D; /*TODO: Pick a better color*/
     --colors-look-at-me: #CA054D;
+    --colors-look-at-me-hover: #7743DB; /*TODO: Pick a better color*/
     /**/
     --colors-text: var(--colors-blackish);
     --colors-text--invert: var(--colors-light1);
-    /*
-    --colors-primary: #7743DB;
-    --colors-primary--dark: #3B3486;
-    --colors-secondary: #FCFDF2;
-    --colors-secondary--dark: #FFE9B1;
-    --colors-text: #000;
-    --colors-text--invert: #d7d7d7;
-
-    --background--dark: #3B3486;
-    --background: #7743DB;
-    --background--light: #D9C5FF;
-    --background--light-2: #FCFDF2;
-    --background-text: #000;
-    */
 }
