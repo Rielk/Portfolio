@@ -1,5 +1,9 @@
 ﻿@inherits LayoutComponentBase
 
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
 <CascadingValue Value="this" Name="Layout">
 	<div class="page" @onclick="PageClicked">
 		<div class="top-row">
