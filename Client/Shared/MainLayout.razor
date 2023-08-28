@@ -1,8 +1,14 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider />
+<MudThemeProvider Theme="@Theme"/>
 <MudDialogProvider />
 <MudSnackbarProvider />
+
+<style>
+	strong {
+		color: @Theme.Palette.Primary;
+	}
+</style>
 
 <CascadingValue Value="this" Name="Layout">
 	<div class="page" @onclick="PageClicked">
@@ -15,7 +21,7 @@
 		<div class="top-row-space">
 		</div>
 		<main>
-			<div class="hero w-100 position-fixed">
+			<div class="hero">
 				@Hero
 			</div>
 
@@ -32,9 +38,7 @@
 		</main>
 
 		<div class="footer">
-			<div>
-				<a href=""><img class="logo" alt="Logo" src="images/WillSullDev_Logo.png" /></a>
-			</div>
+			<a href=""><img class="logo" alt="Logo" src="images/WillSullDev_Logo.png" /></a>
 		</div>
 	</div>
 </CascadingValue>
@@ -50,6 +54,20 @@
 	private TopLinks? TopBarLinks;
 
 	private RenderFragment? Hero { get; set; }
+
+	MudTheme Theme = new MudTheme()
+		{
+			Palette = new PaletteLight()
+			{
+				Primary = new("7743DB"),
+				Secondary = Colors.Green.Accent4,
+				AppbarBackground = Colors.Red.Default,
+			},
+			PaletteDark = new PaletteDark()
+			{
+				Primary = Colors.Blue.Lighten1
+			}
+		};
 
 	private void PageClicked()
 	{

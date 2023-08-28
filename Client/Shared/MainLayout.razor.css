@@ -9,10 +9,15 @@
 
 .hero {
     background-color: var(--colors-light2);
+    position: fixed;
 }
 
 .hero-space {
     visibility: hidden;
+}
+
+.hero, .hero-space {
+    width: 100%;
 }
 
 .cover {

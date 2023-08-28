@@ -4,23 +4,22 @@
 
 <MainLayoutSetter>
 	<Hero>
-		<BufferHeader>
-			<Header>
+		<div class="hero-buffer">
+			<MudText Typo="Typo.h3" Class="hero-font">
 				Hi! I'm <strong>William Sullivan</strong>
-			</Header>
-			<Body>
+			</MudText>
+			<MudText Typo="Typo.body1" Class="hero-font">
 				I'm a <strong>software developer</strong>
-			</Body>
-			<SubContent>
+			</MudText>
+			<MudText Typo="Typo.body2" Class="hero-font">
 				This website is <strong>under construction</strong>.
-			</SubContent>
-		</BufferHeader>
+			</MudText>
+		</div>
 	</Hero>
 </MainLayoutSetter>
 
-<div class="pt-3 pt-lg-4 pt-xl-5 pb-3 pb-lg-4 pb-xl-5">
-	<About PositionIndex="0"/>
-	<Projects PositionIndex="1"/>
-	<Contact PositionIndex="2"/>
-
-</div>
+<MudContainer MaxWidth="MaxWidth.False" class="mx-0 px-0 py-8 py-lg-12 py-xl-16">
+	<About PositionIndex="0" />
+	<Projects PositionIndex="1" />
+	<Contact PositionIndex="2" />
+</MudContainer>
