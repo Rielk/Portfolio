@@ -1,1 +1,18 @@
-﻿
+﻿.hero-buffer {
+    padding-top: 15rem;
+    padding-bottom: 15rem;
+    /*
+    background-image: url("./images/Background_Tile.png");
+    background-size: 128px;
+    background-repeat: repeat;
+    background-position: 0 0;
+    background-position: -3px -3px;
+    */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /**/
+}
+::deep .hero-font {
+    font-family: var(--font-family--Roboto-Mono);
+}

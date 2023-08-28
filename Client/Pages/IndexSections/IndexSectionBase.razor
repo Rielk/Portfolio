@@ -1,9 +1,9 @@
 ﻿<div class="@(EvenSection ? "evenSection" : "oddSection")">
-	<div class="container pt-3 pt-lg-4 pt-xl-5 pb-3 pb-lg-4 pb-xl-5">
-		<div class="bg-white rounded-3 p-xl-5 p-lg-4 p-3">
+	<MudContainer Fixed=true class="py-8 py-lg-12 py-xl-16">
+		<div class="white rounded pa-xl-16 pa-lg-12 pa-8">
 			@ChildContent
 		</div>
-	</div>
+	</MudContainer>
 </div>
 
 @code {
