@@ -2,7 +2,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    background: var(--colors-light1);
+    background: var(--colors-light2);
     height: 100%;
     width: 100%;
 }
