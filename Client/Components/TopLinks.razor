@@ -1,45 +1,24 @@
-﻿<div class="link-collection link-collection-large">
+﻿<MudHidden Breakpoint="Breakpoint.SmAndDown">
 	@foreach (var detail in NavLinks)
 	{
-		<div class="nav-item nav-item-large">
-			@if (detail.MatchAll)
-			{
-				<NavLink class="nav-link" href="@detail.HRef" Match="NavLinkMatch.All">
-					@detail.Content
-				</NavLink>
-			}
-			else
-			{
-				<NavLink class="nav-link" href="@detail.HRef">
-					@detail.Content
-				</NavLink>
-			}
-		</div>
+		<MudButton Size="Size.Large" Href="@detail.HRef">
+			@detail.Content
+		</MudButton>
 	}
-</div>
+</MudHidden>
 
-<div class="link-collection link-collection-small">
-	<button class="menu-btn" @onclick="ToggleMenu"><span class="oi oi-menu" aria-hidden="true"></span></button>
-	<div class="menu-content" hidden="@MenuHidden">
+<MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
+	<MudMenu Icon="@Icons.Material.Filled.Menu">
 		@foreach (var detail in NavLinks)
 		{
-			<div class="nav-item">
-				@if (detail.MatchAll)
-				{
-					<NavLink class="nav-link" href="@detail.HRef" Match="NavLinkMatch.All">
-						@detail.Content
-					</NavLink>
-				}
-				else
-				{
-					<NavLink class="nav-link" href="@detail.HRef">
-						@detail.Content
-					</NavLink>
-				}
-			</div>
+			<MudMenuItem>
+				<MudButton Size="Size.Large" Href="@detail.HRef">
+					@detail.Content
+				</MudButton>
+			</MudMenuItem>
 		}
-	</div>
-</div>
+	</MudMenu>
+</MudHidden>
 
 @code {
 	[Parameter, EditorRequired]
