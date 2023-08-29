@@ -1,6 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider Theme="@Theme"/>
+<MudThemeProvider Theme="@Theme" />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
@@ -12,15 +12,14 @@
 
 <CascadingValue Value="this" Name="Layout">
 	<div class="page" @onclick="PageClicked">
-		<div class="top-row">
-			<span class="logo-circle">
-				<a href=""><img class="logo" alt="Logo" src="images/WillSullDev_Logo.png" /></a>
+		<MudAppBar Elevation="0">
+			<span class="logo-circle pa-4">
+				<MudLink Href=""><MudImage Src="images/WillSullDev_Logo.png" Alt="Logo" Height="48" /></MudLink>
 			</span>
+			<MudSpacer />
 			<TopLinks @ref="TopBarLinks" NavLinks="@NavLinks" />
-		</div>
-		<div class="top-row-space">
-		</div>
-		<main>
+		</MudAppBar>
+		<MudMainContent>
 			<div class="hero">
 				@Hero
 			</div>
@@ -35,18 +34,18 @@
 					@Body
 				</article>
 			</div>
-		</main>
 
-		<div class="footer">
-			<a href=""><img class="logo" alt="Logo" src="images/WillSullDev_Logo.png" /></a>
-		</div>
+			<MudAppBar Elevation="0" Bottom="true" Fixed="false" Class="pb-2">
+				<MudLink Href=""><MudImage Class="mt-4 mx-4" Src="images/WillSullDev_Logo.png" Alt="Logo" Height="48" /></MudLink>
+			</MudAppBar>
+		</MudMainContent>
 	</div>
 </CascadingValue>
 
 @code
 {
 	private List<NavLinkDetails> NavLinks = new() {
-		new("", "HOME", true),
+		new("", "HOME"),
 		new("about", "ABOUT"),
 		new("projects", "PROJECTS"),
 		new("contact", "CONTACT") };
