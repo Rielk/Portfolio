@@ -1,6 +1,6 @@
 ﻿<IndexSectionBase PositionIndex="@PositionIndex">
-	<MudText>This website is still being built. In the meantime, please take a look at my CV <MudLink href="files/CV-William Sullivan.pdf">here</MudLink> and get in touch if you have a job opening to talk about.</MudText>
-	<MudText>Or download it here: <MudButton Variant="Variant.Filled" Color="Color.Secondary" Href="files/CV-William Sullivan.pdf" download="CV-William Sullivan.pdf" EndIcon="@Icons.Material.Filled.Download">CV-William Sullivan.pdf</MudButton></MudText>
+	<MudText>This website is still being built. In the meantime, please take a look at my CV <MudLink Color="Color.Secondary" Href="files/CV-William Sullivan.pdf">here</MudLink> and get in touch if you have a job opening to talk about.</MudText>
+	<MudText>Or download it here: <MudFab Color="Color.Secondary" Label="CV-William Sullivan.pdf" EndIcon="@Icons.Material.Filled.Download" DisableElevation="true" Href="files/CV-William Sullivan.pdf" download="CV-William Sullivan.pdf" /></MudText>
 	<MudDivider Class="my-3"/>
 
 	<MudGrid>
@@ -11,16 +11,10 @@
 			<MudContainer Style="text-align:center;">
 				<MudText Typo="Typo.h2" Class="m-0">William Sullivan</MudText>
 				<MudText Typo="Typo.subtitle1">hello@WilliamSullivan.dev</MudText>
-				<MudContainer Class="d-flex justify-space-around mt-6" style="max-width: 256px;">
-					<a href="https://www.linkedin.com/in/william-sullivan-0764561b8/" target="_blank" rel="noopener noreferrer">
-						<img style="height: 21px;" src="images/LI-In-Bug.png" />
-					</a>
-					<a href="https://github.com/Rielk" target="_blank" rel="noopener noreferrer">
-						<img style="height: 21px;" src="images/github-mark.png" />
-					</a>
-					<a href="mailto:hello@WilliamSullivan.dev" target="_blank" rel="noopener noreferrer">
-						<iconify-icon icon="oi:envelope-closed" style="font-size: 21px;"></iconify-icon>
-					</a>
+				<MudContainer Class="d-flex justify-space-around" Style="max-width: 256px;">
+					<MudIconButton Icon="@Icons.Custom.Brands.LinkedIn" Color="Color.Primary" aria-label="LinkedIn" Href="https://www.linkedin.com/in/william-sullivan-0764561b8/" Target="_blank" />
+					<MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Primary" aria-label="GitHub" Href="https://github.com/Rielk" Target="_blank" />
+					<MudIconButton Icon="@Icons.Material.TwoTone.Mail" Color="Color.Primary" aria-label="Email" Href="mailto:hello@WilliamSullivan.dev" />
 				</MudContainer>
 			</MudContainer>
 		</MudItem>
