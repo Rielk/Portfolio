@@ -1,6 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider Theme="@Theme" />
+<MudThemeProvider @ref="@MudThemeProvider" Theme="@Theme" DefaultScrollbar="true" @bind-IsDarkMode="@isDarkMode" />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
@@ -52,6 +52,9 @@
 
 	private TopLinks? TopBarLinks;
 
+	private bool isDarkMode;
+	private MudThemeProvider MudThemeProvider = null!;
+
 	private RenderFragment? Hero { get; set; }
 
 	MudTheme Theme = new MudTheme()
@@ -67,6 +70,23 @@
 				Primary = Colors.Blue.Lighten1
 			}
 		};
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		if (firstRender)
+		{
+			isDarkMode = await MudThemeProvider.GetSystemPreference();
+			await MudThemeProvider.WatchSystemPreference(OnSystemPreferenceChanged);
+			StateHasChanged();
+		}
+	}
+
+	private Task OnSystemPreferenceChanged(bool newValue)
+	{
+		isDarkMode = newValue;
+		StateHasChanged();
+		return Task.CompletedTask;
+	}
 
 	private void PageClicked()
 	{
