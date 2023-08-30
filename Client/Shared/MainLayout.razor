@@ -1,4 +1,5 @@
-﻿@inherits LayoutComponentBase
+﻿@using MudBlazor.Utilities;
+@inherits LayoutComponentBase
 
 <MudThemeProvider @ref="@MudThemeProvider" Theme="@Theme" DefaultScrollbar="true" @bind-IsDarkMode="@isDarkMode" />
 <MudDialogProvider />
@@ -35,7 +36,7 @@
 				</article>
 			</div>
 
-			<MudAppBar Elevation="0" Bottom="true" Fixed="false" Class="pb-2">
+			<MudAppBar Elevation="0" Bottom="true" Fixed="false" Class="pb-3">
 				<MudLink Href=""><MudImage Class="mt-4 mx-4" Src="images/WillSullDev_Logo.png" Alt="Logo" Height="48" /></MudLink>
 			</MudAppBar>
 		</MudMainContent>
@@ -61,14 +62,536 @@
 		{
 			Palette = new PaletteLight()
 			{
+				/// Gets or sets the black color.
+				Black = "#272c34",
+
+				/// Gets or sets the white color.
+				White = Colors.Shades.White,
+
+				/// Gets or sets the primary color.
 				Primary = new("7743DB"),
-				Secondary = Colors.Green.Accent4,
-				AppbarBackground = Colors.Red.Default,
+
+				/// Gets or sets the contrast text color for the primary color.
+				PrimaryContrastText = Colors.Shades.White,
+
+				/// Gets or sets the secondary color.
+				Secondary = Colors.Pink.Accent2,
+
+				/// Gets or sets the contrast text color for the secondary color.
+				SecondaryContrastText = Colors.Shades.White,
+
+				/// Gets or sets the tertiary color.
+				Tertiary = "#1EC8A5",
+
+				/// Gets or sets the contrast text color for the tertiary color.
+				TertiaryContrastText = Colors.Shades.White,
+
+				/// Gets or sets the info color.
+				Info = Colors.Blue.Default,
+
+				/// Gets or sets the contrast text color for the info color.
+				InfoContrastText = Colors.Shades.White,
+
+				/// Gets or sets the success color.
+				Success = Colors.Green.Accent4,
+
+				/// Gets or sets the contrast text color for the success color.
+				SuccessContrastText = Colors.Shades.White,
+
+				/// Gets or sets the warning color.
+				Warning = Colors.Orange.Default,
+
+				/// Gets or sets the contrast text color for the warning color.
+				WarningContrastText = Colors.Shades.White,
+
+				/// Gets or sets the error color.
+				Error = Colors.Red.Default,
+
+				/// Gets or sets the contrast text color for the error color.
+				ErrorContrastText = Colors.Shades.White,
+
+				/// Gets or sets the dark color.
+				Dark = Colors.Grey.Darken3,
+
+				/// Gets or sets the contrast text color for the dark color.
+				DarkContrastText = Colors.Shades.White,
+
+				/// Gets or sets the primary text color.
+				TextPrimary = Colors.Grey.Darken3,
+
+				/// Gets or sets the secondary text color.
+				TextSecondary = new MudColor(Colors.Shades.Black).SetAlpha(0.54),
+
+				/// Gets or sets the disabled text color.
+				TextDisabled = new MudColor(Colors.Shades.Black).SetAlpha(0.38),
+
+				/// Gets or sets the default action color.
+				ActionDefault = new MudColor(Colors.Shades.Black).SetAlpha(0.54),
+
+				/// Gets or sets the disabled action color.
+				ActionDisabled = new MudColor(Colors.Shades.Black).SetAlpha(0.26),
+
+				/// Gets or sets the background color for disabled actions.
+				ActionDisabledBackground = new MudColor(Colors.Shades.Black).SetAlpha(0.12),
+
+				/// Gets or sets the background color.
+				Background = Colors.Shades.White,
+
+				/// Gets or sets the grey background color.
+				BackgroundGrey = Colors.Grey.Lighten4,
+
+				/// Gets or sets the surface color.
+				Surface = Colors.Shades.White,
+
+				/// Gets or sets the drawer background color.
+				DrawerBackground = Colors.Shades.White,
+
+				/// Gets or sets the drawer text color.
+				DrawerText = Colors.Grey.Darken3,
+
+				/// Gets or sets the drawer icon color.
+				DrawerIcon = Colors.Grey.Darken2,
+
+				/// Gets or sets the appbar background color.
+				AppbarBackground = "#594AE2",
+
+				/// Gets or sets the appbar text color.
+				AppbarText = Colors.Shades.White,
+
+				/// Gets or sets the default color for lines.
+				LinesDefault = new MudColor(Colors.Shades.Black).SetAlpha(0.12),
+
+				/// Gets or sets the color for input lines.
+				LinesInputs = Colors.Grey.Lighten1,
+
+				/// Gets or sets the color for table lines.
+				TableLines = new MudColor(Colors.Grey.Lighten2).SetAlpha(1.0),
+
+				/// Gets or sets the color for striped rows in a table.
+				TableStriped = new MudColor(Colors.Shades.Black).SetAlpha(0.02),
+
+				/// Gets or sets the color for table rows on hover.
+				TableHover = new MudColor(Colors.Shades.Black).SetAlpha(0.04),
+
+				/// Gets or sets the color for dividers.
+				Divider = Colors.Grey.Lighten2,
+
+				/// Gets or sets the light color for dividers.
+				DividerLight = new MudColor(Colors.Shades.Black).SetAlpha(0.8),
+
+				/// Gets or sets the darkened value of the primary color.
+				//PrimaryDarken = null,
+
+				/// Gets or sets the lightened value of the primary color.
+				//PrimaryLighten = null,
+
+				/// Gets or sets the darkened value of the secondary color.
+				//SecondaryDarken = null,
+
+				/// Gets or sets the lightened value of the secondary color.
+				//SecondaryLighten = null,
+
+				/// Gets or sets the darkened value of the tertiary color.
+				//TertiaryDarken = null,
+
+				/// Gets or sets the lightened value of the tertiary color.
+				//TertiaryLighten = null,
+
+				/// Gets or sets the darkened value of the info color.
+				//InfoDarken = null,
+
+				/// Gets or sets the lightened value of the info color.
+				//InfoLighten = null,
+
+				/// Gets or sets the darkened value of the success color.
+				//SuccessDarken = null,
+
+				/// Gets or sets the lightened value of the success color.
+				//SuccessLighten = null,
+
+				/// Gets or sets the darkened value of the warning color.
+				//WarningDarken = null,
+
+				/// Gets or sets the lightened value of the warning color.
+				//WarningLighten = null,
+
+				/// Gets or sets the darkened value of the error color.
+				//ErrorDarken = null,
+
+				/// Gets or sets the lightened value of the error color.
+				//ErrorLighten = null,
+
+				/// Gets or sets the darkened value of the dark color.
+				//DarkDarken = null,
+
+				/// Gets or sets the lightened value of the dark color.
+				//DarkLighten = null,
+
+				/// Gets or sets the opacity value for hover effect.
+				HoverOpacity = 0.06,
+
+				/// Gets or sets the default gray color.
+				GrayDefault = Colors.Grey.Default,
+
+				/// Gets or sets the lightened gray color.
+				GrayLight = Colors.Grey.Lighten1,
+
+				/// Gets or sets the further lightened gray color.
+				GrayLighter = Colors.Grey.Lighten2,
+
+				/// Gets or sets the darkened gray color.
+				GrayDark = Colors.Grey.Darken1,
+
+				/// Gets or sets the further darkened gray color.
+				GrayDarker = Colors.Grey.Darken2,
+
+				/// Gets or sets the dark overlay color.
+				OverlayDark = new MudColor("#212121").SetAlpha(0.5).ToString(MudColorOutputFormats.RGBA),
+
+				/// Gets or sets the light overlay color.
+				OverlayLight = new MudColor(Colors.Shades.White).SetAlpha(0.5).ToString(MudColorOutputFormats.RGBA),
 			},
 			PaletteDark = new PaletteDark()
 			{
-				Primary = Colors.Blue.Lighten1
-			}
+				/// Gets or sets the black color.
+				Black = "#27272f",
+
+				/// Gets or sets the white color.
+				White = Colors.Shades.White,
+
+				/// Gets or sets the primary color.
+				Primary = "#776be7",
+
+				/// Gets or sets the contrast text color for the primary color.
+				PrimaryContrastText = Colors.Shades.White,
+
+				/// Gets or sets the secondary color.
+				Secondary = Colors.Pink.Accent2,
+
+				/// Gets or sets the contrast text color for the secondary color.
+				SecondaryContrastText = Colors.Shades.White,
+
+				/// Gets or sets the tertiary color.
+				Tertiary = "#1EC8A5",
+
+				/// Gets or sets the contrast text color for the tertiary color.
+				TertiaryContrastText = Colors.Shades.White,
+
+				/// Gets or sets the info color.
+				Info = "#3299ff",
+
+				/// Gets or sets the contrast text color for the info color.
+				InfoContrastText = Colors.Shades.White,
+
+				/// Gets or sets the success color.
+				Success = "#0bba83",
+
+				/// Gets or sets the contrast text color for the success color.
+				SuccessContrastText = Colors.Shades.White,
+
+				/// Gets or sets the warning color.
+				Warning = "#ffa800",
+
+				/// Gets or sets the contrast text color for the warning color.
+				WarningContrastText = Colors.Shades.White,
+
+				/// Gets or sets the error color.
+				Error = "#f64e62",
+
+				/// Gets or sets the contrast text color for the error color.
+				ErrorContrastText = Colors.Shades.White,
+
+				/// Gets or sets the dark color.
+				Dark = "#27272f",
+
+				/// Gets or sets the contrast text color for the dark color.
+				DarkContrastText = Colors.Shades.White,
+
+				/// Gets or sets the primary text color.
+				TextPrimary = "rgba(255,255,255, 0.70)",
+
+				/// Gets or sets the secondary text color.
+				TextSecondary = "rgba(255,255,255, 0.50)",
+
+				/// Gets or sets the disabled text color.
+				TextDisabled = "rgba(255,255,255, 0.2)",
+
+				/// Gets or sets the default action color.
+				ActionDefault = "#adadb1",
+
+				/// Gets or sets the disabled action color.
+				ActionDisabled = "rgba(255,255,255, 0.26)",
+
+				/// Gets or sets the background color for disabled actions.
+				ActionDisabledBackground = "rgba(255,255,255, 0.12)",
+
+				/// Gets or sets the background color.
+				Background = "#32333d",
+
+				/// Gets or sets the grey background color.
+				BackgroundGrey = "#27272f",
+
+				/// Gets or sets the surface color.
+				Surface = "#373740",
+
+				/// Gets or sets the drawer background color.
+				DrawerBackground = "#27272f",
+
+				/// Gets or sets the drawer text color.
+				DrawerText = "rgba(255,255,255, 0.50)",
+
+				/// Gets or sets the drawer icon color.
+				DrawerIcon = "rgba(255,255,255, 0.50)",
+
+				/// Gets or sets the appbar background color.
+				AppbarBackground = "#27272f",
+
+				/// Gets or sets the appbar text color.
+				AppbarText = "rgba(255,255,255, 0.70)",
+
+				/// Gets or sets the default color for lines.
+				LinesDefault = "rgba(255,255,255, 0.12)",
+
+				/// Gets or sets the color for input lines.
+				LinesInputs = "rgba(255,255,255, 0.3)",
+
+				/// Gets or sets the color for table lines.
+				TableLines = "rgba(255,255,255, 0.12)",
+
+				/// Gets or sets the color for striped rows in a table.
+				TableStriped = "rgba(255,255,255, 0.2)",
+
+				/// Gets or sets the color for table rows on hover.
+				TableHover = new MudColor(Colors.Shades.Black).SetAlpha(0.04),
+
+				/// Gets or sets the color for dividers.
+				Divider = "rgba(255,255,255, 0.12)",
+
+				/// Gets or sets the light color for dividers.
+				DividerLight = "rgba(255,255,255, 0.06)",
+
+				/// Gets or sets the darkened value of the primary color.
+				//PrimaryDarken = null,
+
+				/// Gets or sets the lightened value of the primary color.
+				//PrimaryLighten = null,
+
+				/// Gets or sets the darkened value of the secondary color.
+				//SecondaryDarken = null,
+
+				/// Gets or sets the lightened value of the secondary color.
+				//SecondaryLighten = null,
+
+				/// Gets or sets the darkened value of the tertiary color.
+				//TertiaryDarken = null,
+
+				/// Gets or sets the lightened value of the tertiary color.
+				//TertiaryLighten = null,
+
+				/// Gets or sets the darkened value of the info color.
+				//InfoDarken = null,
+
+				/// Gets or sets the lightened value of the info color.
+				//InfoLighten = null,
+
+				/// Gets or sets the darkened value of the success color.
+				//SuccessDarken = null,
+
+				/// Gets or sets the lightened value of the success color.
+				//SuccessLighten = null,
+
+				/// Gets or sets the darkened value of the warning color.
+				//WarningDarken = null,
+
+				/// Gets or sets the lightened value of the warning color.
+				//WarningLighten = null,
+
+				/// Gets or sets the darkened value of the error color.
+				//ErrorDarken = null,
+
+				/// Gets or sets the lightened value of the error color.
+				//ErrorLighten = null,
+
+				/// Gets or sets the darkened value of the dark color.
+				//DarkDarken = null,
+
+				/// Gets or sets the lightened value of the dark color.
+				//DarkLighten = null,
+
+				/// Gets or sets the opacity value for hover effect.
+				HoverOpacity = 0.06,
+
+				/// Gets or sets the default gray color.
+				GrayDefault = Colors.Grey.Default,
+
+				/// Gets or sets the lightened gray color.
+				GrayLight = Colors.Grey.Lighten1,
+
+				/// Gets or sets the further lightened gray color.
+				GrayLighter = Colors.Grey.Lighten2,
+
+				/// Gets or sets the darkened gray color.
+				GrayDark = Colors.Grey.Darken1,
+
+				/// Gets or sets the further darkened gray color.
+				GrayDarker = Colors.Grey.Darken2,
+
+				/// Gets or sets the dark overlay color.
+				OverlayDark = new MudColor("#212121").SetAlpha(0.5).ToString(MudColorOutputFormats.RGBA),
+
+				/// Gets or sets the light overlay color.
+				OverlayLight = new MudColor(Colors.Shades.White).SetAlpha(0.5).ToString(MudColorOutputFormats.RGBA),
+			},
+			Typography = new Typography()
+			{
+				/// Gets or sets the default typography settings.
+				Default = new()
+				{
+					FontFamily = new[] { "Roboto", "Gill Sans", "Gill Sans MT", "Calibri", "sans-serif" },
+					FontSize = ".875rem",
+					FontWeight = 400,
+					LineHeight = 1.43,
+					LetterSpacing = ".01071em",
+				},
+
+				/// Gets or sets the typography settings for H1.
+				H1 = new()
+				{
+					FontSize = "6rem",
+					FontWeight = 300,
+					LineHeight = 1.167,
+					LetterSpacing = "-.01562em",
+				},
+
+				/// Gets or sets the typography settings for H2.
+				H2 = new()
+				{
+					FontSize = "3.75rem",
+					FontWeight = 300,
+					LineHeight = 1.2,
+					LetterSpacing = "-.00833em",
+				},
+
+				/// Gets or sets the typography settings for H3.
+				H3 = new()
+				{
+					FontSize = "3rem",
+					FontWeight = 400,
+					LineHeight = 1.167,
+					LetterSpacing = "0",
+				},
+
+				/// Gets or sets the typography settings for H4.
+				H4 = new()
+				{
+					FontSize = "2.125rem",
+					FontWeight = 400,
+					LineHeight = 1.235,
+					LetterSpacing = ".00735em",
+				},
+
+				/// Gets or sets the typography settings for H5.
+				H5 = new()
+				{
+					FontSize = "1.5rem",
+					FontWeight = 400,
+					LineHeight = 1.334,
+					LetterSpacing = "0",
+				},
+
+				/// Gets or sets the typography settings for H6.
+				H6 = new()
+				{
+					FontSize = "1.25rem",
+					FontWeight = 500,
+					LineHeight = 1.6,
+					LetterSpacing = ".0075em",
+				},
+
+				/// Gets or sets the typography settings for H7.
+				Subtitle1 = new()
+				{
+					FontSize = "1rem",
+					FontWeight = 400,
+					LineHeight = 1.75,
+					LetterSpacing = ".00938em",
+				},
+
+				/// Gets or sets the typography settings for H8.
+				Subtitle2 = new()
+				{
+					FontSize = ".875rem",
+					FontWeight = 500,
+					LineHeight = 1.57,
+					LetterSpacing = ".00714em",
+				},
+
+				/// Gets or sets the typography settings for H9.
+				Body1 = new()
+				{
+					FontSize = "1rem",
+					FontWeight = 400,
+					LineHeight = 1.5,
+					LetterSpacing = ".00938em",
+				},
+
+				/// Gets or sets the typography settings for Body2.
+				Body2 = new()
+				{
+					FontSize = ".875rem",
+					FontWeight = 400,
+					LineHeight = 1.43,
+					LetterSpacing = ".01071em",
+				},
+
+				/// Gets or sets the typography settings for Button.
+				Button = new()
+				{
+					FontSize = ".875rem",
+					FontWeight = 500,
+					LineHeight = 1.75,
+					LetterSpacing = ".02857em",
+					TextTransform = "uppercase",
+				},
+
+				/// Gets or sets the typography settings for Caption.
+				Caption = new()
+				{
+					FontSize = ".75rem",
+					FontWeight = 400,
+					LineHeight = 1.66,
+					LetterSpacing = ".03333em",
+				},
+
+				/// Gets or sets the typography settings for Overline.
+				Overline = new()
+				{
+					FontSize = ".75rem",
+					FontWeight = 400,
+					LineHeight = 2.66,
+					LetterSpacing = ".08333em",
+				},
+			},
+			LayoutProperties = new LayoutProperties()
+			{
+				/// Gets or sets the default border radius.
+				DefaultBorderRadius = "4px",
+
+				/// Gets or sets the width of the mini drawer on the left side.
+				DrawerMiniWidthLeft = "56px",
+
+				/// Gets or sets the width of the mini drawer on the right side.
+				DrawerMiniWidthRight = "56px",
+
+				/// Gets or sets the width of the drawer on the left side.
+				DrawerWidthLeft = "240px",
+
+				/// Gets or sets the width of the drawer on the right side.
+				DrawerWidthRight = "240px",
+
+				/// Gets or sets the height of the appbar.
+				AppbarHeight = "48px", //64px
+			},
 		};
 
 	protected override async Task OnAfterRenderAsync(bool firstRender)
