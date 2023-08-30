@@ -23,22 +23,4 @@
 @code {
 	[Parameter, EditorRequired]
 	public List<NavLinkDetails> NavLinks { get; set; } = new();
-
-	[Parameter]
-	public bool MenuHidden { get; set; } = true;
-
-	private bool IgnoreNextHide = false;
-
-	public void ToggleMenu()
-	{
-		MenuHidden = !MenuHidden;
-		IgnoreNextHide = true;
-	}
-
-	public void HideMenu()
-	{
-		if (!IgnoreNextHide)
-			MenuHidden = true;
-		IgnoreNextHide = false;
-	}
 }
