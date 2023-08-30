@@ -2,27 +2,12 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    background: var(--colors-light2);
     height: 100%;
-    width: 100%;
-}
-
-.hero {
-    background-color: var(--colors-light2);
-    position: fixed;
-}
-
-.hero-space {
-    visibility: hidden;
-}
-
-.hero, .hero-space {
     width: 100%;
 }
 
 .cover {
     position: relative;
-    background: var(--colors-light0);
     width: 100%;
     flex:1;
 }
@@ -31,17 +16,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--colors-light2);
     min-width: 1em;
     border-radius: 50%;
     /*border-bottom: 2px solid var(--border-color);*/
     vertical-align: middle;
     margin-top: 1.2rem;
-}
-
-.footer {
-    justify-content: center;
-    background-color: var(--colors-light2);
-    z-index:1;
-    width: 100%;
 }

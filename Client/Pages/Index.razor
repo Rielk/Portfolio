@@ -18,8 +18,29 @@
 	</Hero>
 </MainLayoutSetter>
 
-<MudContainer MaxWidth="MaxWidth.False" Class="mx-0 px-0 py-8 py-lg-12 py-xl-16">
-	<About PositionIndex="0" />
-	<Projects PositionIndex="1" />
-	<Contact PositionIndex="2" />
+<div class="pt-8 pt-lg-12 rounded-t-xl" style="background-color: @(GetStyle(true));" />
+<MudContainer MaxWidth="MaxWidth.False" Class="mx-0 px-0 py-xl-16">
+	<About BackgroundColor="@GetStyle(true)" />
+	<Projects BackgroundColor="@GetStyle(false)" />
+	<Contact BackgroundColor="@GetStyle(true)" />
 </MudContainer>
+<div class="pb-8 pb-lg-12" style="background-color: @(GetStyle(true));" />
+
+@code {
+	[CascadingParameter]
+	protected MudThemeProvider? MudThemeProvider { get; set; }
+
+	string GetStyle(bool even)
+	{
+		if (MudThemeProvider?.IsDarkMode ?? false)
+		{
+			var paletteDark = MudThemeProvider.Theme?.PaletteDark ?? new PaletteDark();
+			return even ? paletteDark.GrayLighter : paletteDark.GrayLight;
+		}
+		else
+		{
+			return even ? Colors.Grey.Lighten5 : Colors.Grey.Lighten4;
+		}
+	}
+}
+
