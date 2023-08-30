@@ -1,15 +1,12 @@
-﻿:root {
-    /*https://coolors.co/f5f5f5-efefef-d5d4d7-1d142e-040306-7743db-ca054d */
-    --colors-light0: #F5F5F5;
+﻿    /*https://coolors.co/f5f5f5-efefef-d5d4d7-1d142e-040306-7743db-ca054d */
+    
+    /*--colors-light0: #F5F5F5;
     --colors-light1: #EFEFEF;
-    --colors-light2: #D5D4D7;
-    --colors-dark: #1D142E;
-    --colors-blackish: #040306;
-    --colors-colorful: #7743DB;
-    --colors-colorful-hover: #CA054D; /*TODO: Pick a better color*/
-    --colors-look-at-me: #CA054D;
-    --colors-look-at-me-hover: #7743DB; /*TODO: Pick a better color*/
-    /**/
-    --colors-text: var(--colors-blackish);
-    --colors-text--invert: var(--colors-light1);
-}
+    --colors-light2: #D5D4D7;*/
+
+    /* Shouldn't use these now that MudBlazor is used for themes, left for reference
+    --colors-black: #040306;
+    --colors-primary: #7743DB;
+    --colors-secondary: #CA054D;
+
+    */
