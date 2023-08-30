@@ -11,7 +11,7 @@
 </style>
 
 <CascadingValue Value="this" Name="Layout">
-	<div class="page" @onclick="PageClicked">
+	<div class="page">
 		<MudAppBar Elevation="0">
 			<span class="logo-circle pa-4">
 				<MudLink Href=""><MudImage Src="images/WillSullDev_Logo.png" Alt="Logo" Height="48" /></MudLink>
@@ -86,11 +86,6 @@
 		isDarkMode = newValue;
 		StateHasChanged();
 		return Task.CompletedTask;
-	}
-
-	private void PageClicked()
-	{
-		TopBarLinks?.HideMenu();
 	}
 
 	public void SetHero(RenderFragment? hero)
