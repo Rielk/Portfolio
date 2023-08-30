@@ -12,35 +12,37 @@
 </style>
 
 <CascadingValue Value="this" Name="Layout">
-	<div class="page">
-		<MudAppBar Elevation="0">
-			<span class="logo-circle pa-4">
-				<MudLink Href=""><MudImage Src="images/WillSullDev_Logo.png" Alt="Logo" Height="48" /></MudLink>
-			</span>
-			<MudSpacer />
-			<TopLinks @ref="TopBarLinks" NavLinks="@NavLinks" />
-		</MudAppBar>
-		<MudMainContent>
-			<div class="hero">
-				@Hero
-			</div>
-
-			@* This feels like a hacky fix to create space for the Hero. But I can't find a better way right now.*@
-			<div class="hero-space">
-				@Hero
-			</div>
-
-			<div class="cover rounded-t-xl">
-				<article>
-					@Body
-				</article>
-			</div>
-
-			<MudAppBar Elevation="0" Bottom="true" Fixed="false" Class="pb-3">
-				<MudLink Href=""><MudImage Class="mt-4 mx-4" Src="images/WillSullDev_Logo.png" Alt="Logo" Height="48" /></MudLink>
+	<CascadingValue Value="@MudThemeProvider">
+		<div class="page" style="background-color: @AppbarColor;">
+			<MudAppBar Elevation="0">
+				<span class="logo-circle pa-4" style="background-color: @AppbarColor;">
+					<MudLink Href=""><MudImage Src="images/WillSullDev_Logo.png" Alt="Logo" Height="48" /></MudLink>
+				</span>
+				<MudSpacer />
+				<TopLinks @ref="TopBarLinks" NavLinks="@NavLinks" />
 			</MudAppBar>
-		</MudMainContent>
-	</div>
+			<MudMainContent>
+				<div class="fixed" style="width: 100%; background-color: @AppbarColor;">
+					@Hero
+				</div>
+
+				@* This feels like a hacky fix to create space for the Hero. But I can't find a better way right now.*@
+				<div class="invisible">
+					@Hero
+				</div>
+
+				<div class="cover">
+					<article>
+						@Body
+					</article>
+				</div>
+
+				<MudAppBar Elevation="0" Bottom="true" Fixed="false" Class="pb-3">
+					<MudLink Href=""><MudImage Class="mt-4 mx-4" Src="images/WillSullDev_Logo.png" Alt="Logo" Height="48" /></MudLink>
+				</MudAppBar>
+			</MudMainContent>
+		</div>
+	</CascadingValue>
 </CascadingValue>
 
 @code
@@ -57,6 +59,8 @@
 	private MudThemeProvider MudThemeProvider = null!;
 
 	private RenderFragment? Hero { get; set; }
+
+	string AppbarColor =>(isDarkMode ? Theme.PaletteDark : Theme.Palette).AppbarBackground.ToString();
 
 	MudTheme Theme = new MudTheme()
 		{
@@ -231,19 +235,19 @@
 				HoverOpacity = 0.06,
 
 				/// Gets or sets the default gray color.
-				GrayDefault = Colors.Grey.Default,
+				GrayDefault = "#9D9BA1", //Colors.Grey.Default
 
 				/// Gets or sets the lightened gray color.
-				GrayLight = Colors.Grey.Lighten1,
+				GrayLight = "#B0AEB3",//Colors.Grey.Lighten1
 
 				/// Gets or sets the further lightened gray color.
-				GrayLighter = Colors.Grey.Lighten2,
+				GrayLighter = "#E0E0E0",//Colors.Grey.Lighten2
 
 				/// Gets or sets the darkened gray color.
-				GrayDark = Colors.Grey.Darken1,
+				GrayDark = "#777480",//Colors.Grey.Darken1
 
 				/// Gets or sets the further darkened gray color.
-				GrayDarker = Colors.Grey.Darken2,
+				GrayDarker = "#615D6C",//Colors.Grey.Darken2
 
 				/// Gets or sets the dark overlay color.
 				OverlayDark = new MudColor("#040306").SetAlpha(0.5).ToString(MudColorOutputFormats.RGBA),
