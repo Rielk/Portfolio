@@ -1,7 +1,9 @@
 ﻿<IndexSectionBase BackgroundColor="@BackgroundColor">
-	<MudText>This website is still being built. In the meantime, please take a look at my CV <MudLink Color="Color.Secondary" Href="files/CV-William Sullivan.pdf">here</MudLink> and get in touch if you have a job opening to talk about.</MudText>
-	<MudText>Or download it here: <MudFab Color="Color.Secondary" Label="CV-William Sullivan.pdf" EndIcon="@Icons.Material.Filled.Download" DisableElevation="true" Href="files/CV-William Sullivan.pdf" download="CV-William Sullivan.pdf" /></MudText>
-	<MudDivider Class="my-3"/>
+	<div class="spaced-block">
+		<MudText>This website is still being built. In the meantime, please take a look at my CV <MudLink Color="Color.Secondary" Href="files/CV-William Sullivan.pdf">here</MudLink> and get in touch if you have a job opening to talk about.</MudText>
+		<MudText>Or download it here: <MudFab Color="Color.Secondary" Label="CV-William Sullivan.pdf" EndIcon="@Icons.Material.Filled.Download" DisableElevation="true" Href="files/CV-William Sullivan.pdf" download="CV-William Sullivan.pdf" /></MudText>
+	</div>
+	<MudDivider Class="my-3" />
 
 	<MudGrid>
 		<MudItem xs="12" md="5" Class="d-flex flex-column">
@@ -18,8 +20,8 @@
 				</MudContainer>
 			</MudContainer>
 		</MudItem>
-		<MudItem xs="12" md="7">
-			<MudText Typo="Typo.h3">About</MudText>
+		<MudItem xs="12" md="7" Class="spaced-block">
+			<MudText Typo="Typo.h3" Class="no-space">About</MudText>
 
 			<MudText>Hi, I’m Will, a software developer and physics graduate. Originally from England, I recently moved to Canada for love, and I am currently based in <strong>Kingston, ON</strong>.</MudText>
 
