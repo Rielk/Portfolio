@@ -18,19 +18,19 @@
 	</Hero>
 </MainLayoutSetter>
 
-<div class="pt-8 pt-lg-12 rounded-t-xl" style="background-color: @(GetStyle(true));" />
+<div class="pt-8 pt-lg-12 rounded-t-xl" style="background-color: @(GetColor(true));" />
 <MudContainer MaxWidth="MaxWidth.False" Class="mx-0 px-0 py-xl-16">
-	<About BackgroundColor="@GetStyle(true)" />
-	<Projects BackgroundColor="@GetStyle(false)" />
-	<Contact BackgroundColor="@GetStyle(true)" />
+	<About BackgroundColor="@GetColor(true)" />
+	<Projects BackgroundColor="@GetColor(false)" />
+	<Contact BackgroundColor="@GetColor(true)" />
 </MudContainer>
-<div class="pb-8 pb-lg-12" style="background-color: @(GetStyle(true));" />
+<div class="pb-8 pb-lg-12" style="background-color: @(GetColor(true));" />
 
 @code {
 	[CascadingParameter]
 	protected MudThemeProvider? MudThemeProvider { get; set; }
 
-	string GetStyle(bool even)
+	string GetColor(bool even)
 	{
 		if (MudThemeProvider?.IsDarkMode ?? false)
 		{
