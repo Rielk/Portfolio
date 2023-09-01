@@ -1,26 +1,44 @@
 ﻿<MudHidden Breakpoint="Breakpoint.SmAndDown">
 	@foreach (var detail in NavLinks)
 	{
-		<MudButton Size="Size.Large" Href="@detail.HRef">
+		<MudButton Size="Size.Large" Href="@detail.HRef" Color="Color.Inherit">
 			@detail.Content
 		</MudButton>
 	}
 </MudHidden>
 
 <MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
-	<MudMenu Icon="@Icons.Material.Filled.Menu">
-		@foreach (var detail in NavLinks)
-		{
-			<MudMenuItem>
-				<MudButton Size="Size.Large" Href="@detail.HRef">
-					@detail.Content
-				</MudButton>
-			</MudMenuItem>
-		}
+	<MudMenu Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight">
+		<div class="my-n2 py-2" style="background-color: @Palette.AppbarBackground; color: @Palette.AppbarText">
+			@foreach (var detail in NavLinks)
+			{
+				<MudMenuItem>
+					<MudButton Size="Size.Large" Href="@detail.HRef" Color="Color.Inherit">
+						@detail.Content
+					</MudButton>
+				</MudMenuItem>
+			}
+		</div>
 	</MudMenu>
 </MudHidden>
 
 @code {
 	[Parameter, EditorRequired]
 	public List<NavLinkDetails> NavLinks { get; set; } = new();
+
+	[CascadingParameter]
+	protected MudThemeProvider? MudThemeProvider { get; set; }
+
+#pragma warning disable CS0618
+	private Palette Palette
+	{
+		get
+		{
+			if (MudThemeProvider?.IsDarkMode ?? false)
+				return MudThemeProvider.Theme?.PaletteDark ?? new PaletteDark();
+			else
+				return MudThemeProvider?.Theme?.Palette ?? new PaletteLight();
+		}
+	}
+#pragma warning restore CS0618
 }
