@@ -14,6 +14,9 @@
 <CascadingValue Value="this" Name="Layout">
 	<CascadingValue Value="@MudThemeProvider">
 		<div class="page" style="background-color: @AppbarColor;">
+			<MudScrollToTop Style="z-index: 1301;">
+				<MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.KeyboardArrowUp" />
+			</MudScrollToTop>
 			<MudAppBar Elevation="0">
 				<span class="logo-circle pa-4" style="background-color: @AppbarColor;">
 					<MudLink Href=""><MudImage Src="images/WillSullDev_Logo.png" Alt="Logo" Height="48" /></MudLink>
