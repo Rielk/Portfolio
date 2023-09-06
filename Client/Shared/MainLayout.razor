@@ -22,7 +22,7 @@
 					<MudLink Href=""><MudImage Src="images/WillSullDev_Logo.png" Alt="Logo" Height="48" /></MudLink>
 				</span>
 				<MudSpacer />
-				<TopLinks @ref="TopBarLinks" NavLinks="@NavLinks" />
+				<TopLinks @ref="TopBarLinks" Links="@Links" />
 			</MudAppBar>
 			<MudMainContent>
 				<div class="fixed" style="width: 100%; background-color: @AppbarColor;">
@@ -50,11 +50,7 @@
 
 @code
 {
-	private List<NavLinkDetails> NavLinks = new() {
-		new("", "HOME"),
-		new("about", "ABOUT"),
-		new("projects", "PROJECTS"),
-		new("contact", "CONTACT") };
+	private List<LinkDetails>? Links { get; set; }
 
 	private TopLinks? TopBarLinks;
 
@@ -621,6 +617,12 @@
 	public void SetHero(RenderFragment? hero)
 	{
 		Hero = hero;
+		StateHasChanged();
+	}
+
+	public void SetLinks(List<LinkDetails>? links)
+	{
+		Links = links;
 		StateHasChanged();
 	}
 }

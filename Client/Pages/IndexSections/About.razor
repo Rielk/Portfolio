@@ -1,4 +1,4 @@
-﻿<IndexSectionBase BackgroundColor="@BackgroundColor">
+﻿<IndexSectionBase Id="@Id" BackgroundColor="@BackgroundColor">
 	<div class="spaced-block">
 		<MudText>This website is still being built. In the meantime, please take a look at my CV <MudLink Color="Color.Secondary" Href="files/CV-William Sullivan.pdf">here</MudLink> and get in touch if you have a job opening to talk about.</MudText>
 		<MudText>Or download it here: <MudFab Color="Color.Secondary" Label="CV-William Sullivan.pdf" EndIcon="@Icons.Material.Filled.Download" DisableElevation="true" Href="files/CV-William Sullivan.pdf" download="CV-William Sullivan.pdf" /></MudText>
@@ -35,6 +35,8 @@
 </IndexSectionBase>
 
 @code {
+	[Parameter]
+	public string? Id { get; set; }
 	[Parameter]
 	public string? BackgroundColor { get; set; }
 }

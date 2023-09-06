@@ -10,9 +10,13 @@ public class MainLayoutSetter : ComponentBase
 	[Parameter, EditorRequired]
 	public RenderFragment? Hero { get; set; }
 
+	[Parameter, EditorRequired]
+	public List<LinkDetails>? Links { get; set; }
+
 	protected override void OnInitialized()
 	{
 		Layout.SetHero(Hero);
+		Layout.SetLinks(Links);
 		base.OnInitialized();
 	}
 }
