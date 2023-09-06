@@ -6,7 +6,12 @@
     <NotFound>
         <PageTitle>Not found</PageTitle>
         <LayoutView Layout="@typeof(MainLayout)">
+			<MainLayoutSetter Links="@Links" />
             <MudContainer Class="mx-2 my-10"><MudText role="alert">Sorry, there's nothing at this address.</MudText></MudContainer>
         </LayoutView>
     </NotFound>
 </Router>
+
+@code {
+    private List<LinkDetails> Links = new() { new("./", "Home") };
+}
