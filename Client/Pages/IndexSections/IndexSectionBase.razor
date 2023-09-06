@@ -1,4 +1,4 @@
-﻿<div style=@Style>
+﻿<div id="@Id" style=@Style>
 	<MudContainer Fixed=true Class="py-8 py-lg-12 py-xl-16">
 		<MudPaper Class="pa-xl-16 pa-lg-12 pa-8">
 			@ChildContent
@@ -7,6 +7,8 @@
 </div>
 
 @code {
+	[Parameter]
+	public string? Id { get; set; } = Guid.NewGuid().ToString("N");
 	[Parameter]
 	public RenderFragment? ChildContent { get; set; }
 	[Parameter]

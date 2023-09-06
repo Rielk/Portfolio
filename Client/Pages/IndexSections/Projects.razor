@@ -1,4 +1,4 @@
-﻿<IndexSectionBase BackgroundColor="@BackgroundColor">
+﻿<IndexSectionBase Id="@Id" BackgroundColor="@BackgroundColor">
 	<div class="spaced-block">
 		<MudText Typo="Typo.h3" Class="no-space">Projects</MudText>
 
@@ -10,6 +10,8 @@
 	</div>
 </IndexSectionBase>
 @code {
+	[Parameter]
+	public string? Id { get; set; }
 	[Parameter]
 	public string? BackgroundColor { get; set; }
 }

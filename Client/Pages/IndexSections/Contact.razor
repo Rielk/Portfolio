@@ -1,4 +1,4 @@
-﻿<IndexSectionBase BackgroundColor="@BackgroundColor">
+﻿<IndexSectionBase Id="@Id" BackgroundColor="@BackgroundColor">
 	<MudStack AlignItems="AlignItems.Center" Class="spaced-block">
 		<MudText Typo="Typo.h3" Align="Align.Center" Class="no-space">Get in Touch</MudText>
 		<MudText Align="Align.Center">I’m always available for contact, whether you have questions or an exciting opportunity. Please don’t hesitate to contact me.</MudText>
@@ -14,6 +14,8 @@
 </IndexSectionBase>
 
 @code {
+	[Parameter]
+	public string? Id { get; set; }
 	[Parameter]
 	public string? BackgroundColor { get; set; }
 }

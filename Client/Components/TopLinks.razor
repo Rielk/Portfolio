@@ -1,21 +1,17 @@
 ﻿<MudHidden Breakpoint="Breakpoint.SmAndDown">
-	@foreach (var detail in NavLinks)
+	@foreach (var detail in LinkEnumerable)
 	{
-		<MudButton Size="Size.Large" Href="@detail.HRef" Color="Color.Inherit">
-			@detail.Content
-		</MudButton>
+		<TopLinkButton LinkDetail="@detail" />
 	}
 </MudHidden>
 
 <MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
 	<MudMenu Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight">
 		<div class="my-n2 py-2" style="background-color: @Palette.AppbarBackground; color: @Palette.AppbarText">
-			@foreach (var detail in NavLinks)
+			@foreach (var detail in LinkEnumerable)
 			{
 				<MudMenuItem>
-					<MudButton Size="Size.Large" Href="@detail.HRef" Color="Color.Inherit">
-						@detail.Content
-					</MudButton>
+					<TopLinkButton LinkDetail="@detail" />
 				</MudMenuItem>
 			}
 		</div>
@@ -24,7 +20,9 @@
 
 @code {
 	[Parameter, EditorRequired]
-	public List<NavLinkDetails> NavLinks { get; set; } = new();
+	public List<LinkDetails>? Links { get; set; }
+
+	private IEnumerable<LinkDetails> LinkEnumerable => Links ?? Enumerable.Empty<LinkDetails>();
 
 	[CascadingParameter]
 	protected MudThemeProvider? MudThemeProvider { get; set; }

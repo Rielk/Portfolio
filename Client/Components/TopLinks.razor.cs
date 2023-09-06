@@ -1,6 +1,6 @@
-﻿public class NavLinkDetails
+﻿public class LinkDetails
 {
-	public NavLinkDetails(string href, string content)
+	public LinkDetails(string href, string content)
 	{
 		HRef = href;
 		Content = content;
