@@ -14,7 +14,7 @@ h1:focus {
     outline: none;
 }
 
-.spaced-block > *:not(.mud-grid, .no-space) {
+.spaced-block > *:not(.mud-grid, .no-space):not(:first-child, :last-child) {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 }
