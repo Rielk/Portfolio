@@ -21,10 +21,11 @@
 <div class="pt-8 pt-lg-12 rounded-t-xl" style="background-color: @(GetColor(true));" />
 <MudContainer MaxWidth="MaxWidth.False" Class="mx-0 px-0 py-xl-16">
 	<About Id="about" BackgroundColor="@GetColor(true)" />
-	<Projects Id="projects" BackgroundColor="@GetColor(false)" />
-	<Contact Id="contact" BackgroundColor="@GetColor(true)" />
+	<WorkExperience Id="workExperience" BackgroundColor="@GetColor(false)" />
+	<Projects Id="projects" BackgroundColor="@GetColor(true)" />
+	<Contact Id="contact" BackgroundColor="@GetColor(false)" />
 </MudContainer>
-<div class="pb-8 pb-lg-12" style="background-color: @(GetColor(true));" />
+<div class="pb-8 pb-lg-12" style="background-color: @(GetColor(false));" />
 
 @code {
 	[CascadingParameter]
@@ -33,6 +34,7 @@
 	private List<LinkDetails>? Links { get; } = new() {
 		new("#", "Home"),
 		new("#about", "About"),
+		new("#workExperience", "Work Experience"),
 		new("#projects", "Projects"),
 		new("#contact", "Contact") };
 
