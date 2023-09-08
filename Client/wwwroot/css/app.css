@@ -19,6 +19,11 @@ h1:focus {
     margin-bottom: 0.5rem;
 }
 
+.bullet-points {
+    list-style-type: disc;
+    padding-left: 24px;
+}
+
 .lds-ripple {
     display: inline-block;
     position: relative;

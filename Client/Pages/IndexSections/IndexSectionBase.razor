@@ -1,6 +1,10 @@
 ﻿<div id="@Id" style=@Style>
 	<MudContainer MaxWidth=MaxWidth.Large Class="pa-0">
 		<MudContainer Fixed=true Class="py-8 py-lg-12 py-xl-16">
+			@if (Header != null)
+			{
+				<MudText Typo="Typo.h3" Class="mb-3">@Header</MudText>
+			}
 			<MudPaper Class="pa-lg-12 pa-md-8 pa-4">
 				@ChildContent
 			</MudPaper>
@@ -15,6 +19,9 @@
 	public RenderFragment? ChildContent { get; set; }
 	[Parameter]
 	public string? BackgroundColor { get; set; }
+
+	[Parameter]
+	public string? Header { get; set; }
 
 	[CascadingParameter]
 	protected MudThemeProvider? MudThemeProvider { get; set; }
