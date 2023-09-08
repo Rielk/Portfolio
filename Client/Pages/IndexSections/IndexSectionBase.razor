@@ -1,8 +1,10 @@
 ﻿<div id="@Id" style=@Style>
-	<MudContainer Fixed=true Class="py-8 py-lg-12 py-xl-16">
-		<MudPaper Class="pa-xl-16 pa-lg-12 pa-8">
-			@ChildContent
-		</MudPaper>
+	<MudContainer MaxWidth=MaxWidth.Large Class="pa-0">
+		<MudContainer Fixed=true Class="py-8 py-lg-12 py-xl-16">
+			<MudPaper Class="pa-lg-12 pa-md-8 pa-4">
+				@ChildContent
+			</MudPaper>
+		</MudContainer>
 	</MudContainer>
 </div>
 
