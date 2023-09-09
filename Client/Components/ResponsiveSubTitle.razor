@@ -1,0 +1,35 @@
+﻿<MudHidden Breakpoint="Breakpoint.SmAndDown">
+	<MudStack Row=true Spacing=2 AlignItems="AlignItems.End">
+		<MudText Typo="Typo.h4">@MainContent</MudText>
+		<MudText Style="padding-bottom: 0.15rem; font-family: var(--font-family--Roboto-Mono);" Typo="Typo.h5" Class="mud-text-secondary">@SubContent</MudText>
+	</MudStack>
+</MudHidden>
+<MudHidden Breakpoint="Breakpoint.Sm" Invert=true>
+	<MudStack Row=true Spacing=1>
+		<MudText Typo="Typo.h5">@MainContent</MudText>
+		<MudText Style="font-family: var(--font-family--Roboto-Mono);" Typo="Typo.h6" Class="mud-text-secondary">@SubContent</MudText>
+	</MudStack>
+</MudHidden>
+<MudHidden Breakpoint="Breakpoint.SmAndUp">
+	<MudStack Spacing="0">
+		<MudText Typo="Typo.h5">@MainContent</MudText>
+		<MudText Style="font-family: var(--font-family--Roboto-Mono);" Typo="Typo.h6" Class="mud-text-secondary mt-n2">@SubContent</MudText>
+	</MudStack>
+</MudHidden>
+
+@code {
+	[Parameter]
+	public RenderFragment? MainContent { get; set; }
+	[Parameter]
+	public RenderFragment? SubContent { get; set; }
+
+	[Parameter]
+	public string? SmallClass { get; set; }
+	[Parameter]
+	public string? LargeClass { get; set; }
+	[Parameter]
+	public string? Class { get; set; }
+
+	private string? TotalSmallClass => "justify-center " + Class + " " + SmallClass;
+	private string? TotalLargeClass => Class + " " + LargeClass;
+}
