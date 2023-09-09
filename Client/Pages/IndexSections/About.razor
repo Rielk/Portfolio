@@ -1,41 +1,43 @@
 ﻿<IndexSectionBase Id="@Id" BackgroundColor="@BackgroundColor">
-	<div class="spaced-block">
-		<MudText>This website is still being built. In the meantime, please take a look at my resume <MudLink Color="Color.Secondary" Href="files/Resume-William Sullivan.pdf" Target="_blank">here</MudLink> and get in touch if you have a job opening to talk about.</MudText>
-	</div>
-	<MudDivider Class="my-3" />
-
-	<MudGrid>
-		<MudItem xs="12" md="5" Class="d-flex flex-column">
-			<div class="flex-1">
-				<img class="profile-pic" alt="William Sullivan" src="images/WilliamSullivan.png" />
-			</div>
-			<MudStack Spacing=0 AlignItems="AlignItems.Center">
-				<MudText Typo="Typo.h4" Class="m-0">William Sullivan</MudText>
-				<MudText Typo="Typo.subtitle1"><i>hello@WilliamSullivan.dev</i></MudText>
-				<SocialMedia />
-			</MudStack>
-		</MudItem>
-		<MudItem xs="12" md="7" Class="spaced-block">
-			<MudText Typo="Typo.h3" Class="no-space">About</MudText>
-
-			<MudText>Hi, I’m Will, a software developer and physics graduate. Originally from England, I recently moved to Canada for love, and I am currently based in <strong>Kingston, ON</strong>.</MudText>
-
-			<MudText>I graduated from the <strong>University of Birmingham, England</strong>, with a Master’s Degree in Physics, a course which prided itself on teaching problem solving and critical thinking. It was there that I really discovered my passion for developing robust, high performance code.</MudText>
-
-			<MudText>I’ve worked on a range of projects, from simple <strong>Python</strong> scripts, working with neural networks and machine learning, to larger projects, collecting and facilitating the analysis of oil production data for the entirety of Nigeria, utilising <strong>C#</strong> and <strong>SQL</strong>.</MudText>
-
-			<MudText>I am currently seeking employment and I am able and willing to relocate anywhere in Ontario. If you have an opportunity to discuss, please don’t hesitate to contact me, I’d love to speak further.</MudText>
-
-			<MudHidden Breakpoint="Breakpoint.LgAndUp" Invert=true>
-				<MudDivider Class="my-3" />
-				<ResumeDownload />
-			</MudHidden>
-		</MudItem>
-	</MudGrid>
-	<MudHidden Breakpoint="Breakpoint.LgAndUp">
+	<BigMudPaper>
+		<div class="spaced-block">
+			<MudText>This website is still being built. In the meantime, please take a look at my resume <MudLink Color="Color.Secondary" Href="files/Resume-William Sullivan.pdf" Target="_blank">here</MudLink> and get in touch if you have a job opening to talk about.</MudText>
+		</div>
 		<MudDivider Class="my-3" />
-		<ResumeDownload />
-	</MudHidden>
+
+		<MudGrid>
+			<MudItem xs="12" md="5" Class="d-flex flex-column">
+				<div class="flex-fill">
+					<img class="profile-pic" alt="William Sullivan" src="images/WilliamSullivan.png" />
+				</div>
+				<MudStack Spacing=0 AlignItems="AlignItems.Center">
+					<MudText Typo="Typo.h4" Class="m-0">William Sullivan</MudText>
+					<MudText Typo="Typo.subtitle1"><i>hello@WilliamSullivan.dev</i></MudText>
+					<SocialMedia />
+				</MudStack>
+			</MudItem>
+			<MudItem xs="12" md="7" Class="spaced-block">
+				<MudText Typo="Typo.h3" Class="no-space">About</MudText>
+
+				<MudText>Hi, I’m Will, a software developer and physics graduate. Originally from England, I recently moved to Canada for love, and I am currently based in <strong>Kingston, ON</strong>.</MudText>
+
+				<MudText>I graduated from the <strong>University of Birmingham, England</strong>, with a Master’s Degree in Physics, a course which prided itself on teaching problem solving and critical thinking. It was there that I really discovered my passion for developing robust, high performance code.</MudText>
+
+				<MudText>I’ve worked on a range of projects, from simple <strong>Python</strong> scripts, working with neural networks and machine learning, to larger projects, collecting and facilitating the analysis of oil production data for the entirety of Nigeria, utilising <strong>C#</strong> and <strong>SQL</strong>.</MudText>
+
+				<MudText>I am currently seeking employment and I am able and willing to relocate anywhere in Ontario. If you have an opportunity to discuss, please don’t hesitate to contact me, I’d love to speak further.</MudText>
+
+				<MudHidden Breakpoint="Breakpoint.LgAndUp" Invert=true>
+					<MudDivider Class="my-3" />
+					<ResumeDownload />
+				</MudHidden>
+			</MudItem>
+		</MudGrid>
+		<MudHidden Breakpoint="Breakpoint.LgAndUp">
+			<MudDivider Class="my-3" />
+			<ResumeDownload />
+		</MudHidden>
+	</BigMudPaper>
 </IndexSectionBase>
 
 @code {
