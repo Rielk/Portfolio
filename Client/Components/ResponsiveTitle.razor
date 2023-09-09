@@ -2,7 +2,9 @@
 	<MudText Typo="Typo.h3" Class="@TotalLargeClass">@ChildContent</MudText>
 </MudHidden>
 <MudHidden Breakpoint="Breakpoint.MdAndUp">
-	<MudText Typo="Typo.h4" Class="@TotalSmallClass">@ChildContent</MudText>
+	<MudStack AlignItems="AlignItems.Center">
+		<MudText Typo="Typo.h4" Class="@TotalSmallClass">@ChildContent</MudText>
+	</MudStack>
 </MudHidden>
 
 @code {
@@ -16,6 +18,6 @@
 	[Parameter]
 	public string? Class { get; set; }
 
-	private string? TotalSmallClass => Class + " " + SmallClass;
+	private string? TotalSmallClass => "justify-center " + Class + " " + SmallClass;
 	private string? TotalLargeClass => Class + " " + LargeClass;
 }
