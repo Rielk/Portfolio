@@ -1,0 +1,21 @@
+﻿<MudHidden Breakpoint="Breakpoint.MdAndUp" Invert=true>
+	<MudText Typo="Typo.h3" Class="@TotalLargeClass">@ChildContent</MudText>
+</MudHidden>
+<MudHidden Breakpoint="Breakpoint.MdAndUp">
+	<MudText Typo="Typo.h4" Class="@TotalSmallClass">@ChildContent</MudText>
+</MudHidden>
+
+@code {
+	[Parameter]
+	public RenderFragment? ChildContent { get; set; }
+
+	[Parameter]
+	public string? SmallClass { get; set; }
+	[Parameter]
+	public string? LargeClass { get; set; }
+	[Parameter]
+	public string? Class { get; set; }
+
+	private string? TotalSmallClass => Class + " " + SmallClass;
+	private string? TotalLargeClass => Class + " " + LargeClass;
+}
