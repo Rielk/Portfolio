@@ -35,9 +35,6 @@
 	protected MainLayout Layout { get; set; } = null!;
 
 	private List<LinkDetails>? Links { get; } = new() {
-		new("#", "Home"),
-		new("#about", "About"),
-		new("#workExperience", "Experience"),
-		new("#projects", "Projects"),
-		new("#contact", "Contact") };
+		new("./", "Home"),
+		new("", "Overview") };
 }
