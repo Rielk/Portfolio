@@ -5,7 +5,17 @@
 			{
 				<ResponsiveTitle Class="mb-3">@Header</ResponsiveTitle>
 			}
+
 			@ChildContent
+
+			@if (@EndHref != null)
+			{
+				<div class="d-flex justify-center mt-6">
+					<MudButton Href="@EndHref" Color="Color.Secondary" Variant="Variant.Filled">
+						@(EndHrefText ?? EndHref.Trim('.', '/', '#', ' '))
+					</MudButton>
+				</div>
+			}
 		</MudContainer>
 	</MudContainer>
 </div>
@@ -20,6 +30,11 @@
 
 	[Parameter]
 	public string? Header { get; set; }
+
+	[Parameter]
+	public string? EndHref { get; set; }
+	[Parameter]
+	public string? EndHrefText { get; set; }
 
 	[CascadingParameter]
 	protected MudThemeProvider? MudThemeProvider { get; set; }

@@ -1,4 +1,4 @@
-﻿@page "/"
+﻿@page "/Experience"
 
 <PageTitle>William Sullivan - Software Developer</PageTitle>
 
@@ -6,13 +6,13 @@
 	<Hero>
 		<div class="hero-buffer">
 			<MudText Typo="Typo.h4" Class="hero-font">
-				Hi! I'm <strong>William Sullivan</strong>
+				My <strong>Experience</strong>
 			</MudText>
 			<MudText Typo="Typo.body1" Class="hero-font">
-				I'm a <strong>software developer</strong>
+				More details on my work history
 			</MudText>
 			<MudText Typo="Typo.body2" Class="hero-font">
-				This website is <strong>under construction</strong>.
+				This page is <strong>under construction</strong>.
 			</MudText>
 		</div>
 	</Hero>
@@ -20,10 +20,11 @@
 
 <div class="pt-8 pt-lg-12 rounded-t-xl" style="background-color: @(Layout.GetBackColor(true));" />
 <MudContainer MaxWidth="MaxWidth.False" Class="mx-0 px-0 py-xl-16">
-	<About Id="about" BackgroundColor="@Layout.GetBackColor(true)" />
-	<WorkExperience Id="workExperience" BackgroundColor="@Layout.GetBackColor(false)" />
-	<Projects Id="projects" BackgroundColor="@Layout.GetBackColor(true)" />
-	<Contact Id="contact" BackgroundColor="@Layout.GetBackColor(false)" />
+	<BigMudPaper>
+		<MudText Typo="Typo.body2" Class="hero-font">
+			This page is <strong>under construction</strong>.
+		</MudText>
+	</BigMudPaper>
 </MudContainer>
 <div class="pb-8 pb-lg-12" style="background-color: @(Layout.GetBackColor(false));" />
 
@@ -38,4 +39,3 @@
 		new("#projects", "Projects"),
 		new("#contact", "Contact") };
 }
-

@@ -598,6 +598,19 @@
 			},
 		};
 
+	public string GetBackColor(bool even)
+	{
+		if (MudThemeProvider?.IsDarkMode ?? false)
+		{
+			var paletteDark = MudThemeProvider.Theme?.PaletteDark ?? new PaletteDark();
+			return even ? paletteDark.GrayLighter : paletteDark.GrayLight;
+		}
+		else
+		{
+			return even ? Colors.Grey.Lighten5 : Colors.Grey.Lighten4;
+		}
+	}
+
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
 		if (firstRender)
