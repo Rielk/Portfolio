@@ -24,6 +24,10 @@ h1:focus {
     padding-left: 24px;
 }
 
+.mono-font {
+    font-family: var(--font-family--Roboto-Mono)!important;
+}
+
 .lds-ripple {
     display: inline-block;
     position: relative;
