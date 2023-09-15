@@ -1,30 +1,32 @@
-﻿<BigMudPaper Id="@Id">
-	<ResponsiveSubTitle>
-		<MainContent>
-			<strong>@Title</strong>
-		</MainContent>
-		<SubContent>
-			@if (Catchline != null)
-			{
-				<i>- @Catchline</i>
-			}
-		</SubContent>
-	</ResponsiveSubTitle>
+﻿<MudLink Href="@($"Projects/{SubPage}")" Underline="Underline.None">
+	<BigMudPaper Id="@Id">
+		<ResponsiveSubTitle>
+			<MainContent>
+				<strong>@Title</strong>
+			</MainContent>
+			<SubContent>
+				@if (Catchline != null)
+				{
+					<i>- @Catchline</i>
+				}
+			</SubContent>
+		</ResponsiveSubTitle>
 
-	<MudText>
-		@ChildContent
-	</MudText>
+		<MudText>
+			@ChildContent
+		</MudText>
 
-	@if (Tags != null)
-	{
-		<MudStack Row=true Spacing="2" Class="ma-2">
-			@foreach (var tag in Tags)
-			{
-				<SmallMudChipTag>@tag</SmallMudChipTag>
-			}
-		</MudStack>
-	}
-</BigMudPaper>
+		@if (Tags != null)
+		{
+			<MudStack Row=true Spacing="2" Class="ma-2">
+				@foreach (var tag in Tags)
+				{
+					<SmallMudChipTag>@tag</SmallMudChipTag>
+				}
+			</MudStack>
+		}
+	</BigMudPaper>
+</MudLink>
 
 @code {
 	[Parameter]
@@ -40,4 +42,7 @@
 	public RenderFragment? ChildContent { get; set; }
 	[Parameter]
 	public List<string>? Tags { get; set; }
+
+	[Parameter]
+	public string? SubPage { get; set; }
 }
