@@ -28,6 +28,30 @@ h1:focus {
     font-family: var(--font-family--Roboto-Mono)!important;
 }
 
+.hero-buffer-large {
+    padding-top: 15rem;
+    padding-bottom: 15rem;
+}
+
+.hero-buffer-small {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.hero-buffer-large, .hero-buffer-small {
+    /*
+    background-image: url("./images/Background_Tile.png");
+    background-size: 128px;
+    background-repeat: repeat;
+    background-position: 0 0;
+    background-position: -3px -3px;
+    */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /**/
+}
+
 .lds-ripple {
     display: inline-block;
     position: relative;
