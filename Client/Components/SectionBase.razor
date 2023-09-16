@@ -1,4 +1,4 @@
-﻿<section id="@Id" style=@Style>
+﻿<section id="@Id" style="background-color: @Layout.GetBackColor(BGLighter);">
 	<MudContainer MaxWidth=MaxWidth.Large Class="pa-0">
 		<MudContainer Fixed=true Class="py-8 py-lg-12 py-xl-16"> @* Need 2 containers because you can't set MaxWidth on a Fixed container. *@
 			@if (Header != null)
@@ -23,12 +23,15 @@
 </section>
 
 @code {
+	[CascadingParameter(Name = "Layout")]
+	protected MainLayout Layout { get; set; } = null!;
+
 	[Parameter]
 	public string? Id { get; set; } = Guid.NewGuid().ToString("N");
 	[Parameter]
 	public RenderFragment? ChildContent { get; set; }
 	[Parameter]
-	public string? BackgroundColor { get; set; }
+	public bool BGLighter { get; set; } = true;
 
 	[Parameter]
 	public string? Header { get; set; }
@@ -40,6 +43,4 @@
 
 	[CascadingParameter]
 	protected MudThemeProvider? MudThemeProvider { get; set; }
-
-	string Style => string.IsNullOrWhiteSpace(BackgroundColor) ? "" : $"background-color: {BackgroundColor};";
 }

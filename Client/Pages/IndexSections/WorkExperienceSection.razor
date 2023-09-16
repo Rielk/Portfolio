@@ -1,4 +1,4 @@
-﻿<SectionBase Id="@Id" BackgroundColor="@BackgroundColor" Header="Where I've worked" EndHref="Experience">
+﻿<SectionBase Id=@Id BGLighter=@BGLighter Header="Where I've worked" EndHref="Experience">
 	<BigMudPaper>
 		<ResponsiveSubTitle>
 			<MainContent>
@@ -27,5 +27,5 @@
 	[Parameter]
 	public string? Id { get; set; }
 	[Parameter]
-	public string? BackgroundColor { get; set; }
+	public bool BGLighter { get; set; }
 }

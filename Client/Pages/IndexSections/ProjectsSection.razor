@@ -1,4 +1,4 @@
-﻿<SectionBase Id="@Id" BackgroundColor="@BackgroundColor" Header="Projects" EndHref="Projects">
+﻿<SectionBase Id=@Id BGLighter=@BGLighter Header="Projects" EndHref="Projects">
 	<MudGrid>
 		<MudItem xs="12">
 			<ProjectSubSection Title="Test 1" SubPage="Test1" Catchline="Stuff" Tags="@(new() {"Lorem", "ipsum", "dolor", "sit", "amet"})">
@@ -21,5 +21,5 @@
 	[Parameter]
 	public string? Id { get; set; }
 	[Parameter]
-	public string? BackgroundColor { get; set; }
+	public bool BGLighter { get; set; }
 }

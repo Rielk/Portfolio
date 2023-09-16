@@ -18,15 +18,12 @@
 	</Hero>
 </MainLayoutSetter>
 
-<AboutSection Id="about" BackgroundColor="@Layout.GetBackColor(true)" />
-<WorkExperienceSection Id="workExperience" BackgroundColor="@Layout.GetBackColor(false)" />
-<ProjectsSection Id="projects" BackgroundColor="@Layout.GetBackColor(true)" />
-<ContactSection Id="contact" BackgroundColor="@Layout.GetBackColor(false)" />
+<AboutSection Id="about" BGLighter=true />
+<WorkExperienceSection Id="workExperience" BGLighter=false />
+<ProjectsSection Id="projects" BGLighter=true />
+<ContactSection Id="contact" BGLighter=false />
 
 @code {
-	[CascadingParameter(Name = "Layout")]
-	protected MainLayout Layout { get; set; } = null!;
-
 	private List<LinkDetails>? Links { get; } = new() {
 		new("#", "Home"),
 		new("#about", "About"),

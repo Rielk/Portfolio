@@ -1,4 +1,4 @@
-﻿<SectionBase Id="@Id" BackgroundColor="@BackgroundColor">
+﻿<SectionBase Id=@Id BGLighter=@BGLighter>
 	<BigMudPaper>
 		<MudStack AlignItems="AlignItems.Center" Class="spaced-block">
 			<ResponsiveTitle>Get in Touch</ResponsiveTitle>
@@ -15,5 +15,5 @@
 	[Parameter]
 	public string? Id { get; set; }
 	[Parameter]
-	public string? BackgroundColor { get; set; }
+	public bool BGLighter { get; set; }
 }

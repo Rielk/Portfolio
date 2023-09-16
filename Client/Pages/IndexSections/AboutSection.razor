@@ -1,4 +1,4 @@
-﻿<SectionBase Id="@Id" BackgroundColor="@BackgroundColor">
+﻿<SectionBase Id=@Id BGLighter=@BGLighter>
 	<BigMudPaper>
 		<div class="spaced-block">
 			<MudText>This website is still being built. In the meantime, please take a look at my resume <MudLink Color="Color.Secondary" Href="files/Resume-William Sullivan.pdf" Target="_blank">here</MudLink> and get in touch if you have a job opening to talk about.</MudText>
@@ -44,5 +44,5 @@
 	[Parameter]
 	public string? Id { get; set; }
 	[Parameter]
-	public string? BackgroundColor { get; set; }
+	public bool BGLighter { get; set; }
 }

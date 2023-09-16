@@ -18,7 +18,7 @@
 	</Hero>
 </MainLayoutSetter>
 
-<SectionBase BackgroundColor="@Layout.GetBackColor(true)">
+<SectionBase>
 	<BigMudPaper>
 		<MudText Typo="Typo.body2">
 			This page is <strong>under construction</strong>.
@@ -27,9 +27,6 @@
 </SectionBase>
 
 @code {
-	[CascadingParameter(Name = "Layout")]
-	protected MainLayout Layout { get; set; } = null!;
-
 	private List<LinkDetails>? Links { get; } = new() {
 		new("./", "Home"),
 		new("", "Overview") };
