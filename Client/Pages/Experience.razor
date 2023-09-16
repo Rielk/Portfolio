@@ -2,7 +2,7 @@
 
 <PageTitle>William Sullivan - Software Developer</PageTitle>
 
-<MainLayoutSetter Links="@Links">
+<MainLayoutSetter Links="@Links" EndBGLighter=true>
 	<Hero>
 		<div class="hero-buffer-small">
 			<MudText Typo="Typo.h4" Class="mono-font">
@@ -18,17 +18,13 @@
 	</Hero>
 </MainLayoutSetter>
 
-<div class="pt-8 pt-lg-12 rounded-t-xl" style="background-color: @Layout.GetBackColor(true);" />
-<MudContainer MaxWidth="MaxWidth.False" Class="mx-0 px-0 py-xl-16">
-	<SectionBase BackgroundColor="@Layout.GetBackColor(true)">
-		<BigMudPaper>
-			<MudText Typo="Typo.body2">
-				This page is <strong>under construction</strong>.
-			</MudText>
-		</BigMudPaper>
-	</SectionBase>
-</MudContainer>
-<div class="pb-8 pb-lg-12 rounded-b-xl" style="background-color: @Layout.GetBackColor(true);" />
+<SectionBase BackgroundColor="@Layout.GetBackColor(true)">
+	<BigMudPaper>
+		<MudText Typo="Typo.body2">
+			This page is <strong>under construction</strong>.
+		</MudText>
+	</BigMudPaper>
+</SectionBase>
 
 @code {
 	[CascadingParameter(Name = "Layout")]

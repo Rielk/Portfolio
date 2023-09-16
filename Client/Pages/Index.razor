@@ -2,7 +2,7 @@
 
 <PageTitle>William Sullivan - Software Developer</PageTitle>
 
-<MainLayoutSetter Links="@Links">
+<MainLayoutSetter Links="@Links" EndBGLighter=false>
 	<Hero>
 		<div class="hero-buffer-large">
 			<MudText Typo="Typo.h4" Class="mono-font">
@@ -18,14 +18,10 @@
 	</Hero>
 </MainLayoutSetter>
 
-<div class="pt-8 pt-lg-12 rounded-t-xl" style="background-color: @Layout.GetBackColor(true);" />
-<MudContainer MaxWidth="MaxWidth.False" Class="mx-0 px-0 py-xl-16">
-	<AboutSection Id="about" BackgroundColor="@Layout.GetBackColor(true)" />
-	<WorkExperienceSection Id="workExperience" BackgroundColor="@Layout.GetBackColor(false)" />
-	<ProjectsSection Id="projects" BackgroundColor="@Layout.GetBackColor(true)" />
-	<ContactSection Id="contact" BackgroundColor="@Layout.GetBackColor(false)" />
-</MudContainer>
-<div class="pb-8 pb-lg-12 rounded-b-xl" style="background-color: @Layout.GetBackColor(false);" />
+<AboutSection Id="about" BackgroundColor="@Layout.GetBackColor(true)" />
+<WorkExperienceSection Id="workExperience" BackgroundColor="@Layout.GetBackColor(false)" />
+<ProjectsSection Id="projects" BackgroundColor="@Layout.GetBackColor(true)" />
+<ContactSection Id="contact" BackgroundColor="@Layout.GetBackColor(false)" />
 
 @code {
 	[CascadingParameter(Name = "Layout")]
