@@ -1,12 +1,14 @@
-﻿<div id="@Id" style=@Style>
+﻿<section id="@Id" style=@Style>
 	<MudContainer MaxWidth=MaxWidth.Large Class="pa-0">
-		<MudContainer Fixed=true Class="py-8 py-lg-12 py-xl-16">
+		<MudContainer Fixed=true Class="py-8 py-lg-12 py-xl-16"> @* Need 2 containers because you can't set MaxWidth on a Fixed container. *@
 			@if (Header != null)
 			{
 				<ResponsiveTitle Class="mb-3">@Header</ResponsiveTitle>
 			}
 
-			@ChildContent
+			<article>
+				@ChildContent
+			</article>
 
 			@if (@EndHref != null)
 			{
@@ -18,7 +20,7 @@
 			}
 		</MudContainer>
 	</MudContainer>
-</div>
+</section>
 
 @code {
 	[Parameter]
