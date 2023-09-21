@@ -1,5 +1,5 @@
-﻿<MudLink Href="@($"Projects/{SubPage}")" Underline="Underline.None">
-	<div style=@gridStyle>
+﻿<div style=@gridStyle>
+	<MudLink Href="@($"Projects/{SubPage}")" Underline="Underline.None" Style=@imageContainerStyle>
 		<MudPaper Class="pb-0 pt-5 px-5 overflow-y-hidden" Style=@imageStyle>
 			<MudStack AlignItems="AlignItems.Center">
 				<MudText Typo="Typo.h4" Color="Color.Primary" Class="mono-font">Test</MudText>
@@ -7,8 +7,10 @@
 				<MudImage Style="width: 100%" Src=@ImageSource Alt="Placeholder Project Picture" Elevation="1" />
 			</MudStack>
 		</MudPaper>
+	</MudLink>
 
-		<BigMudPaper Id="@Id" Elevation="2" Style=@contentStyle>
+	<MudLink Href="@($"Projects/{SubPage}")" Underline="Underline.None" Style=@contentContainerStyle>
+		<BigMudPaper Id="@Id" Elevation="2">
 			<ResponsiveSubTitle>
 				<MainContent>
 					<strong>@Title</strong>
@@ -35,8 +37,8 @@
 				</MudStack>
 			}
 		</BigMudPaper>
-	</div>
-</MudLink>
+	</MudLink>
+</div>
 
 @code {
 	[Parameter]
@@ -81,11 +83,19 @@
 	{
 		get
 		{
-			return $"height: {ImageHeight}px; width: {ImageWidth}px; grid-column: {(ImageLeft ? 1 : 2)} / span 2; grid-row: 1;";
+			return $"height: {ImageHeight}px; width: {ImageWidth}px;";
 		}
 	}
 
-	private string contentStyle
+	private string imageContainerStyle
+	{
+		get
+		{
+			return $"grid-column: {(ImageLeft ? 1 : 2)} / span 2; grid-row: 1;";
+		}
+	}
+
+	private string contentContainerStyle
 	{
 		get
 		{
