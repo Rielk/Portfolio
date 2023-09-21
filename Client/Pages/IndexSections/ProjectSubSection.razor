@@ -1,31 +1,41 @@
 ﻿<MudLink Href="@($"Projects/{SubPage}")" Underline="Underline.None">
-	<BigMudPaper Id="@Id">
-		<ResponsiveSubTitle>
-			<MainContent>
-				<strong>@Title</strong>
-			</MainContent>
-			<SubContent>
-				@if (Catchline != null)
-				{
-					<i>- @Catchline</i>
-				}
-			</SubContent>
-		</ResponsiveSubTitle>
-
-		<MudText>
-			@ChildContent
-		</MudText>
-
-		@if (Tags != null)
-		{
-			<MudStack Row=true Spacing="2" Class="ma-2">
-				@foreach (var tag in Tags)
-				{
-					<SmallMudChipTag>@tag</SmallMudChipTag>
-				}
+	<div style=@gridStyle>
+		<MudPaper Class="pb-0 pt-5 px-5 overflow-y-hidden" Style=@imageStyle>
+			<MudStack AlignItems="AlignItems.Center">
+				<MudText Typo="Typo.h4" Color="Color.Primary" Class="mono-font">Test</MudText>
+				<MudText Typo="Typo.body1" Class="mud-text-secondary mono-font"><i>Sub-Test</i></MudText>
+				<MudImage Style="width: 100%" Src=@ImageSource Alt="Placeholder Project Picture" Elevation="1" />
 			</MudStack>
-		}
-	</BigMudPaper>
+		</MudPaper>
+
+		<BigMudPaper Id="@Id" Elevation="2" Style=@contentStyle>
+			<ResponsiveSubTitle>
+				<MainContent>
+					<strong>@Title</strong>
+				</MainContent>
+				<SubContent>
+					@if (Catchline != null)
+					{
+						<i>- @Catchline</i>
+					}
+				</SubContent>
+			</ResponsiveSubTitle>
+
+			<MudText>
+				<i>@ChildContent</i>
+			</MudText>
+
+			@if (Tags != null)
+			{
+				<MudStack Row=true Spacing="2" Class="ma-2">
+					@foreach (var tag in Tags)
+					{
+						<SmallMudChipTag>@tag</SmallMudChipTag>
+					}
+				</MudStack>
+			}
+		</BigMudPaper>
+	</div>
 </MudLink>
 
 @code {
@@ -45,4 +55,41 @@
 
 	[Parameter]
 	public string? SubPage { get; set; }
+
+	[Parameter]
+	public string? Date { get; set; }
+
+	[Parameter]
+	public bool ImageLeft { get; set; } = false;
+	[Parameter]
+	public string ImageSource { get; set; } = "images/PlaceholderProject.png";
+	[Parameter]
+	public int ImageWidth { get; set; } = 600;
+	[Parameter]
+	public int ImageHeight { get; set; } = 400;
+
+	private string gridStyle
+	{
+		get
+		{
+			string columns = ImageLeft ? $"{ImageWidth - 100}px 100px auto" : $"auto 100px {ImageWidth - 100}px";
+			return $"display: grid; gap: 0px; align-items: center; grid-template-columns: {columns};";
+		}
+	}
+
+	private string imageStyle
+	{
+		get
+		{
+			return $"height: {ImageHeight}px; width: {ImageWidth}px; grid-column: {(ImageLeft ? 1 : 2)} / span 2; grid-row: 1;";
+		}
+	}
+
+	private string contentStyle
+	{
+		get
+		{
+			return $"grid-column: {(ImageLeft ? 2 : 1)} / span 2; grid-row: 1";
+		}
+	}
 }

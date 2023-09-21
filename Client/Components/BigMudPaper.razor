@@ -1,4 +1,4 @@
-﻿<MudPaper id="@Id" Class="pa-lg-12 pa-md-8 pa-4">
+﻿<MudPaper id="@Id" Class=@fullClass Elevation="@Elevation" Style=@Style>
 	@ChildContent
 </MudPaper>
 
@@ -8,4 +8,14 @@
 
 	[Parameter]
 	public RenderFragment? ChildContent { get; set; }
+
+	[Parameter]
+	public int Elevation { get; set; } = 1;
+
+	[Parameter]
+	public string? Style { get; set; }
+	[Parameter]
+	public string? Class { get; set; }
+
+	private string fullClass => "pa-lg-12 pa-md-8 pa-4" + Class;
 }
