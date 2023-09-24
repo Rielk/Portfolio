@@ -23,12 +23,12 @@
 
 			@if (Tags != null)
 			{
-				<MudStack Row=true Spacing="2" Class="ma-2">
+				<MudChipSet Row=true Spacing="2" Class="ma-2">
 					@foreach (var tag in Tags)
 					{
 						<SmallMudChipTag>@tag</SmallMudChipTag>
 					}
-				</MudStack>
+				</MudChipSet>
 			}
 		</BigMudPaper>
 	</MudLink>
