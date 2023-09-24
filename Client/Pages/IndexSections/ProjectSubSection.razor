@@ -1,6 +1,6 @@
-﻿<div style=@gridStyle>
-	<MudLink Href="@($"Projects/{SubPage}")" Underline="Underline.None" Style=@imageContainerStyle>
-		<MudPaper Class="pb-0 pt-5 px-5 overflow-y-hidden" Style=@imageStyle>
+﻿<div class="grid" grid-left=@ImageLeftString>
+	<MudLink Href="@($"Projects/{SubPage}")" Underline="Underline.None" Class="image-container" image-container-left=@ImageLeftString>
+		<MudPaper Class="pb-0 pt-5 px-5 overflow-y-hidden image-paper" image-paper-height=@ImageHeight>
 			<MudStack AlignItems="AlignItems.Center">
 				<MudText Typo="Typo.h4" Color="Color.Primary" Class="mono-font"><strong>@Title</strong></MudText>
 				<MudText Typo="Typo.body1" Class="mud-text-secondary mono-font"><i>@Catchline</i></MudText>
@@ -9,7 +9,7 @@
 		</MudPaper>
 	</MudLink>
 
-	<MudLink Href="@($"Projects/{SubPage}")" Underline="Underline.None" Style=@contentContainerStyle>
+	<MudLink Href="@($"Projects/{SubPage}")" Underline="Underline.None" Class="content-container" content-container-left=@ImageLeftString>
 		<BigMudPaper Id="@Id" Elevation="2">
 			<ResponsiveSubTitle>
 				<MainContent>
@@ -33,6 +33,12 @@
 		</BigMudPaper>
 	</MudLink>
 </div>
+<style>
+	.image-paper[image-paper-height="@ImageHeight"] {
+		height: @string.Join("", ImageHeight, "px");
+		width: 100%;
+	}
+</style>
 
 @code {
 	[Parameter]
@@ -57,45 +63,11 @@
 
 	[Parameter]
 	public bool ImageLeft { get; set; } = false;
+	private string ImageLeftString => ImageLeft.ToString();
+
 	[Parameter]
 	public string ImageSource { get; set; } = "images/PlaceholderProject.png";
 	[Parameter]
-	public int ImageWidth { get; set; } = 600;
-	[Parameter]
 	public int ImageHeight { get; set; } = 400;
-
-	private string gridStyle
-	{
-		get
-		{
-			// Image size, overlap, content size : content, overlap, image
-			string columns = ImageLeft ? $"45% 5% 50%" : $"50% 5% 45%";
-			return $"display: grid; gap: 0px; align-items: center; grid-template-columns: {columns};";
-			// Grid needs to rotate for sm breakpoint.
-		}
-	}
-
-	private string imageStyle
-	{
-		get
-		{
-			return $"height: {ImageHeight}px; width: 100%;";
-		}
-	}
-
-	private string imageContainerStyle
-	{
-		get
-		{
-			return $"grid-column: {(ImageLeft ? 1 : 2)} / span 2; grid-row: 1;";
-		}
-	}
-
-	private string contentContainerStyle
-	{
-		get
-		{
-			return $"grid-column: {(ImageLeft ? 2 : 1)} / span 2; grid-row: 1";
-		}
-	}
 }
+
