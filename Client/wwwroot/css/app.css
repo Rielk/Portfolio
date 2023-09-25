@@ -28,6 +28,10 @@ h1:focus {
     font-family: var(--font-family--Roboto-Mono)!important;
 }
 
+.width-100 {
+    width: 100%;
+}
+
 .hero-buffer-large {
     padding-top: 15rem;
     padding-bottom: 15rem;
