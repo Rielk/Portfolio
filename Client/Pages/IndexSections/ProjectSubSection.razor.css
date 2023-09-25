@@ -15,9 +15,14 @@
     }
 }
 
+::deep .image-paper {
+    height: var(--paper-height);
+}
+
 ::deep .image-container {
     grid-row: 1;
     grid-column: 1;
+
 }
 
 @media screen and (min-width: 960px) {

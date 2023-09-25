@@ -1,6 +1,6 @@
 ﻿<div class="grid" grid-left=@ImageLeftString>
 	<MudLink Href="@($"Projects/{SubPage}")" Underline="Underline.None" Class="image-container" image-container-left=@ImageLeftString>
-		<MudPaper Class="pb-0 pt-5 px-5 overflow-y-hidden width-100 fixed-height" fixed-height=@ImageHeight>
+		<MudPaper Class="pb-0 pt-5 px-5 overflow-y-hidden width-100 image-paper" Style=@PaperHeightStyle>
 			<MudStack AlignItems="AlignItems.Center">
 				<MudText Typo="Typo.h4" Color="Color.Primary" Class="mono-font"><strong>@Title</strong></MudText>
 				<MudText Typo="Typo.body1" Class="mud-text-secondary mono-font"><i>@Catchline</i></MudText>
@@ -33,11 +33,6 @@
 		</BigMudPaper>
 	</MudLink>
 </div>
-<style>
-	.fixed-height[fixed-height="@ImageHeight"] {
-		height: @string.Join("", ImageHeight, "px");
-	}
-</style>
 
 @code {
 	[Parameter]
@@ -68,5 +63,6 @@
 	public string ImageSource { get; set; } = "images/PlaceholderProject.png";
 	[Parameter]
 	public int ImageHeight { get; set; } = 400;
+	private string PaperHeightStyle => $"--paper-height:{ImageHeight}px;";
 }
 
