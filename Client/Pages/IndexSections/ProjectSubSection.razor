@@ -1,15 +1,17 @@
 ﻿<div class="grid" grid-left=@ImageLeftString>
 	<MudLink Href="@($"Projects/{SubPage}")" Underline="Underline.None" Class="image-container" image-container-left=@ImageLeftString>
-		<MudPaper Class="pb-0 pt-5 px-5 overflow-y-hidden width-100 image-paper" Style=@PaperHeightStyle>
+		<MudPaper Class="pa-0 pt-md-5 px-md-5 overflow-y-hidden width-100 image-paper" Style=@PaperHeightStyle Square=@ImageTextHidden>
 			<MudStack AlignItems="AlignItems.Center">
-				<MudText Typo="Typo.h4" Color="Color.Primary" Class="mono-font"><strong>@Title</strong></MudText>
-				<MudText Typo="Typo.body1" Class="mud-text-secondary mono-font"><i>@Catchline</i></MudText>
-				<MudImage Class="mt-3" Style="width: 100%" Src=@ImageSource Alt="Placeholder Project Picture" Elevation="1" />
+				<MudHidden Breakpoint="Breakpoint.SmAndDown" @bind-IsHidden=ImageTextHidden>
+					<MudText Typo="Typo.h4" Color="Color.Primary" Class="mono-font"><strong>@Title</strong></MudText>
+					<MudText Typo="Typo.body1" Class="mud-text-secondary mono-font"><i>@Catchline</i></MudText>
+				</MudHidden>
+				<MudImage Class="mt-md-3" Style="width: 100%" Src=@ImageSource Alt="Placeholder Project Picture" Elevation="1" />
 			</MudStack>
 		</MudPaper>
 	</MudLink>
 
-	<MudLink Href="@($"Projects/{SubPage}")" Underline="Underline.None" Class="content-container" content-container-left=@ImageLeftString>
+	<MudLink Href="@($"Projects/{SubPage}")" Underline="Underline.None" Class="content-container mt-n1 mt-md-0 z-10" content-container-left=@ImageLeftString>
 		<BigMudPaper Id="@Id" Elevation="2">
 			<ResponsiveSubTitle>
 				<MainContent>
@@ -61,8 +63,14 @@
 
 	[Parameter]
 	public string ImageSource { get; set; } = "images/PlaceholderProject.png";
+
 	[Parameter]
-	public int ImageHeight { get; set; } = 400;
-	private string PaperHeightStyle => $"--paper-height:{ImageHeight}px;";
+	public int ImageLargeHeight { get; set; } = 400;
+	[Parameter]
+	public int ImageSmallHeight { get; set; } = 100;
+
+	private bool ImageTextHidden { get; set; }
+
+	private string PaperHeightStyle => $"--paper-height:{(ImageTextHidden ? ImageSmallHeight : ImageLargeHeight)}px;";
 }
 
