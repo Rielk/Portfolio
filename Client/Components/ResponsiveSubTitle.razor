@@ -13,7 +13,10 @@
 <MudHidden Breakpoint="Breakpoint.SmAndUp">
 	<MudStack Spacing="0">
 		<MudText Typo="Typo.h5">@MainContent</MudText>
-		<MudText Typo="Typo.h6" Class="mud-text-secondary mono-font mt-n2">@SubContent</MudText>
+		@if (SubContent != null) @* Needed on this one because of the negative margin. *@
+		{
+			<MudText Typo="Typo.h6" Class="mud-text-secondary mono-font mt-n2">@SubContent</MudText>
+		}
 	</MudStack>
 </MudHidden>
 
