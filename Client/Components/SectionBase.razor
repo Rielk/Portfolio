@@ -1,31 +1,26 @@
-﻿<section id="@Id" style="background-color: @Layout.GetBackColor(BGLighter);">
-	<MudContainer MaxWidth=MaxWidth.Large Class="pa-0">
-		<MudContainer Fixed=true Class="py-8 py-lg-12 py-xl-16"> @* Need 2 containers because you can't set MaxWidth on a Fixed container. *@
-			@if (Header != null)
-			{
-				<ResponsiveTitle Class="mb-3">@Header</ResponsiveTitle>
-			}
+﻿<SectionBackground BGLighter=@BGLighter>
+	<section id="@Id" class="py-8 py-lg-12 py-xl-16">
+				@if (Header != null)
+				{
+					<ResponsiveTitle Class="mb-3">@Header</ResponsiveTitle>
+				}
 
-			<article>
-				@ChildContent
-			</article>
+				<article>
+					@ChildContent
+				</article>
 
-			@if (@EndHref != null)
-			{
-				<div class="d-flex justify-center mt-6">
-					<MudButton Href="@EndHref" Color="Color.Secondary" Variant="Variant.Filled">
-						@(EndHrefText ?? EndHref.Trim('.', '/', '#', ' '))
-					</MudButton>
-				</div>
-			}
-		</MudContainer>
-	</MudContainer>
-</section>
+				@if (@EndHref != null)
+				{
+					<div class="d-flex justify-center mt-6">
+						<MudButton Href="@EndHref" Color="Color.Secondary" Variant="Variant.Filled">
+							@(EndHrefText ?? EndHref.Trim('.', '/', '#', ' '))
+						</MudButton>
+					</div>
+				}
+	</section>
+</SectionBackground>
 
 @code {
-	[CascadingParameter(Name = "Layout")]
-	protected MainLayout Layout { get; set; } = null!;
-
 	[Parameter]
 	public string? Id { get; set; } = Guid.NewGuid().ToString("N");
 	[Parameter]
@@ -40,7 +35,4 @@
 	public string? EndHref { get; set; }
 	[Parameter]
 	public string? EndHrefText { get; set; }
-
-	[CascadingParameter]
-	protected MudThemeProvider? MudThemeProvider { get; set; }
 }
