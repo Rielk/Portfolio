@@ -1,5 +1,5 @@
 ﻿<SectionBackground BGLighter=@BGLighter>
-	<section id="@Id" class="py-8 py-lg-12 py-xl-16">
+	<section id="@Id" class=@PaddingClasses>
 				@if (Header != null)
 				{
 					<ResponsiveTitle Class="mb-3">@Header</ResponsiveTitle>
@@ -35,4 +35,8 @@
 	public string? EndHref { get; set; }
 	[Parameter]
 	public string? EndHrefText { get; set; }
+
+	[Parameter]
+	public bool Tight { get; set; } = false;
+	private string PaddingClasses => Tight ? "py-4" : "py-8 py-lg-12 py-xl-16";
 }
