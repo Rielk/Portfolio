@@ -33,11 +33,25 @@
 }
 
 <SectionBase BGLighter=@(Project == null)>
-	<BigMudPaper>
-		<MudText Typo="Typo.body2">
-			This page is <strong>under construction</strong>.
-		</MudText>
-	</BigMudPaper>
+	<NPMSProjectSubSection ImageLeft=false />
+</SectionBase>
+<SectionBase BGLighter=@(Project != null)>
+	<AnacondaProjectSubSection ImageLeft=true />
+</SectionBase>
+<SectionBase BGLighter=@(Project == null)>
+	<PortfolioProjectSubSection ImageLeft=false />
+</SectionBase>
+<SectionBase BGLighter=@(Project != null)>
+	<AoCProjectSubSection ImageLeft=true />
+</SectionBase>
+<SectionBase BGLighter=@(Project == null)>
+	<HandoverPacksProjectSubSection ImageLeft=false />
+</SectionBase>
+<SectionBase BGLighter=@(Project != null)>
+	<NanoparticlesProjectSubSection ImageLeft=true />
+</SectionBase>
+<SectionBase BGLighter=@(Project == null)>
+	<NaoRobotProjectSubSection ImageLeft=false />
 </SectionBase>
 
 @code {
