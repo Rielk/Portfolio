@@ -23,15 +23,26 @@
 				<i>@ChildContent</i>
 			</MudText>
 
-			@if (Tags != null)
-			{
-				<MudChipSet Row=true Spacing="2" Class="ma-2">
-					@foreach (var tag in Tags)
-					{
-						<SmallMudChipTag>@tag</SmallMudChipTag>
-					}
-				</MudChipSet>
-			}
+			
+
+			<MudStack Row=true Spacing="1" AlignItems="AlignItems.End">
+				@if (Tags != null)
+				{
+					<MudChipSet Row=true Spacing="2" Class="ma-2">
+						@foreach (var tag in Tags)
+						{
+							<SmallMudChipTag>@tag</SmallMudChipTag>
+						}
+					</MudChipSet>
+				}
+				<MudSpacer />
+				@if (!string.IsNullOrEmpty(GitHub))
+				{
+					<MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Primary" aria-label="GitHub" Href=@GitHub Target="_blank" />
+				}
+				<MudIconButton Icon="@Icons.Material.Filled.ReadMore" Color="Color.Primary"><b>Read More</b></MudIconButton>
+			</MudStack>
+
 		</BigMudPaper>
 	</MudLink>
 </div>
@@ -53,6 +64,8 @@
 
 	[Parameter]
 	public string? SubPage { get; set; }
+	[Parameter]
+	public string? GitHub { get; set; }
 
 	[Parameter]
 	public string? Date { get; set; }
