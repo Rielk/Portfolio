@@ -1,0 +1,83 @@
+﻿@page "/Projects/{*project}"
+
+<PageTitle>William Sullivan - Software Developer</PageTitle>
+
+<MainLayoutSetter Links="@Links" EndBGLighter=@(Project != null)>
+	<Hero>
+		<div class="hero-buffer-small">
+			<MudText Typo="Typo.h4" Class="mono-font">
+				My <strong>Projects</strong>
+			</MudText>
+			<MudText Typo="Typo.body1" Class="mono-font">
+				Projects I have previously worked on
+			</MudText>
+			<MudText Typo="Typo.body2" Class="mono-font">
+				This page is <strong>under construction</strong>.
+			</MudText>
+		</div>
+	</Hero>
+</MainLayoutSetter>
+
+@if (Project != null)
+{
+	<SectionBase BGLighter=true>
+		<BigMudPaper>
+			<MudText Typo="Typo.body2">
+				Sorry, there isn't a page for the project "<strong>@Project</strong>".
+			</MudText>
+			<MudText Typo="Typo.body2">
+				Please take a look at my other work.
+			</MudText>
+		</BigMudPaper>
+	</SectionBase>
+}
+
+<SectionBase Id="overview" BGLighter=@(Project == null) TightBottom=true>
+	<MudText>
+		<i>I've worked on a variety of projects, large and small over the last 6 years. Here is a selection of some of the more notable ones.</i>
+	</MudText>
+</SectionBase>
+<SectionBase BGLighter=@(Project == null) Tight=true>
+	<NPMSProjectSubSection ImageLeft=false />
+</SectionBase>
+<SectionBase BGLighter=@(Project != null) Tight=true>
+	<AnacondaProjectSubSection ImageLeft=true />
+</SectionBase>
+<SectionBase BGLighter=@(Project == null) Tight=true>
+	<PortfolioProjectSubSection ImageLeft=false />
+</SectionBase>
+<SectionBase BGLighter=@(Project != null) Tight=true>
+	<AoCProjectSubSection ImageLeft=true />
+</SectionBase>
+<SectionBase BGLighter=@(Project == null) Tight=true>
+	<HandoverPacksProjectSubSection ImageLeft=false />
+</SectionBase>
+<SectionBase BGLighter=@(Project != null) Tight=true>
+	<NanoparticlesProjectSubSection ImageLeft=true />
+</SectionBase>
+<SectionBase BGLighter=@(Project == null) TightTop=true>
+	<NaoRobotProjectSubSection ImageLeft=false />
+</SectionBase>
+
+<SectionBase Id="github" BGLighter=@(Project != null)>
+	<BigMudPaper>
+		<MudStack AlignItems="AlignItems.Center" Class="spaced-block">
+			<ResponsiveTitle>Checkout my GitHub</ResponsiveTitle>
+
+			<MudButton Variant="Variant.Filled" Color="Color.Secondary" Href="https://github.com/Rielk" Target="_blank">GitHub</MudButton>
+
+			<SocialMedia />
+		</MudStack>
+	</BigMudPaper>
+</SectionBase>
+
+@code {
+	private List<LinkDetails>? Links { get; } = new() {
+		new("./", "Home"),
+		new("#overview", "Overview"),
+		new("#github", "GitHub")};
+
+	[Parameter]
+	public string? Project { get; set; }
+
+}

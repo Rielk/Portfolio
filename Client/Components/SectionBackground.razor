@@ -1,0 +1,18 @@
+﻿<div style="background-color: @Layout.GetBackColor(BGLighter);">
+		<MudContainer MaxWidth=MaxWidth.Large Class="pa-0">
+			<MudContainer Fixed=true>
+				@* Need 2 containers because you can't set MaxWidth on a Fixed container. *@
+			@ChildContent
+		</MudContainer>
+	</MudContainer>
+</div>
+
+@code {
+	[CascadingParameter(Name = "Layout")]
+	protected MainLayout Layout { get; set; } = null!;
+
+	[Parameter]
+	public RenderFragment? ChildContent { get; set; }
+	[Parameter]
+	public bool BGLighter { get; set; } = true;
+}

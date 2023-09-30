@@ -3,7 +3,7 @@
     --font-family--Roboto-Mono: 'Roboto Mono', Consolas, monaco, monospace;
 }
 
-#app, html, body {
+html, body {
     height: 100%;
     width: 100%;
     margin: 0px;
@@ -14,9 +14,46 @@ h1:focus {
     outline: none;
 }
 
-.spaced-block > *:not(.mud-grid, .no-space) {
+.spaced-block > *:not(.mud-grid, .no-space):not(:first-child, :last-child) {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
+}
+
+.bullet-points {
+    list-style-type: disc;
+    padding-left: 24px;
+}
+
+.mono-font {
+    font-family: var(--font-family--Roboto-Mono)!important;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.hero-buffer-large {
+    padding-top: 15rem;
+    padding-bottom: 15rem;
+}
+
+.hero-buffer-small {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.hero-buffer-large, .hero-buffer-small {
+    /*
+    background-image: url("./images/Background_Tile.png");
+    background-size: 128px;
+    background-repeat: repeat;
+    background-position: 0 0;
+    background-position: -3px -3px;
+    */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /**/
 }
 
 .lds-ripple {

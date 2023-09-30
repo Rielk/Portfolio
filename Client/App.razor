@@ -1,17 +1,25 @@
 ﻿<Router AppAssembly="@typeof(App).Assembly">
-    <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
-    </Found>
-    <NotFound>
-        <PageTitle>Not found</PageTitle>
-        <LayoutView Layout="@typeof(MainLayout)">
-			<MainLayoutSetter Links="@Links" />
-            <MudContainer Class="mx-2 my-10"><MudText role="alert">Sorry, there's nothing at this address.</MudText></MudContainer>
-        </LayoutView>
-    </NotFound>
+	<Found Context="routeData">
+		<RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+		<FocusOnNavigate RouteData="@routeData" Selector="h1" />
+	</Found>
+	<NotFound>
+		<PageTitle>Not found</PageTitle>
+		<LayoutView Layout="@typeof(MainLayout)">
+			<MainLayoutSetter>
+				<Hero>
+					<div class="hero-buffer-small" />
+				</Hero>
+			</MainLayoutSetter>
+			<SectionBase>
+				<BigMudPaper>
+					<MudText role="alert">Sorry, there's nothing at this address.</MudText>
+				</BigMudPaper>
+			</SectionBase>
+		</LayoutView>
+	</NotFound>
 </Router>
 
 @code {
-    private List<LinkDetails> Links = new() { new("./", "Home") };
+
 }

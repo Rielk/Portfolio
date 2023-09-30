@@ -25,7 +25,7 @@
 				<TopLinks @ref="TopBarLinks" Links="@Links" />
 			</MudAppBar>
 			<MudMainContent Class="d-flex flex-column">
-				<div class="fixed" style="width: 100%; background-color: @AppbarColor;">
+				<div class="fixed width-100" style="background-color: @AppbarColor;">
 					@Hero
 				</div>
 
@@ -35,9 +35,11 @@
 				</div>
 
 				<div class="cover">
-					<article>
+					<div class="pt-8 pt-lg-12 rounded-t-xl" style="background-color: @GetBackColor(true);" />
+					<MudContainer MaxWidth="MaxWidth.False" Class="mx-0 px-0 py-xl-16">
 						@Body
-					</article>
+					</MudContainer>
+					<div class="pb-8 pb-lg-12 rounded-b-xl" style="background-color: @GetBackColor(@EndBGLighter);" />
 				</div>
 
 				<MudSpacer />
@@ -59,6 +61,8 @@
 	private MudThemeProvider MudThemeProvider = null!;
 
 	private RenderFragment? Hero { get; set; }
+
+	private bool EndBGLighter { get; set; }
 
 	string AppbarColor =>(isDarkMode ? Theme.PaletteDark : Theme.Palette).AppbarBackground.ToString();
 
@@ -598,6 +602,19 @@
 			},
 		};
 
+	public string GetBackColor(bool lighter)
+	{
+		if (MudThemeProvider?.IsDarkMode ?? false)
+		{
+			var paletteDark = MudThemeProvider.Theme?.PaletteDark ?? new PaletteDark();
+			return lighter ? paletteDark.GrayLighter : paletteDark.GrayLight;
+		}
+		else
+		{
+			return lighter ? Colors.Grey.Lighten5 : Colors.Grey.Lighten4;
+		}
+	}
+
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
 		if (firstRender)
@@ -623,7 +640,14 @@
 
 	public void SetLinks(List<LinkDetails>? links)
 	{
+		links ??= new() { new("./", "Home") };
 		Links = links;
+		StateHasChanged();
+	}
+
+	public void SetEndBGLighter(bool endBGLighter)
+	{
+		EndBGLighter = endBGLighter;
 		StateHasChanged();
 	}
 }

@@ -1,0 +1,12 @@
+﻿<ProjectSubSection Title="Handover Pack Compiler"
+				   SubPage="HandoverPacks"
+				   Catchline="File Collation Tool"
+				   ImageLeft=@ImageLeft
+				   Tags="@(new() {"Python"})">
+	A console script to augment repetitive file collation.
+</ProjectSubSection>
+
+@code {
+	[Parameter, EditorRequired]
+	public bool ImageLeft { get; set; }
+}

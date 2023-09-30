@@ -1,0 +1,13 @@
+﻿<SectionBase Id=@Id BGLighter=@BGLighter Header="Some of my Recent Projects" EndHref="Projects" EndHrefText="See More">
+	<MudStack>
+		<NPMSProjectSubSection ImageLeft=false />
+		<AnacondaProjectSubSection ImageLeft=true />
+		<PortfolioProjectSubSection ImageLeft=false />
+	</MudStack>
+</SectionBase>
+@code {
+	[Parameter]
+	public string? Id { get; set; }
+	[Parameter]
+	public bool BGLighter { get; set; }
+}
