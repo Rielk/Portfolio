@@ -21,22 +21,33 @@
 </SectionBackground>
 
 @code {
-	[Parameter]
-	public string? Id { get; set; } = Guid.NewGuid().ToString("N");
-	[Parameter]
-	public RenderFragment? ChildContent { get; set; }
-	[Parameter]
-	public bool BGLighter { get; set; } = true;
+    [Parameter]
+    public string? Id { get; set; } = Guid.NewGuid().ToString("N");
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+    [Parameter]
+    public bool BGLighter { get; set; } = true;
 
-	[Parameter]
-	public string? Header { get; set; }
+    [Parameter]
+    public string? Header { get; set; }
 
-	[Parameter]
-	public string? EndHref { get; set; }
-	[Parameter]
-	public string? EndHrefText { get; set; }
+    [Parameter]
+    public string? EndHref { get; set; }
+    [Parameter]
+    public string? EndHrefText { get; set; }
 
-	[Parameter]
-	public bool Tight { get; set; } = false;
-	private string PaddingClasses => Tight ? "py-4" : "py-8 py-lg-12 py-xl-16";
+    [Parameter]
+    public bool Tight { get; set; } = false;
+    [Parameter]
+    public bool? TightTop { get; set; } = null;
+    [Parameter]
+    public bool? TightBottom { get; set; } = null;
+
+    private string PaddingClasses => (TightTop ?? Tight, TightBottom ?? Tight) switch
+	{
+		(true, true) => "py-4",
+		(false, true) => "pt-8 pt-lg-12 pt-xl-16 pb-4",
+		(true, false) => "pb-8 pb-lg-12 pb-xl-16 pt-4",
+		(false, false) => "py-8 py-lg-12 py-xl-16",
+	};
 }

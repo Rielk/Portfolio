@@ -32,7 +32,7 @@
 	</SectionBase>
 }
 
-<SectionBase Id="overview" BGLighter=@(Project == null) Tight=true>
+<SectionBase Id="overview" BGLighter=@(Project == null) TightBottom=true>
 	<MudText>
 		<i>I've worked on a variety of projects, large and small over the last 6 years. Here is a selection of some of the more notable ones.</i>
 	</MudText>
@@ -55,7 +55,7 @@
 <SectionBase BGLighter=@(Project != null) Tight=true>
 	<NanoparticlesProjectSubSection ImageLeft=true />
 </SectionBase>
-<SectionBase BGLighter=@(Project == null) Tight=true>
+<SectionBase BGLighter=@(Project == null) TightTop=true>
 	<NaoRobotProjectSubSection ImageLeft=false />
 </SectionBase>
 
