@@ -39,13 +39,17 @@
 				@if (detail.HRef.StartsWith("#"))
 				{
 					<MudMenuItem OnClick="@(() =>ScrollTo(detail.HRef))" OnTouch="@(() =>ScrollTo(detail.HRef))">
-						@detail.Content
+						<MudText Typo="Typo.button">
+							@detail.Content
+						</MudText>
 					</MudMenuItem>
 				}
 				else
 				{
 					<MudMenuItem Href="@detail.HRef">
-						@detail.Content
+						<MudText Typo="Typo.button">
+							@detail.Content
+						</MudText>
 					</MudMenuItem>
 				}
 			}
