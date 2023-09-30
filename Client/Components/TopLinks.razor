@@ -1,7 +1,33 @@
-﻿<MudHidden Breakpoint="Breakpoint.SmAndDown">
+﻿@inject IJSRuntime JSRuntime
+
+<script>
+	function scrollToId(id) {
+		const element = document.getElementById(id);
+		if (element instanceof HTMLElement) {
+			element.scrollIntoView({
+				behavior: "smooth",
+				block: "start",
+				inline: "nearest"
+			});
+		}
+	}
+</script>
+
+<MudHidden Breakpoint="Breakpoint.SmAndDown">
 	@foreach (var detail in LinkEnumerable)
 	{
-		<TopLinkButton LinkDetail="@detail" />
+		@if (detail.HRef.StartsWith("#"))
+		{
+			<MudButton Size="Size.Large" OnClick="@(() =>ScrollTo(detail.HRef))" Color="Color.Inherit">
+				@detail.Content
+			</MudButton>
+		}
+		else
+		{
+			<MudButton Size="Size.Large" Href="@detail.HRef" Color="Color.Inherit">
+				@detail.Content
+			</MudButton>
+		}
 	}
 </MudHidden>
 
@@ -10,9 +36,22 @@
 		<div class="my-n2 py-2" style="background-color: @Palette.AppbarBackground; color: @Palette.AppbarText">
 			@foreach (var detail in LinkEnumerable)
 			{
-				<MudMenuItem>
-					<TopLinkButton LinkDetail="@detail" />
-				</MudMenuItem>
+				@if (detail.HRef.StartsWith("#"))
+				{
+					<MudMenuItem OnClick="@(() =>ScrollTo(detail.HRef))" OnTouch="@(() =>ScrollTo(detail.HRef))">
+						<MudText Typo="Typo.button">
+							@detail.Content
+						</MudText>
+					</MudMenuItem>
+				}
+				else
+				{
+					<MudMenuItem Href="@detail.HRef">
+						<MudText Typo="Typo.button">
+							@detail.Content
+						</MudText>
+					</MudMenuItem>
+				}
 			}
 		</div>
 	</MudMenu>
@@ -39,4 +78,14 @@
 		}
 	}
 #pragma warning restore CS0618
+
+	private void ScrollTo(string href)
+	{
+		var elementId = href.Substring(1);
+		if (string.IsNullOrEmpty(elementId))
+		{
+			elementId = "app";
+		}
+		JSRuntime.InvokeVoidAsync("scrollToId", elementId);
+	}
 }
