@@ -22,7 +22,7 @@
 					<MudLink Href="./"><MudImage Src="images/WillSullDev_Logo.png" Alt="Logo" Height="48" /></MudLink>
 				</span>
 				<MudSpacer />
-				<TopLinks @ref="TopBarLinks" Links="@Links" />
+				<TopLinks Links="@Links" />
 			</MudAppBar>
 			<MudMainContent Class="d-flex flex-column">
 				<div class="fixed width-100" style="background-color: @AppbarColor;">
@@ -54,8 +54,6 @@
 @code
 {
 	private List<LinkDetails>? Links { get; set; }
-
-	private TopLinks? TopBarLinks;
 
 	private bool isDarkMode;
 	private MudThemeProvider MudThemeProvider = null!;
