@@ -23,4 +23,10 @@ public class MainLayoutSetter : ComponentBase
 		Layout.SetEndBGLighter(EndBGLighter);
 		base.OnInitialized();
 	}
+
+	protected override void OnParametersSet()
+	{
+		Layout.SetEndBGLighter(EndBGLighter);
+		base.OnParametersSet();
+	}
 }

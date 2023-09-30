@@ -645,6 +645,7 @@
 
 	public void SetEndBGLighter(bool endBGLighter)
 	{
+		if (endBGLighter == EndBGLighter) return;
 		EndBGLighter = endBGLighter;
 		StateHasChanged();
 	}
