@@ -24,8 +24,22 @@
 		}
 		else
 		{
-			<MudButton Size="Size.Large" Href="@detail.HRef" Color="Color.Inherit">
-				@detail.Content
+			<MudButton Size="Size.Large" Href="@detail.HRef" Target=@(detail.HRef.StartsWith(".") ? null : "_blank") Color="Color.Inherit">
+				@if (!detail.HRef.StartsWith("."))
+				{
+					<MudStack Row=true AlignItems="AlignItems.Center" Spacing="0">
+						<MudText Typo="Typo.button">
+							@detail.Content
+						</MudText>
+						<MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Class="mt-n1" />
+					</MudStack>
+				}
+				else
+				{
+					<MudText Typo="Typo.button">
+						@detail.Content
+					</MudText>
+				}
 			</MudButton>
 		}
 	}
@@ -47,9 +61,21 @@
 				else
 				{
 					<MudMenuItem Href="@detail.HRef">
-						<MudText Typo="Typo.button">
-							@detail.Content
-						</MudText>
+						@if (!detail.HRef.StartsWith("."))
+						{
+							<MudStack Row=true AlignItems="AlignItems.Center" Spacing="0">
+								<MudText Typo="Typo.button">
+									@detail.Content
+								</MudText>
+								<MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Class="mt-n1" />
+							</MudStack>
+						}
+						else
+						{
+							<MudText Typo="Typo.button">
+								@detail.Content
+							</MudText>
+						}
 					</MudMenuItem>
 				}
 			}
