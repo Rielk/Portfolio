@@ -1,8 +1,10 @@
 ﻿<MudHidden Breakpoint="Breakpoint.MdAndUp" Invert=true>
-	<MudText Typo="Typo.h3" Class="@TotalLargeClass">@ChildContent</MudText>
+	<MudStack Class="title-space">
+		<MudText Typo="Typo.h3" Class="@TotalLargeClass">@ChildContent</MudText>
+	</MudStack>
 </MudHidden>
 <MudHidden Breakpoint="Breakpoint.MdAndUp">
-	<MudStack AlignItems="AlignItems.Center">
+	<MudStack AlignItems="AlignItems.Center" Class="title-space">
 		<MudText Typo="Typo.h4" Class=@TotalSmallClass Align="Align.Center">@ChildContent</MudText>
 	</MudStack>
 </MudHidden>

@@ -19,6 +19,14 @@ h1:focus {
     margin-bottom: 0.5rem;
 }
 
+.spaced-block > .title-space:not(.mud-grid, .no-space):not(:first-child, :last-child) {
+    margin-top: 1.0rem;
+}
+
+.spaced-block > .title-space:not(.mud-grid, .no-space) {
+    margin-bottom: -0.5rem;
+}
+
 .bullet-points {
     list-style-type: disc;
     padding-left: 24px;
