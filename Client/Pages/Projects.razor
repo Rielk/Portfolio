@@ -32,7 +32,7 @@
 	</SectionBase>
 }
 
-<SectionBase Id="overview" BGLighter=@(Project == null) TightBottom=true>
+<SectionBase Id="Overview" BGLighter=@(Project == null) TightBottom=true>
 	<MudText>
 		<i>I've worked on a variety of projects, large and small over the last 6 years. Here is a selection of some of the more notable ones.</i>
 	</MudText>
@@ -59,7 +59,7 @@
 	<NaoRobotProjectSection ImageLeft=false />
 </SectionBase>
 
-<SectionBase Id="github" BGLighter=@(Project != null)>
+<SectionBase Id="GitHub" BGLighter=@(Project != null)>
 	<BigMudPaper>
 		<MudStack AlignItems="AlignItems.Center" Class="spaced-block">
 			<ResponsiveTitle>Checkout my GitHub</ResponsiveTitle>
@@ -74,7 +74,7 @@
 @code {
 	private List<LinkDetails>? Links { get; } = new() {
 		new("./", "Home"),
-		new("#overview", "Overview"),
+		new("#Overview", "Overview"),
 		new("https://github.com/Rielk", "GitHub")};
 
 	[Parameter]
