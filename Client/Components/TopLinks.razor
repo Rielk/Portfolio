@@ -24,22 +24,16 @@
 		}
 		else
 		{
-			<MudButton Size="Size.Large" Href="@detail.HRef" Target=@(detail.HRef.StartsWith(".") ? null : "_blank") Color="Color.Inherit">
-				@if (!detail.HRef.StartsWith("."))
-				{
-					<MudStack Row=true AlignItems="AlignItems.Center" Spacing="0">
-						<MudText Typo="Typo.button">
-							@detail.Content
-						</MudText>
-						<MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Class="mt-n1" />
-					</MudStack>
-				}
-				else
-				{
+			<MudButton Size="Size.Large" Href="@detail.HRef" Target=@(detail.External ? "_blank" : null) Color="Color.Inherit">
+				<MudStack Row=true AlignItems="AlignItems.Center" Spacing="0">
 					<MudText Typo="Typo.button">
 						@detail.Content
 					</MudText>
-				}
+					@if (detail.External)
+					{
+						<MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Class="mt-n1" />
+					}
+				</MudStack>
 			</MudButton>
 		}
 	}
@@ -60,22 +54,16 @@
 				}
 				else
 				{
-					<MudMenuItem Href="@detail.HRef">
-						@if (!detail.HRef.StartsWith("."))
-						{
-							<MudStack Row=true AlignItems="AlignItems.Center" Spacing="0">
-								<MudText Typo="Typo.button">
-									@detail.Content
-								</MudText>
-								<MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Class="mt-n1" />
-							</MudStack>
-						}
-						else
-						{
+					<MudMenuItem Href="@detail.HRef" Target=@(detail.External ? "_blank" : null)>
+						<MudStack Row=true AlignItems="AlignItems.Center" Spacing="0">
 							<MudText Typo="Typo.button">
 								@detail.Content
 							</MudText>
-						}
+							@if (detail.External)
+							{
+								<MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Class="mt-n1" />
+							}
+						</MudStack>
 					</MudMenuItem>
 				}
 			}
