@@ -15,18 +15,17 @@
 	</Hero>
 </MainLayoutSetter>
 
-<SectionBase Id="DataHorizon" BGLighter=true>
+<SectionBase Id="DataHorizon" BGLighter=true Header="Work">
 	<DataHorizonExperienceSection />
 </SectionBase>
 <SectionBase Id="Mypower" BGLighter=false>
 	<MypowerExperienceSection />
 </SectionBase>
-<SectionBase Id="UoB" BGLighter=true>
+<SectionBase Id="UoB" BGLighter=true Header="Education">
 	<UoBExperienceSection />
 </SectionBase>
 
 @code {
 	private List<LinkDetails>? Links { get; } = new() {
-		new("./", "Home"),
-		new("", "Overview") };
+		new("./", "Home") };
 }
