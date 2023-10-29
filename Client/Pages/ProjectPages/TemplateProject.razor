@@ -1,4 +1,4 @@
-﻿@page "/Projects/Test1"
+﻿@* @page "/Projects/Test1" *@
 
 <PageTitle>William Sullivan - Software Developer</PageTitle>
 
@@ -29,5 +29,6 @@
 @code {
 	private List<LinkDetails>? Links { get; } = new() {
 		new("./", "Home"),
-		new("", "Overview") };
+		new("./Projects", "Projects"),
+		new("https://github.com/Rielk", "GitHub") };
 }

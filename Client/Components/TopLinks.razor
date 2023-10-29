@@ -24,8 +24,16 @@
 		}
 		else
 		{
-			<MudButton Size="Size.Large" Href="@detail.HRef" Color="Color.Inherit">
-				@detail.Content
+			<MudButton Size="Size.Large" Href="@detail.HRef" Target=@(detail.External ? "_blank" : null) Color="Color.Inherit">
+				<MudStack Row=true AlignItems="AlignItems.Center" Spacing="0">
+					<MudText Typo="Typo.button">
+						@detail.Content
+					</MudText>
+					@if (detail.External)
+					{
+						<MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Class="mt-n1" />
+					}
+				</MudStack>
 			</MudButton>
 		}
 	}
@@ -46,10 +54,16 @@
 				}
 				else
 				{
-					<MudMenuItem Href="@detail.HRef">
-						<MudText Typo="Typo.button">
-							@detail.Content
-						</MudText>
+					<MudMenuItem Href="@detail.HRef" Target=@(detail.External ? "_blank" : null)>
+						<MudStack Row=true AlignItems="AlignItems.Center" Spacing="0">
+							<MudText Typo="Typo.button">
+								@detail.Content
+							</MudText>
+							@if (detail.External)
+							{
+								<MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Class="mt-n1" />
+							}
+						</MudStack>
 					</MudMenuItem>
 				}
 			}

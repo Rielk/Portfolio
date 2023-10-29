@@ -18,17 +18,17 @@
 	</Hero>
 </MainLayoutSetter>
 
-<AboutSection Id="about" BGLighter=true />
-<WorkExperienceSection Id="workExperience" BGLighter=false />
-<ProjectsSection Id="projects" BGLighter=true />
-<ContactSection Id="contact" BGLighter=false />
+<AboutSection Id="About" BGLighter=true />
+<WorkExperienceSection Id="WorkExperience" BGLighter=false />
+<ProjectsSection Id="Projects" BGLighter=true />
+<ContactSection Id="Contact" BGLighter=false />
 
 @code {
 	private List<LinkDetails>? Links { get; } = new() {
 		new("#", "Home"),
-		new("#about", "About"),
-		new("#workExperience", "Experience"),
-		new("#projects", "Projects"),
-		new("#contact", "Contact") };
+		new("#About", "About"),
+		new("#WorkExperience", "Experience"),
+		new("#Projects", "Projects"),
+		new("#Contact", "Contact") };
 }
 

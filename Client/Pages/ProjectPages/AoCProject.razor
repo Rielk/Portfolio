@@ -1,0 +1,63 @@
+﻿@page "/Projects/AoC"
+
+<PageTitle>William Sullivan - Software Developer</PageTitle>
+
+<MainLayoutSetter Links="@Links" EndBGLighter=true>
+	<Hero>
+		<div class="hero-buffer-small">
+			<MudText Typo="Typo.h4" Class="mono-font">
+				Advent Of Code <strong>2022</strong>
+			</MudText>
+			<MudText Typo="Typo.body1" Class="mono-font">
+				A programming <strong>challenge</strong>, advent calender
+			</MudText>
+		</div>
+	</Hero>
+</MainLayoutSetter>
+
+<SectionBase>
+	<BigMudPaper Class="spaced-block">
+		<ResponsiveTitle>
+			Overview
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			An annual set of challenges for a variety of skill sets and levels. I was introduced to it at the end of 2022 and I solved them using <strong>C#</strong>. The full list of challenges can be found <MudLink Color="Color.Secondary" Href="https://adventofcode.com/2022" Target="_blank">here</MudLink>
+		</MudText>
+		<MudText Typo="Typo.body1">
+			There were some interesting problems to solve and the solutions are a good presentation of the kind of work I can produce in a couple of hours now that I have some professional experience.
+		</MudText>
+
+		<ResponsiveTitle>
+			Description
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			There are too many to go into all of them, so I will highlight a few of the ones I found more interesting.
+		</MudText>
+		<MudText Typo="Typo.body1">
+			Day 16 was slow but easy enough to brute force and an interesting problem to optimise. There were several stages to optimising this, but the most significant was to simplify the graph by removing nodes which couldn’t be opened, and then using a bit mask of the remaining nodes to access a dictionary and reuse old results efficiently.
+		</MudText>
+		<MudText Typo="Typo.body1">
+			Day 19 was an exercise in finding ways to limit the state space. The naive approach either takes too long to process, due to the number of permutations available, or requires an unreasonably large state space. However, realising that there is no point in building more robots than materials you can use, and discarding any extra material produced quickly collapses this challenge into one that’s quickly solved.
+		</MudText>
+		<MudText Typo="Typo.body1">
+			My favourite challenge from this year was from Day 22. While the actual challenge wasn’t difficult,  generalising it involved detecting and then folding a cube net. This involved 3D geometry, vectors and their cross products and was a small headache to get working correctly. I should have documented it better than I did, however, it was satisfying to finish and a good exercise on problem solving.
+		</MudText>
+	</BigMudPaper>
+</SectionBase>
+<SectionBase BGLighter=false>
+	<BigMudPaper>
+		<ResponsiveTitle>
+			GitHub
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			A repository with all of my solutions in can be found here: <MudLink Class="d-block d-sm-inline" Color="Color.Secondary" Href="https://github.com/Rielk/AdventOfCode22" Target="_blank">GitHub - Advent of Code 2022</MudLink>
+		</MudText>
+	</BigMudPaper>
+</SectionBase>
+
+@code {
+	private List<LinkDetails>? Links { get; } = new() {
+		new("./", "Home"),
+		new("./Projects", "Projects"),
+		new("https://github.com/Rielk/AdventOfCode22", "GitHub") };
+}

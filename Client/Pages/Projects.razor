@@ -11,9 +11,6 @@
 			<MudText Typo="Typo.body1" Class="mono-font">
 				Projects I have previously worked on
 			</MudText>
-			<MudText Typo="Typo.body2" Class="mono-font">
-				This page is <strong>under construction</strong>.
-			</MudText>
 		</div>
 	</Hero>
 </MainLayoutSetter>
@@ -32,34 +29,34 @@
 	</SectionBase>
 }
 
-<SectionBase Id="overview" BGLighter=@(Project == null) TightBottom=true>
+<SectionBase Id="Overview" BGLighter=@(Project == null) TightBottom=true>
 	<MudText>
 		<i>I've worked on a variety of projects, large and small over the last 6 years. Here is a selection of some of the more notable ones.</i>
 	</MudText>
 </SectionBase>
 <SectionBase BGLighter=@(Project == null) Tight=true>
-	<NPMSProjectSubSection ImageLeft=false />
+	<AnacondaProjectSection ImageLeft=false />
 </SectionBase>
 <SectionBase BGLighter=@(Project != null) Tight=true>
-	<AnacondaProjectSubSection ImageLeft=true />
+	<NPMSProjectSection ImageLeft=true />
 </SectionBase>
 <SectionBase BGLighter=@(Project == null) Tight=true>
-	<PortfolioProjectSubSection ImageLeft=false />
+	<PortfolioProjectSection ImageLeft=false />
 </SectionBase>
 <SectionBase BGLighter=@(Project != null) Tight=true>
-	<AoCProjectSubSection ImageLeft=true />
+	<AoCProjectSection ImageLeft=true />
 </SectionBase>
 <SectionBase BGLighter=@(Project == null) Tight=true>
-	<HandoverPacksProjectSubSection ImageLeft=false />
+	<HandoverPacksProjectSection ImageLeft=false />
 </SectionBase>
 <SectionBase BGLighter=@(Project != null) Tight=true>
-	<NanoparticlesProjectSubSection ImageLeft=true />
+	<NanoparticlesProjectSection ImageLeft=true />
 </SectionBase>
 <SectionBase BGLighter=@(Project == null) TightTop=true>
-	<NaoRobotProjectSubSection ImageLeft=false />
+	<NaoRobotProjectSection ImageLeft=false />
 </SectionBase>
 
-<SectionBase Id="github" BGLighter=@(Project != null)>
+<SectionBase Id="GitHub" BGLighter=@(Project != null)>
 	<BigMudPaper>
 		<MudStack AlignItems="AlignItems.Center" Class="spaced-block">
 			<ResponsiveTitle>Checkout my GitHub</ResponsiveTitle>
@@ -74,8 +71,8 @@
 @code {
 	private List<LinkDetails>? Links { get; } = new() {
 		new("./", "Home"),
-		new("#overview", "Overview"),
-		new("#github", "GitHub")};
+		new("#Overview", "Overview"),
+		new("https://github.com/Rielk", "GitHub")};
 
 	[Parameter]
 	public string? Project { get; set; }

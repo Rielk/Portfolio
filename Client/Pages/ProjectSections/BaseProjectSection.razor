@@ -3,10 +3,10 @@
 		<MudPaper Class="pa-0 pt-md-5 px-md-5 overflow-y-hidden width-100 image-paper" Style=@PaperHeightStyle Square=@ImageTextHidden>
 			<MudStack AlignItems="AlignItems.Center">
 				<MudHidden Breakpoint="Breakpoint.SmAndDown" @bind-IsHidden=ImageTextHidden>
-					<MudText Typo="Typo.h4" Color="Color.Primary" Class="mono-font"><strong>@Title</strong></MudText>
-					<MudText Typo="Typo.body1" Class="mud-text-secondary mono-font"><i>@Catchline</i></MudText>
+					<MudText Typo="Typo.h4" Color="Color.Primary" Class="mono-font" Align="Align.Center"><strong>@Title</strong></MudText>
+					<MudText Typo="Typo.body1" Class="mud-text-secondary mono-font" Align="Align.Center"><i>@Catchline</i></MudText>
 				</MudHidden>
-				<MudImage Class="mt-md-3" Style="width: 100%" Src=@ImageSource Alt="Placeholder Project Picture" Elevation="1" />
+				<MudImage Class="mt-md-3" Style="width: 100%" Src=@ImageSource Alt=@ImageAltText Elevation="1" />
 			</MudStack>
 		</MudPaper>
 	</MudLink>
@@ -22,8 +22,6 @@
 			<MudText>
 				<i>@ChildContent</i>
 			</MudText>
-
-			
 
 			<MudStack Row=true Spacing="1" AlignItems="AlignItems.End">
 				@if (Tags != null)
@@ -42,7 +40,6 @@
 				}
 				<MudIconButton Icon="@Icons.Material.Filled.ReadMore" Color="Color.Primary"><b>Read More</b></MudIconButton>
 			</MudStack>
-
 		</BigMudPaper>
 	</MudLink>
 </div>
@@ -50,8 +47,6 @@
 @code {
 	[Parameter]
 	public string? Id { get; set; }
-	[Parameter]
-	public string? BackgroundColor { get; set; }
 
 	[Parameter]
 	public string? Title { get; set; }
@@ -76,6 +71,8 @@
 
 	[Parameter]
 	public string ImageSource { get; set; } = "images/PlaceholderProject.png";
+	[Parameter]
+	public string ImageAltText { get; set; } = "Placeholder Project Picture";
 
 	[Parameter]
 	public int ImageLargeHeight { get; set; } = 400;
