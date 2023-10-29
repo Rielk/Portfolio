@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using BlazorApp.Client.Components;
+using Microsoft.AspNetCore.Components;
 
 namespace BlazorApp.Client.Shared;
 

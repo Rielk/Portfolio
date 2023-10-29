@@ -1,4 +1,6 @@
-﻿public class LinkDetails
+﻿namespace BlazorApp.Client.Components;
+
+public class LinkDetails
 {
 	private bool? external;
 
