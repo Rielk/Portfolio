@@ -17,7 +17,7 @@ public class LinkDetails
 	{
 		get
 		{
-			return external ?? !HRef.StartsWith('.');
+			return external ?? !(HRef.StartsWith('.') || HRef.StartsWith('#'));
 		}
 		set
 		{

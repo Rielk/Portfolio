@@ -1,41 +1,19 @@
 ﻿@inject IJSRuntime JSRuntime
 
-<script>
-	function scrollToId(id) {
-		const element = document.getElementById(id);
-		if (element instanceof HTMLElement) {
-			element.scrollIntoView({
-				behavior: "smooth",
-				block: "start",
-				inline: "nearest"
-			});
-		}
-	}
-</script>
-
 <MudHidden Breakpoint="Breakpoint.SmAndDown">
 	@foreach (var detail in LinkEnumerable)
 	{
-		@if (detail.HRef.StartsWith("#"))
-		{
-			<MudButton Size="Size.Large" OnClick="@(() =>ScrollTo(detail.HRef))" Color="Color.Inherit">
-				@detail.Content
-			</MudButton>
-		}
-		else
-		{
-			<MudButton Size="Size.Large" Href="@detail.HRef" Target=@(detail.External ? "_blank" : null) Color="Color.Inherit">
-				<MudStack Row=true AlignItems="AlignItems.Center" Spacing="0">
-					<MudText Typo="Typo.button">
-						@detail.Content
-					</MudText>
-					@if (detail.External)
-					{
-						<MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Class="mt-n1" />
-					}
-				</MudStack>
-			</MudButton>
-		}
+		<MudButton Size="Size.Large" Href="@detail.HRef" Target=@(detail.External ? "_blank" : null) Color="Color.Inherit">
+			<MudStack Row=true AlignItems="AlignItems.Center" Spacing="0">
+				<MudText Typo="Typo.button">
+					@detail.Content
+				</MudText>
+				@if (detail.External)
+				{
+					<MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Class="mt-n1" />
+				}
+			</MudStack>
+		</MudButton>
 	}
 </MudHidden>
 
@@ -44,28 +22,17 @@
 		<div class="my-n2 py-2" style="background-color: @Palette.AppbarBackground; color: @Palette.AppbarText">
 			@foreach (var detail in LinkEnumerable)
 			{
-				@if (detail.HRef.StartsWith("#"))
-				{
-					<MudMenuItem OnClick="@(() =>ScrollTo(detail.HRef))" OnTouch="@(() =>ScrollTo(detail.HRef))">
+				<MudMenuItem Href="@detail.HRef" Target=@(detail.External ? "_blank" : null)>
+					<MudStack Row=true AlignItems="AlignItems.Center" Spacing="0">
 						<MudText Typo="Typo.button">
 							@detail.Content
 						</MudText>
-					</MudMenuItem>
-				}
-				else
-				{
-					<MudMenuItem Href="@detail.HRef" Target=@(detail.External ? "_blank" : null)>
-						<MudStack Row=true AlignItems="AlignItems.Center" Spacing="0">
-							<MudText Typo="Typo.button">
-								@detail.Content
-							</MudText>
-							@if (detail.External)
-							{
-								<MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Class="mt-n1" />
-							}
-						</MudStack>
-					</MudMenuItem>
-				}
+						@if (detail.External)
+						{
+							<MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Class="mt-n1" />
+						}
+					</MudStack>
+				</MudMenuItem>
 			}
 		</div>
 	</MudMenu>
@@ -92,14 +59,4 @@
 		}
 	}
 #pragma warning restore CS0618
-
-	private void ScrollTo(string href)
-	{
-		var elementId = href.Substring(1);
-		if (string.IsNullOrEmpty(elementId))
-		{
-			elementId = "app";
-		}
-		JSRuntime.InvokeVoidAsync("scrollToId", elementId);
-	}
 }

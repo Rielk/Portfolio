@@ -11,23 +11,21 @@
 			<MudText Typo="Typo.body1" Class="mono-font">
 				More details on my work history
 			</MudText>
-			<MudText Typo="Typo.body2" Class="mono-font">
-				This page is <strong>under construction</strong>.
-			</MudText>
 		</div>
 	</Hero>
 </MainLayoutSetter>
 
-<SectionBase>
-	<BigMudPaper>
-		<MudText Typo="Typo.body2">
-			This page is <strong>under construction</strong>.
-		</MudText>
-	</BigMudPaper>
+<SectionBase Id="DataHorizon" BGLighter=true Header="Work">
+	<DataHorizonExperienceSection />
+</SectionBase>
+<SectionBase Id="Mypower" BGLighter=false>
+	<MypowerExperienceSection />
+</SectionBase>
+<SectionBase Id="UoB" BGLighter=true Header="Education">
+	<UoBExperienceSection />
 </SectionBase>
 
 @code {
 	private List<LinkDetails>? Links { get; } = new() {
-		new("./", "Home"),
-		new("", "Overview") };
+		new("./", "Home") };
 }
