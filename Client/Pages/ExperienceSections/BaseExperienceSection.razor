@@ -8,7 +8,10 @@
 		</SubContent>
 	</ResponsiveSubTitle>
 
-
+	@if (AdditionalInfo != null)
+	{
+		<MudText Typo="Typo.body1"><i>@AdditionalInfo</i></MudText>
+	}
 	<MudText Typo="Typo.body2" Class="pb-3"><i>@Dates</i></MudText>
 
 	<MudText>
@@ -27,6 +30,8 @@
 	[Parameter]
 	public string Dates { get; set; } = "January 0000 - December 9999";
 
+	[Parameter]
+	public RenderFragment? AdditionalInfo { get; set; }
 	[Parameter]
 	public RenderFragment? ChildContent { get; set; }
 }
