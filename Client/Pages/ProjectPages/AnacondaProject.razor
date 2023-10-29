@@ -6,22 +6,37 @@
 	<Hero>
 		<div class="hero-buffer-small">
 			<MudText Typo="Typo.h4" Class="mono-font">
-				My Specific <strong>Project</strong>
+				<strong>Anaconda</strong> - Working Title
 			</MudText>
 			<MudText Typo="Typo.body1" Class="mono-font">
-				This is the <strong>Test 1</strong> project
-			</MudText>
-			<MudText Typo="Typo.body2" Class="mono-font">
-				This page is <strong>under construction</strong>.
+				A work in progress system for the <strong>collection and monitoring</strong> of a variety of data types.
 			</MudText>
 		</div>
 	</Hero>
 </MainLayoutSetter>
 
 <SectionBase>
-	<BigMudPaper>
-		<MudText Typo="Typo.body2">
-			This page is <strong>under construction</strong>.
+	<BigMudPaper Class="spaced-block">
+		<ResponsiveTitle>
+			Overview
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			A system of software, that was in development while I worked at <MudLink Color="Color.Secondary" Href="./Experience/#DataHorizon">DataHorizon</MudLink>. Designed to gather, store and present a range of different data types, the system would use microchips, tailored to the customer’s needs, to gather data and present it in an easily consumed way, while also monitoring for fluctuations and alerting the users as required.
+		</MudText>
+		<MudText Typo="Typo.body1">
+			I was key to the development on several portions of this software. Unfortunately, the company stopped development before it could be completed and shutdown due to issues with another project.
+		</MudText>
+		<ResponsiveTitle>
+			Description
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			I was solely responsible for the design and development of the mobile portion of this software. This was a <strong>C#</strong> application using <strong>MAUI</strong>. It communicated with a web service utilising a Microsoft <strong>SQL</strong> Server Database which I was responsible for upgrading to use the <strong>WCF</strong> framework.
+		</MudText>
+		<MudText Typo="Typo.body1">
+			I also performed extensive refactoring of the desktop application’s code structure, making it easier to maintain and bringing it inline with best practices, namely the implementation of view models. This was a <strong>WPF</strong> application that had a very similar structure to the mobile application and a significant motivation behind this refactoring was to make the applications share as much code as possible.
+		</MudText>
+		<MudText Typo="Typo.body1">
+			There was a brief period when I worked on one of the microchips. I implemented an analogue to digital converter in embedded <strong>C</strong>, along with a simple communication algorithm to transmit the gathered data back to a more sophisticated hub.
 		</MudText>
 	</BigMudPaper>
 </SectionBase>
@@ -29,6 +44,5 @@
 @code {
 	private List<LinkDetails>? Links { get; } = new() {
 		new("./", "Home"),
-		new("./Projects", "Projects"),
-		new("https://github.com/Rielk", "GitHub") };
+		new("./Projects", "Projects") };
 }
