@@ -6,23 +6,43 @@
 	<Hero>
 		<div class="hero-buffer-small">
 			<MudText Typo="Typo.h4" Class="mono-font">
-				My Specific <strong>Project</strong>
+				<strong>Portfolio</strong> website
 			</MudText>
 			<MudText Typo="Typo.body1" Class="mono-font">
-				This is the <strong>Test 1</strong> project
-			</MudText>
-			<MudText Typo="Typo.body2" Class="mono-font">
-				This page is <strong>under construction</strong>.
+				You’ve seen at least 2 pages now. It’s <strong>about me</strong>
 			</MudText>
 		</div>
 	</Hero>
 </MainLayoutSetter>
 
 <SectionBase>
-	<BigMudPaper>
-		<MudText Typo="Typo.body2">
-			This page is <strong>under construction</strong>.
+	<BigMudPaper Class="spaced-block">
+		<ResponsiveTitle>
+			Overview
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			Felt like something I was lacking while applying to jobs, so I decided to create this website to supplement my resume. It also gave me a good opportunity to learn <strong>html</strong> and <strong>css</strong>.
 		</MudText>
+		<ResponsiveTitle>
+			Description
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			Built using <strong>Blazor</strong> and deployed to <strong>Azure</strong> as a static web app. It uses the <MudLink Color="Color.Secondary" Href="https://mudblazor.com" Target="_blank">MudBlazor</MudLink> component library, but is otherwise developed by me.
+		</MudText>
+		<MudText Typo="Typo.body1">
+			Realistically, this shouldn’t have taken me more than a few months to learn and produce, but I found my biggest struggle was writing the content, and I stalled on that for a <i>while</i>.
+		</MudText>
+		<MudText Typo="Typo.body1">
+			I think my biggest mistake (this was new to me) was not sorting out component libraries before I started. I was a month into development before I started to feel bogged down by the default version of Bootstrap. I then had to spend a week or two going back though, transferring everything to use a new library.
+		</MudText>
+	</BigMudPaper>
+</SectionBase>
+<SectionBase BGLighter=false>
+	<BigMudPaper>
+		<ResponsiveTitle>
+			GitHub
+		</ResponsiveTitle>
+		If you want to take a look at the repository, it’s here: <MudLink Color="Color.Secondary" Href="https://github.com/Rielk/Portfolio" Target="_blank">Portfolio</MudLink>
 	</BigMudPaper>
 </SectionBase>
 
@@ -30,5 +50,5 @@
 	private List<LinkDetails>? Links { get; } = new() {
 		new("./", "Home"),
 		new("./Projects", "Projects"),
-		new("https://github.com/Rielk", "GitHub") };
+		new("https://github.com/Rielk/Portfolio", "GitHub") };
 }
