@@ -6,7 +6,7 @@
 					<MudText Typo="Typo.h4" Color="Color.Primary" Class="mono-font" Align="Align.Center"><strong>@Title</strong></MudText>
 					<MudText Typo="Typo.body1" Class="mud-text-secondary mono-font" Align="Align.Center"><i>@Catchline</i></MudText>
 				</MudHidden>
-				<MudImage Class="mt-md-3" Style="width: 100%" Src=@ImageSource Alt="Placeholder Project Picture" Elevation="1" />
+				<MudImage Class="mt-md-3" Style="width: 100%" Src=@ImageSource Alt=@ImageAltText Elevation="1" />
 			</MudStack>
 		</MudPaper>
 	</MudLink>
@@ -71,6 +71,8 @@
 
 	[Parameter]
 	public string ImageSource { get; set; } = "images/PlaceholderProject.png";
+	[Parameter]
+	public string ImageAltText { get; set; } = "Placeholder Project Picture";
 
 	[Parameter]
 	public int ImageLargeHeight { get; set; } = 400;
