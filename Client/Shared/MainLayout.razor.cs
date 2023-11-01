@@ -11,7 +11,7 @@ public class MainLayoutSetter : ComponentBase
 	public MainLayout Layout { get; set; } = null!;
 
 	[Parameter]
-	public RenderFragment? Hero { get; set; }
+	public RenderFragment? DisplayHero { get; set; }
 
 	[Parameter]
 	public List<LinkDetails>? Links { get; set; }
@@ -21,7 +21,7 @@ public class MainLayoutSetter : ComponentBase
 
 	protected override void OnInitialized()
 	{
-		Layout.SetHero(Hero);
+		Layout.SetHero(DisplayHero);
 		Layout.SetLinks(Links);
 		Layout.SetEndBGLighter(EndBGLighter);
 		base.OnInitialized();

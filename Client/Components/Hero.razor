@@ -1,0 +1,31 @@
+﻿<div class="hero">
+	<div class="backStrip grid11 @bufferClass" style="background-color: @Palette.Secondary" />
+	<div class="grid11 px-6" style="z-index: 1;">
+		@ChildContent
+	</div>
+</div>
+
+@code {
+	[Parameter]
+	public bool Large { get; set; } = true;
+	private string bufferClass => Large ? "buffer-large" : "buffer-small";
+
+	[Parameter]
+	public RenderFragment? ChildContent { get; set; }
+
+	[CascadingParameter]
+	protected MudThemeProvider? MudThemeProvider { get; set; }
+
+#pragma warning disable CS0618
+	private Palette Palette
+	{
+		get
+		{
+			if (MudThemeProvider?.IsDarkMode ?? false)
+				return MudThemeProvider.Theme?.PaletteDark ?? new PaletteDark();
+			else
+				return MudThemeProvider?.Theme?.Palette ?? new PaletteLight();
+		}
+	}
+#pragma warning restore CS0618
+}
