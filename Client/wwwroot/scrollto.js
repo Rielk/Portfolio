@@ -1,4 +1,4 @@
-﻿window.scrollToId = (id) => {
+﻿function scrollToId(id) {
     const element = document.getElementById(id);
     if (element instanceof HTMLElement) {
         element.scrollIntoView({
