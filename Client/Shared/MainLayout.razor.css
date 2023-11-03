@@ -12,6 +12,9 @@
     position: relative;
     width: 100%;
     flex: 1;
+    /**/
+    --space-before: 0px;
+    margin-top: var(--space-before);
 }
 
 .logo-circle {
