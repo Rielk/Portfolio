@@ -10,6 +10,10 @@ html, body {
     padding: 0px;
 }
 
+strong {
+    color: var(--strong-text-color);
+}
+
 h1:focus {
     outline: none;
 }

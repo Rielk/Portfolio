@@ -8,12 +8,8 @@
 <HashRoutingManager />
 
 <style>
-	strong {
-		color: @Theme.Palette.Primary;
-	}
-
-	.cover {
-		margin-top: @($"{HeroHeight}px");
+	:root {
+		--strong-text-color: @Theme.Palette.Primary;
 	}
 </style>
 
@@ -35,7 +31,7 @@
 					@Hero
 				</div>
 
-				<div class="cover">
+				<div class="cover" style="--space-before: @(HeroHeight)px">
 					<div class="pt-4 pt-lg-8 rounded-t-xl" style="background-color: @GetBackColor(true);" />
 					<MudContainer MaxWidth="MaxWidth.False" Class="mx-0 my-n1 px-0 py-0">
 						@Body
