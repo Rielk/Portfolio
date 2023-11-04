@@ -15,6 +15,7 @@
 .cover {
     position: relative;
     width: 100%;
+    z-index: 4;
     /**/
     --space-before: 0px;
     margin-top: var(--space-before);
