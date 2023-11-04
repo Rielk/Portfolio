@@ -4,14 +4,17 @@
     flex-direction: column;
     height: 100%;
     width: 100%;
-
+    /**/
     min-height: 100vh;
+}
+
+.page-background, .page, .logo-circle {
+    background-color: var(--page-packground-color);
 }
 
 .cover {
     position: relative;
     width: 100%;
-    flex: 1;
     /**/
     --space-before: 0px;
     margin-top: var(--space-before);

@@ -10,17 +10,18 @@
 <style>
 	:root {
 		--strong-text-color: @Theme.Palette.Primary;
+		--page-packground-color:  @AppbarColor;
 	}
 </style>
 
 <CascadingValue Value="this" Name="Layout">
 	<CascadingValue Value="@MudThemeProvider">
-		<div class="page" style="background-color: @AppbarColor;">
+		<div class="page">
 			<MudScrollToTop Style="z-index: 1301;">
 				<MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.KeyboardArrowUp" />
 			</MudScrollToTop>
 			<MudAppBar Elevation="0">
-				<span class="logo-circle pa-4" style="background-color: @AppbarColor;">
+				<span class="logo-circle pa-4">
 					<MudLink Href="./"><MudImage Src="images/WillSullDev_Logo.png" Alt="Logo" Height="48" /></MudLink>
 				</span>
 				<MudSpacer />
@@ -33,13 +34,13 @@
 
 				<div class="cover" style="--space-before: @(HeroHeight)px">
 					<div class="pt-4 pt-lg-8 rounded-t-xl" style="background-color: @GetBackColor(true);" />
-					<MudContainer MaxWidth="MaxWidth.False" Class="mx-0 my-0 px-0 py-0">
+					<MudStack Spacing="0" Class="mx-0 my-0 px-0 py-0">
 						@Body
-					</MudContainer>
+					</MudStack>
 					<div class="pb-4 pb-lg-8 rounded-b-xl" style="background-color: @GetBackColor(@EndBGLighter);" />
 				</div>
 
-				<MudSpacer />
+				<div class="flex-grow-1 page-background" style="z-index:1;" />
 				<MudAppBar Elevation="0" Bottom="true" Fixed="false" Class="pb-3">
 					<MudLink Href="./"><MudImage Class="mt-4 mx-4" Src="images/WillSullDev_Logo.png" Alt="Logo" Height="48" /></MudLink>
 				</MudAppBar>
@@ -620,9 +621,9 @@
 		{
 			isDarkMode = await MudThemeProvider.GetSystemPreference();
 			await MudThemeProvider.WatchSystemPreference(OnSystemPreferenceChanged);
+			await SetHeroHeight();
 			StateHasChanged();
 		}
-		await SetHeroHeight();
 		await base.OnAfterRenderAsync(firstRender);
 	}
 
