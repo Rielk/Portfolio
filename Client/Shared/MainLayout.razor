@@ -21,8 +21,8 @@
 			<MudScrollToTop Style="z-index: 1301;">
 				<MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.KeyboardArrowUp" />
 			</MudScrollToTop>
-			<MudAppBar Elevation="0">
-				<span class="logo-circle pa-4">
+			<MudAppBar Elevation="1">
+				<span class="logo-circle pa-4 mud-elevation-1">
 					<MudLink Href="./"><MudImage Src="images/WillSullDev_Logo.png" Alt="Logo" Height="48" /></MudLink>
 				</span>
 				<MudSpacer />
@@ -39,12 +39,12 @@
 						@Body
 					</MudStack>
 					<div class="page-background">
-						<div class="pb-4 pb-lg-8 rounded-b-xl" style="background-color: @GetBackColor(@EndBGLighter);" />
+						<div class="pb-4 pb-lg-8 rounded-b-xl mud-elevation-1" style="background-color: @GetBackColor(EndBGLighter);" />
 					</div>
 				</div>
 
-				<div class="flex-grow-1 page-background" style="z-index:1;" />
-				<MudAppBar Elevation="0" Bottom="true" Fixed="false" Class="pb-3">
+				<div class="pb-2 flex-grow-1 page-background" style="z-index:1;" />
+				<MudAppBar Elevation="1" Bottom="true" Fixed="false" Class="pb-3">
 					<MudLink Href="./"><MudImage Class="mt-4 mx-4" Src="images/WillSullDev_Logo.png" Alt="Logo" Height="48" /></MudLink>
 				</MudAppBar>
 			</MudMainContent>
