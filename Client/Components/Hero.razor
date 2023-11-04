@@ -1,4 +1,6 @@
-﻿<div class="hero">
+﻿<ResizeWatcher Task=@OnResize />
+
+<div class="hero">
 	<div class="fill-100" style="grid-column: 1; grid-row: 1;">
 		<div class="skew-20 height-100">
 			<div class="back-colors">
@@ -8,7 +10,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="@(bufferClass)" style="grid-column: 1; grid-row: 1; z-index: 1;">
+	<div @ref=TextBox class="@(bufferClass)" style="grid-column: 1; grid-row: 1; z-index: 1; --buffer-x: @(BufferXPadding)px;">
 		@ChildContent
 	</div>
 </div>
@@ -23,6 +25,37 @@
 
 	[CascadingParameter]
 	protected MudThemeProvider? MudThemeProvider { get; set; }
+
+	private double BufferXPadding { get; set; } = 40;
+
+	private Task OnResize(bool retrigger)
+	{
+		if (retrigger)
+			return Task.CompletedTask;
+		else
+			return RecalculateWidth();
+	}
+
+	private ElementReference TextBox;
+	private static readonly double Tan20 = Math.Tan(Math.PI / 9); //tan(20) in degrees;
+	private async Task RecalculateWidth()
+	{
+		var old = BufferXPadding;
+		var textHeight = (await TextBox.MudGetBoundingClientRectAsync())?.Height ?? 0;
+		var extraSpacing = Tan20 * textHeight / 2;
+		BufferXPadding = extraSpacing + 40;
+		if (old != BufferXPadding)
+		{
+			StateHasChanged();
+			await ResizeWatcher.TriggerResize();
+		}
+	}
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		await RecalculateWidth();
+		await base.OnAfterRenderAsync(firstRender);
+	}
 
 #pragma warning disable CS0618
 	private Palette Palette

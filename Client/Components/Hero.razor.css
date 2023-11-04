@@ -9,8 +9,9 @@
 }
 
 .buffer-large, .buffer-small {
-    padding-left: 56px;
-    padding-right: 56px;
+    --buffer-x: 0px;
+    padding-left: var(--buffer-x);
+    padding-right: var(--buffer-x);
 }
 
 .hero {
