@@ -7,14 +7,16 @@ public class ResizeWatcher : ComponentBase, IDisposable
 {
 	protected override bool ShouldRender() => false;
 
-	public static event Func<Task>? OnResize;
+	public static event Func<bool, Task>? OnResize;
 
 	[Inject] private IJSRuntime JSRuntime { get; set; } = null!;
 
 	[JSInvokable]
-	public static async Task OnBrowserResize()
+	public static Task OnBrowserResize() => TriggerResize(false);
+
+	public static async Task TriggerResize(bool retrigger = true)
 	{
-		await (OnResize?.Invoke() ?? System.Threading.Tasks.Task.CompletedTask);
+		await (OnResize?.Invoke(retrigger) ?? System.Threading.Tasks.Task.CompletedTask);
 	}
 
 	private static bool eventRegistered = false;
@@ -28,9 +30,9 @@ public class ResizeWatcher : ComponentBase, IDisposable
 		await base.OnInitializedAsync();
 	}
 
-	private Func<Task>? OldTask;
+	private Func<bool, Task>? OldTask;
 	[Parameter]
-	public Func<Task>? Task { get; set; }
+	public Func<bool, Task>? Task { get; set; }
 	protected override void OnParametersSet()
 	{
 		if (OldTask != Task)
