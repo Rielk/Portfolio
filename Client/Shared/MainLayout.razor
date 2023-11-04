@@ -10,7 +10,7 @@
 <style>
 	:root {
 		--strong-text-color: @Theme.Palette.Primary;
-		--page-packground-color:  @AppbarColor;
+		--page-packground-color: @AppbarColor;
 	}
 </style>
 
@@ -37,7 +37,9 @@
 					<MudStack Spacing="0" Class="mx-0 my-0 px-0 py-0">
 						@Body
 					</MudStack>
-					<div class="pb-4 pb-lg-8 rounded-b-xl" style="background-color: @GetBackColor(@EndBGLighter);" />
+					<div class="page-background">
+						<div class="pb-4 pb-lg-8 rounded-b-xl" style="background-color: @GetBackColor(@EndBGLighter);" />
+					</div>
 				</div>
 
 				<div class="flex-grow-1 page-background" style="z-index:1;" />
@@ -64,7 +66,7 @@
 
 	private bool EndBGLighter { get; set; }
 
-	string AppbarColor =>(isDarkMode ? Theme.PaletteDark : Theme.Palette).AppbarBackground.ToString();
+	string AppbarColor => (isDarkMode ? Theme.PaletteDark : Theme.Palette).AppbarBackground.ToString();
 
 	MudTheme Theme = new MudTheme()
 		{
@@ -649,8 +651,8 @@
 			StateHasChanged();
 	}
 
-    public void SetLinks(List<LinkDetails>? links)
-    {
+	public void SetLinks(List<LinkDetails>? links)
+	{
 		links ??= new() { new("./", "Home") };
 		Links = links;
 		StateHasChanged();
