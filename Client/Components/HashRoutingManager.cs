@@ -56,10 +56,23 @@ public class HashRoutingManager : ComponentBase, IDisposable
 		return JSRuntime.InvokeVoidAsync("scrollToId", uri.Fragment[1..]);
 	}
 
-	void IDisposable.Dispose()
+	private bool disposedValue;
+	protected virtual void Dispose(bool disposing)
 	{
-		NavManager.LocationChanged -= OnLocationChanged;
-		ChangingRegistration?.Dispose();
+		if (!disposedValue)
+		{
+			if (disposing)
+			{
+				NavManager.LocationChanged -= OnLocationChanged;
+				ChangingRegistration?.Dispose();
+			}
+			disposedValue = true;
+		}
+	}
+
+	public void Dispose()
+	{
+		Dispose(disposing: true);
 		GC.SuppressFinalize(this);
 	}
 }
