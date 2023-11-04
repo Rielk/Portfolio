@@ -1,6 +1,12 @@
 ﻿<div class="hero">
-	<div class="backStrip grid11 @bufferClass" style="background-color: @Palette.Secondary" />
-	<div class="grid11 px-6" style="z-index: 1;">
+	<div class="skew-position fill grid-c-1 grid-r-1">
+		<div class="backColors">
+			<div class="fill grid-c-1 grid-r-1" style="background-color: @(Palette.Secondary)" />
+			<div class="fill grid-c-2 grid-r-1" />
+			<div class="fill grid-c-3 grid-r-1" style="background-color: @(Palette.Secondary)" />
+		</div>
+	</div>
+	<div class="grid-c-1 grid-r-1 px-6 @(bufferClass)" style="z-index: 1;">
 		@ChildContent
 	</div>
 </div>
