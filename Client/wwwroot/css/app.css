@@ -40,8 +40,12 @@ h1:focus {
     font-family: var(--font-family--Roboto-Mono)!important;
 }
 
-.width-100 {
+.width-100, .fill-100 {
     width: 100%;
+}
+
+.height-100, .fill-100 {
+    height: 100%;
 }
 
 .lds-ripple {
