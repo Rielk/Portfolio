@@ -7,6 +7,8 @@ namespace BlazorApp.Client.Shared;
 
 public class MainLayoutSetter : ComponentBase
 {
+	protected override bool ShouldRender() => false;
+
 	[CascadingParameter(Name = "Layout")]
 	public MainLayout Layout { get; set; } = null!;
 
@@ -36,6 +38,8 @@ public class MainLayoutSetter : ComponentBase
 
 public class HashRoutingManager : ComponentBase, IDisposable
 {
+	protected override bool ShouldRender() => false;
+
 	[Inject] private NavigationManager NavManager { get; set; } = null!;
 	[Inject] private IJSRuntime JSRuntime { get; set; } = null!;
 
