@@ -623,9 +623,9 @@
 		{
 			isDarkMode = await MudThemeProvider.GetSystemPreference();
 			await MudThemeProvider.WatchSystemPreference(OnSystemPreferenceChanged);
-			await SetHeroHeight();
 			StateHasChanged();
 		}
+		await SetHeroHeight();
 		await base.OnAfterRenderAsync(firstRender);
 	}
 
