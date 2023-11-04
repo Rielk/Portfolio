@@ -25,7 +25,7 @@
     transform: skew(20deg);
 }
 
-.backColors {
+.back-colors {
     display: grid;
     grid-template-columns: 16px 16px auto 16px 16px;
     /**/
