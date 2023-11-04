@@ -6,7 +6,7 @@
 <MudSnackbarProvider />
 
 <HashRoutingManager />
-<ResizeWatcher Task=@OnWindowResize />
+<ResizeWatcher Task=@OnResize />
 
 <style>
 	:root {
@@ -637,7 +637,7 @@
 		return Task.CompletedTask;
 	}
 
-	private Task OnWindowResize() => SetHeroHeight();
+	private Task OnResize(bool retrigger) => SetHeroHeight();
 
 	public async void SetHero(RenderFragment? hero)
 	{
