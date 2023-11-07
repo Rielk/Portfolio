@@ -20,7 +20,7 @@ public class SendMessageFunction
 	}
 
 	[Function("SendMessage")]
-	public async Task<RunReturn> Run([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequestData req)
+	public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequestData req)
 	{
 		_logger.LogInformation("C# HTTP trigger function processed a request.");
 
@@ -31,10 +31,7 @@ public class SendMessageFunction
 		}
 		catch (Exception ex)
 		{
-			HttpResponseData response = req.CreateResponse(HttpStatusCode.BadRequest);
-			response.Headers.Add("Content-Type", "text/html; charset=utf-8");
-			response.WriteString("Couldn't read a message from the Request: " + ex.Message);
-			return new(response);
+			return await CreateResponse(req, HttpStatusCode.BadRequest, "Couldn't read a message from the Request: " + ex.Message, false, false);
 		}
 		string senderName = contactMessage.Name;
 		string senderEmail = contactMessage.Email;
@@ -43,14 +40,28 @@ public class SendMessageFunction
 		string recieverEmail = Environment.GetEnvironmentVariable("SendGridEmailTo");
 		string recieverName = Environment.GetEnvironmentVariable("SendGridEmailToName");
 
-		SendGridMessage messageMail = createMessageMail();
-		SendGridMessage confirmationMail = createConfirmationMail();
-
 		var client = new SendGridClient(Environment.GetEnvironmentVariable("AzureSendGridApiKey"));
-		await client.SendEmailAsync(messageMail);
-		await client.SendEmailAsync(confirmationMail);
+		try
+		{
+			SendGridMessage messageMail = createMessageMail();
+			//await client.SendEmailAsync(messageMail);
+		}
+		catch (Exception ex)
+		{
+			return await CreateResponse(req, HttpStatusCode.InternalServerError, ex.Message, false, false);
+		}
 
-		return new(OkResult(req));
+		try
+		{
+			SendGridMessage confirmationMail = createConfirmationMail();
+			//await client.SendEmailAsync(confirmationMail);
+		}
+		catch (Exception ex)
+		{
+			return await CreateResponse(req, HttpStatusCode.InternalServerError, ex.Message, true, false);
+		}
+
+		return await CreateResponse(req, HttpStatusCode.OK, "Emails sent", true, true);
 
 		SendGridMessage createMessageMail()
 		{
@@ -93,21 +104,10 @@ This is an automatic confirmation. I'll respond as soon as I can, Will";
 		}
 	}
 
-	private static HttpResponseData OkResult(HttpRequestData req)
+	private static async Task<HttpResponseData> CreateResponse(HttpRequestData req, HttpStatusCode statusCode, string responseString, bool messageSent, bool confirmationSent)
 	{
-		HttpResponseData response = req.CreateResponse(HttpStatusCode.OK);
-		response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
-		response.WriteString("Email sent");
+		HttpResponseData response = req.CreateResponse(statusCode);
+		await response.WriteAsJsonAsync(new ContactResponse() { MessageSent = messageSent, ConfirmationSent = confirmationSent, ResponseString = responseString });
 		return response;
-	}
-
-	public class RunReturn
-	{
-		public RunReturn(HttpResponseData httpResponse)
-		{
-			HttpResponse = httpResponse;
-		}
-
-		public HttpResponseData HttpResponse { get; private set; }
 	}
 }
