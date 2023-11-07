@@ -1,0 +1,53 @@
+﻿<SectionBackground BGLighter=@BGLighter>
+	<section id="@Id" class=@PaddingClasses>
+				@if (Header != null)
+				{
+					<ResponsiveTitle Class="mb-3">@Header</ResponsiveTitle>
+				}
+
+				<article>
+					@ChildContent
+				</article>
+
+				@if (@EndHref != null)
+				{
+					<div class="d-flex justify-center mt-6">
+						<MudButton Href="@EndHref" Color="Color.Secondary" Variant="Variant.Filled">
+							@(EndHrefText ?? EndHref.Trim('.', '/', '#', ' '))
+						</MudButton>
+					</div>
+				}
+	</section>
+</SectionBackground>
+
+@code {
+    [Parameter]
+    public string? Id { get; set; } = Guid.NewGuid().ToString("N");
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+    [Parameter]
+    public bool BGLighter { get; set; } = true;
+
+    [Parameter]
+    public string? Header { get; set; }
+
+    [Parameter]
+    public string? EndHref { get; set; }
+    [Parameter]
+    public string? EndHrefText { get; set; }
+
+    [Parameter]
+    public bool Tight { get; set; } = false;
+    [Parameter]
+    public bool? TightTop { get; set; } = null;
+    [Parameter]
+    public bool? TightBottom { get; set; } = null;
+
+    private string PaddingClasses => (TightTop ?? Tight, TightBottom ?? Tight) switch
+	{
+		(true, true) => "py-4",
+		(false, true) => "pt-8 pt-lg-12 pt-xl-16 pb-4",
+		(true, false) => "pb-8 pb-lg-12 pb-xl-16 pt-4",
+		(false, false) => "py-8 py-lg-12 py-xl-16",
+	};
+}

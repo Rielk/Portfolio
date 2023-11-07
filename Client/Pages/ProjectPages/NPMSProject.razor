@@ -1,0 +1,54 @@
+﻿@page "/Projects/NPMS"
+
+<PageTitle>William Sullivan - Software Developer</PageTitle>
+
+<MainLayoutSetter Links="@Links" EndBGLighter=true>
+	<Hero>
+		<div class="hero-buffer-small">
+			<MudText Typo="Typo.h4" Class="mono-font">
+				<strong>NPMS</strong> - National Production Monitoring System
+			</MudText>
+			<MudText Typo="Typo.body1" Class="mono-font">
+				The system for <strong>reporting and monitoring</strong> oil production across Nigeria
+			</MudText>
+		</div>
+	</Hero>
+</MainLayoutSetter>
+
+<SectionBase>
+	<BigMudPaper Class="spaced-block">
+		<ResponsiveTitle>
+			Overview
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			The Nigerian National Production Monitoring System is the system of software used across Nigeria for companies to report their oil production and giving government officials utilities for generating reports and viewing the data.
+		</MudText>
+		<MudText Typo="Typo.body1">
+			Originally developed in 2009, this was created by <MudLink Color="Color.Secondary" Href="./Experience/#DataHorizon">DataHorizon</MudLink> for the Nigerian DPR. It is a set of <strong>Windows Form</strong> applications, written in <strong>C#</strong> and using <strong>SQL</strong> to access an <strong>Oracle</strong> Database.
+		</MudText>
+		<ResponsiveTitle>
+			Description
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			During my time at DataHorizon, I enhanced the functionality of many parts of the system, mostly on the monitoring side of the project, working with Nigerian officials to determine new needs for the product, and then implementing them.
+		</MudText>
+		<MudText Typo="Typo.body1">
+			One such feature that I implemented was a management system for maximum extraction rates of wells, a government regulated value. This would have allowed government officials to rapidly manage national production while maintaining the health of the oil wells and guaranteeing the maximum oil extraction in the long term. This was further improved with an automatic calculator, which analysed test data for the well to determine a recommended value, which would have reduced their work load further.
+		</MudText>
+		<ResponsiveTitle>
+			What I learnt
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			This was my first exposure to a full project as a software developer, so it was unsurprisingly an invaluable experience. I think one of the most valuable parts of this experience was the chance to see and work on an existing project. After a decade of development, it was clear which parts of the code were easily maintainable and which weren’t. It also really highlighted the importance of doing things correctly the first time.
+		</MudText>
+		<MudText Typo="Typo.body1">
+			More obviously, it also gave me a chance to get familiar with a range of technologies I hadn’t used before, and refine my skills with those I had. Notably, this was an opportunity for me to learn SQL on an Oracle database, as well as learn some good practices when designing and managing them as I helped refine and add new tables to establish a better history, allowing for easier tracking of individual company outputs.
+		</MudText>
+	</BigMudPaper>
+</SectionBase>
+
+@code {
+	private List<LinkDetails>? Links { get; } = new() {
+		new("./", "Home"),
+		new("./Projects", "Projects") };
+}

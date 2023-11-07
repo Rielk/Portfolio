@@ -1,0 +1,34 @@
+﻿@* @page "/Projects/Test1" *@
+
+<PageTitle>William Sullivan - Software Developer</PageTitle>
+
+<MainLayoutSetter Links="@Links" EndBGLighter=true>
+	<Hero>
+		<div class="hero-buffer-small">
+			<MudText Typo="Typo.h4" Class="mono-font">
+				My Specific <strong>Project</strong>
+			</MudText>
+			<MudText Typo="Typo.body1" Class="mono-font">
+				This is the <strong>Test 1</strong> project
+			</MudText>
+			<MudText Typo="Typo.body2" Class="mono-font">
+				This page is <strong>under construction</strong>.
+			</MudText>
+		</div>
+	</Hero>
+</MainLayoutSetter>
+
+<SectionBase>
+	<BigMudPaper>
+		<MudText Typo="Typo.body2">
+			This page is <strong>under construction</strong>.
+		</MudText>
+	</BigMudPaper>
+</SectionBase>
+
+@code {
+	private List<LinkDetails>? Links { get; } = new() {
+		new("./", "Home"),
+		new("./Projects", "Projects"),
+		new("https://github.com/Rielk", "GitHub") };
+}

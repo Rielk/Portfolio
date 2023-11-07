@@ -1,0 +1,74 @@
+﻿@page "/Projects/NaoRobot"
+
+<PageTitle>William Sullivan - Software Developer</PageTitle>
+
+<MainLayoutSetter Links="@Links" EndBGLighter=true>
+	<Hero>
+		<div class="hero-buffer-small">
+			<MudText Typo="Typo.h4" Class="mono-font">
+				Swinging <strong>Nao Robot</strong>
+			</MudText>
+			<MudText Typo="Typo.body1" Class="mono-font">
+				Utilising <strong>Neural Networks</strong> to find the optimal method to make a Nao Robot swing.
+			</MudText>
+		</div>
+	</Hero>
+</MainLayoutSetter>
+
+<SectionBase>
+	<BigMudPaper Class="spaced-block">
+		<ResponsiveTitle>
+			Overview
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			In my penultimate year at university, I was part of a 14-person group study with the aim to optimise the swing of a Nao robot and achieve the highest possible swing height.
+		</MudText>
+		<MudText Typo="Typo.body1">
+			I contributed to the machine learning subgroup, taking the lead in developing a <strong>Neural Network</strong> from scratch using <strong>Python</strong>, training the Networks in a simulated environment using a genetic algorithm.
+		</MudText>
+		<ResponsiveTitle>
+			Description
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			As part of my university course I contributed to a larger group study. There was a total of 14 people in the group, but we split into multiple smaller teams. I was part of the machine learning sub group. We explored several different methods of machine learning and I took the lead in developing a neural network from scratch in Python. This network was trained using an evolution learning algorithm called GNARL.
+		</MudText>
+		<MudText Typo="Typo.body1">
+			This successfully and effectively learnt to swing on a simulated environment with a range of different conditions and parameters, in a number of cases finding solutions which beat the heuristic methods provided by another team.
+		</MudText>
+		<MudText Typo="Typo.body1">
+			While beginning to transfer the learnt behaviour to the real robot, there were a series of challenges which had been overlooked in the simulation, threatening to damage the integrity of the robot. Progress was made towards resolving these, however, with the project deadline approaching, we ultimately decided that analysing the results we had already acquired would be more productive and left many of our proposed improvement for next year’s students.
+		</MudText>
+		<ResponsiveTitle>
+			What I learnt
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			This was my first experience working on a large project and contributing to a group and was an invaluable experience. Coordinating work with others and sharing ideas to progress towards a common goal is important in almost all lines of work, and I think it’s especially true in software development.
+		</MudText>
+		<MudText Typo="Typo.body1">
+			One of out biggest mistakes in this project was a lack of direction. While we worked well as a group and produced good results, we never had a clearly defined end goal which lead to us having many improvements we wanted to make by the end of the project. It also meant that some of the more useful tasks were left too late to fully use the results.
+		</MudText>
+		<MudText Typo="Typo.body1">
+			Another important lesson that I learnt, was to use the tools available to me. I gained a greater understanding of neural networks after building one from nothing. It also allowed a few more customisations for the networks while running tests. However, I have to admit that better results could have been achieved sooner by utilising available libraries such as Keras.
+		</MudText>
+	</BigMudPaper>
+</SectionBase>
+<SectionBase BGLighter=false>
+	<BigMudPaper Class="spaced-block">
+		<ResponsiveTitle>
+			GitHub
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			If you want to see the code I wrote, it’s available here: <MudLink Class="d-block d-sm-inline" Color="Color.Secondary" Href="https://github.com/Rielk/Swinging-Nao-Robot" Target="_blank">GitHub - Swinging Nao Robot</MudLink>
+		</MudText>
+		<MudText Typo="Typo.body1">
+			If you want to read the final report, please get in contact with me. Due to the nature of the project, the majority of the report was not my work, so I won’t be making it available online.
+		</MudText>
+	</BigMudPaper>
+</SectionBase>
+
+@code {
+	private List<LinkDetails>? Links { get; } = new() {
+		new("./", "Home"),
+		new("./Projects", "Projects"),
+		new("https://github.com/Rielk/Swinging-Nao-Robot", "GitHub") };
+}

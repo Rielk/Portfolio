@@ -1,0 +1,89 @@
+﻿@page "/Projects/HandoverPacks"
+
+<PageTitle>William Sullivan - Software Developer</PageTitle>
+
+<MainLayoutSetter Links="@Links" EndBGLighter=true>
+	<Hero>
+		<div class="hero-buffer-small">
+			<MudText Typo="Typo.h4" Class="mono-font">
+				<strong>Handover Pack</strong> Compiler
+			</MudText>
+			<MudText Typo="Typo.body1" Class="mono-font">
+				File collation tool to augment my work at <strong>Mypower</strong>
+			</MudText>
+		</div>
+	</Hero>
+</MainLayoutSetter>
+
+<SectionBase BGLighter=true>
+	<BigMudPaper Class="spaced-block">
+		<ResponsiveTitle>
+			Overview
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			A Python script I wrote to augment some paperwork tasks I was responsible for at <MudLink Color="Color.Secondary" Href="./Experience/#Mypower">Mypower</MudLink>, automating repetitive parts of it. Built in <strong>Python</strong> and then later adapted to a <strong>C#</strong> program using <strong>WinForms</strong>.
+		</MudText>
+		<ResponsiveTitle>
+			Details
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			While working at Mypower, one of my responsibilities was the creation and formatting of handover packs for clients. This required finding appropriate warranties and manuals for the installed equipment, as well as specific certifications and prediction tools for the job. It also needed a cover sheet to be filled out, containing an overview of the project.
+		</MudText>
+
+		<MudText Typo="Typo.body1">
+			After putting a few of these together, it became obvious that a lot of the actions required were repetitive and a significant portion of my time was spent navigating through folders, finding a file then double checking it was referring to the correct component or job.
+		</MudText>
+
+		<MudText Typo="Typo.body1">
+			This program started as a Command Prompt script to remove a lot of the repetitive nature of the process. It wasn’t possible to automate the process completely, it still required some investigation to workout some details, however, it did significantly increase the rate I could process them, turning a task that would often taken around an hour, into one that could be performed 4 or 5 times in an hour.
+		</MudText>
+
+		<MudText Typo="Typo.body1">
+			I then began work, in my free time, designing a WinForms application. The aim was to make a more user friendly piece of software which other people could use. Looking back at it, I’m aware of many mistakes I made in the design and implementation. But it was an invaluable learning experience and didn’t turn out too badly for my first attempt at a project like this. I never finished polishing this software sadly, as I left the company and got a permanent position as a developer.
+		</MudText>
+
+		<ResponsiveTitle>
+			What did I learn?
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			This was my first time really using C# or creating anything with a proper interface. So the big learning experience here came from using both technologies.
+		</MudText>
+
+		<MudText Typo="Typo.body1">
+			Looking back, it’s also very apparent how important good coding practices are, and while I wasn’t aware at the time, the lack of separation between the model and view accompanied by the large, monolithic, functions in the code, definitely made it more of a challenge than it should have.
+		</MudText>
+
+		<MudText Typo="Typo.body1">
+			This was also the first time I’d designed something to be used independently of myself, so it was the first time I realised the importance of making something intuitive, and easy to use.
+		</MudText>
+
+		<MudText Typo="Typo.body1">
+			My final, and I think most important takeaway, was that a program doesn’t have to do <i>everything</i> to be useful. A lot of the feature of the script, I tried to port into the full software, but that resulted in it being complicated to use and not worth the time to learn. At it’s core, it didn’t need to do a lot to still be useful, and if I had started by implementing the absolute basics, then expanded it later, I would have seen a far cleaner result, which could have been built upon later.
+		</MudText>
+	</BigMudPaper>
+</SectionBase>
+<SectionBase BGLighter=false>
+	<BigMudPaper Class="spaced-block">
+		<ResponsiveTitle>
+			GitHub
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			You can see the GitHub repositories here, just don’t judge me too harshly on them, this was an old project.
+		</MudText>
+
+		<MudText Typo="Typo.body1">
+			The original Python script: <MudLink Class="d-block d-sm-inline" Color="Color.Secondary" Href="https://github.com/Rielk/Handover-Pack-Compiler-Python" Target="_blank">GitHub - Handover Pack Compiler Python</MudLink>
+		</MudText>
+
+		<MudText Typo="Typo.body1">
+			And the software with a GUI: <MudLink Class="d-block d-sm-inline" Color="Color.Secondary" Href="https://github.com/Rielk/Handover-Pack-Compiler" Target="_blank">GitHub - Handover Pack Compiler</MudLink>
+		</MudText>
+	</BigMudPaper>
+</SectionBase>
+
+@code {
+	private List<LinkDetails>? Links { get; } = new() {
+		new("./", "Home"),
+		new("./Projects", "Projects"),
+		new("https://github.com/Rielk/Handover-Pack-Compiler-Python", "GitHub") };
+}

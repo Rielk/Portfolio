@@ -1,0 +1,25 @@
+﻿<MudHidden Breakpoint="Breakpoint.MdAndUp" Invert=true>
+	<MudStack Class="title-space">
+		<MudText Typo="Typo.h3" Class="@TotalLargeClass">@ChildContent</MudText>
+	</MudStack>
+</MudHidden>
+<MudHidden Breakpoint="Breakpoint.MdAndUp">
+	<MudStack AlignItems="AlignItems.Center" Class="title-space">
+		<MudText Typo="Typo.h4" Class=@TotalSmallClass Align="Align.Center">@ChildContent</MudText>
+	</MudStack>
+</MudHidden>
+
+@code {
+	[Parameter]
+	public RenderFragment? ChildContent { get; set; }
+
+	[Parameter]
+	public string? SmallClass { get; set; }
+	[Parameter]
+	public string? LargeClass { get; set; }
+	[Parameter]
+	public string? Class { get; set; }
+
+	private string? TotalSmallClass => "justify-center " + Class + " " + SmallClass;
+	private string? TotalLargeClass => Class + " " + LargeClass;
+}

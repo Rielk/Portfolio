@@ -1,0 +1,31 @@
+﻿@page "/Experience"
+
+<PageTitle>William Sullivan - Software Developer</PageTitle>
+
+<MainLayoutSetter Links="@Links" EndBGLighter=true>
+	<Hero>
+		<div class="hero-buffer-small">
+			<MudText Typo="Typo.h4" Class="mono-font">
+				My <strong>Experience</strong>
+			</MudText>
+			<MudText Typo="Typo.body1" Class="mono-font">
+				More details on my work history
+			</MudText>
+		</div>
+	</Hero>
+</MainLayoutSetter>
+
+<SectionBase Id="DataHorizon" BGLighter=true Header="Work">
+	<DataHorizonExperienceSection />
+</SectionBase>
+<SectionBase Id="Mypower" BGLighter=false>
+	<MypowerExperienceSection />
+</SectionBase>
+<SectionBase Id="UoB" BGLighter=true Header="Education">
+	<UoBExperienceSection />
+</SectionBase>
+
+@code {
+	private List<LinkDetails>? Links { get; } = new() {
+		new("./", "Home") };
+}

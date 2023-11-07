@@ -1,0 +1,12 @@
+﻿@using BlazorApp.Client.Sections.ExperienceSections
+
+<SectionBase Id=@Id BGLighter=@BGLighter Header="Where I've worked" EndHref="Experience">
+	<DataHorizonExperienceSection />
+</SectionBase>
+
+@code {
+	[Parameter]
+	public string? Id { get; set; }
+	[Parameter]
+	public bool BGLighter { get; set; }
+}

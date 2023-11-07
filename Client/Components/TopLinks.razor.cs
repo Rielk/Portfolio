@@ -1,13 +1,27 @@
-﻿public class NavLinkDetails
+﻿namespace BlazorApp.Client.Components;
+
+public class LinkDetails
 {
-	public NavLinkDetails(string href, string content, bool matchAll = false)
+	private bool? external;
+
+	public LinkDetails(string href, string content, bool? external = null)
 	{
 		HRef = href;
 		Content = content;
-		MatchAll = matchAll;
+		this.external = external;
 	}
 
 	public string HRef { get; set; }
 	public string Content { get; set; }
-	public bool MatchAll { get; set; }
+	public bool External
+	{
+		get
+		{
+			return external ?? !(HRef.StartsWith('.') || HRef.StartsWith('#'));
+		}
+		set
+		{
+			external = value;
+		}
+	}
 }

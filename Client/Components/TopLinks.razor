@@ -1,65 +1,62 @@
-﻿<div class="link-collection link-collection-large">
-	@foreach (var detail in NavLinks)
+﻿@inject IJSRuntime JSRuntime
+
+<MudHidden Breakpoint="Breakpoint.SmAndDown">
+	@foreach (var detail in LinkEnumerable)
 	{
-		<div class="nav-item nav-item-large">
-			@if (detail.MatchAll)
-			{
-				<NavLink class="nav-link" href="@detail.HRef" Match="NavLinkMatch.All">
+		<MudButton Size="Size.Large" Href="@detail.HRef" Target=@(detail.External ? "_blank" : null) Color="Color.Inherit">
+			<MudStack Row=true AlignItems="AlignItems.Center" Spacing="0">
+				<MudText Typo="Typo.button">
 					@detail.Content
-				</NavLink>
-			}
-			else
+				</MudText>
+				@if (detail.External)
+				{
+					<MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Class="mt-n1" />
+				}
+			</MudStack>
+		</MudButton>
+	}
+</MudHidden>
+
+<MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
+	<MudMenu Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight">
+		<div class="my-n2 py-2" style="background-color: @Palette.AppbarBackground; color: @Palette.AppbarText">
+			@foreach (var detail in LinkEnumerable)
 			{
-				<NavLink class="nav-link" href="@detail.HRef">
-					@detail.Content
-				</NavLink>
+				<MudMenuItem Href="@detail.HRef" Target=@(detail.External ? "_blank" : null)>
+					<MudStack Row=true AlignItems="AlignItems.Center" Spacing="0">
+						<MudText Typo="Typo.button">
+							@detail.Content
+						</MudText>
+						@if (detail.External)
+						{
+							<MudIcon Icon="@Icons.Material.Filled.OpenInNew" Size="Size.Small" Class="mt-n1" />
+						}
+					</MudStack>
+				</MudMenuItem>
 			}
 		</div>
-	}
-</div>
-
-<div class="link-collection link-collection-small">
-	<button class="menu-btn" @onclick="ToggleMenu"><span class="oi oi-menu" aria-hidden="true"></span></button>
-	<div class="menu-content" hidden="@MenuHidden">
-		@foreach (var detail in NavLinks)
-		{
-			<div class="nav-item">
-				@if (detail.MatchAll)
-				{
-					<NavLink class="nav-link" href="@detail.HRef" Match="NavLinkMatch.All">
-						@detail.Content
-					</NavLink>
-				}
-				else
-				{
-					<NavLink class="nav-link" href="@detail.HRef">
-						@detail.Content
-					</NavLink>
-				}
-			</div>
-		}
-	</div>
-</div>
+	</MudMenu>
+</MudHidden>
 
 @code {
 	[Parameter, EditorRequired]
-	public List<NavLinkDetails> NavLinks { get; set; } = new();
+	public List<LinkDetails>? Links { get; set; }
 
-	[Parameter]
-	public bool MenuHidden { get; set; } = true;
+	private IEnumerable<LinkDetails> LinkEnumerable => Links ?? Enumerable.Empty<LinkDetails>();
 
-	private bool IgnoreNextHide = false;
+	[CascadingParameter]
+	protected MudThemeProvider? MudThemeProvider { get; set; }
 
-	public void ToggleMenu()
+#pragma warning disable CS0618
+	private Palette Palette
 	{
-		MenuHidden = !MenuHidden;
-		IgnoreNextHide = true;
+		get
+		{
+			if (MudThemeProvider?.IsDarkMode ?? false)
+				return MudThemeProvider.Theme?.PaletteDark ?? new PaletteDark();
+			else
+				return MudThemeProvider?.Theme?.Palette ?? new PaletteLight();
+		}
 	}
-
-	public void HideMenu()
-	{
-		if (!IgnoreNextHide)
-			MenuHidden = true;
-		IgnoreNextHide = false;
-	}
+#pragma warning restore CS0618
 }

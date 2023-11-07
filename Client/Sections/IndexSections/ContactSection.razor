@@ -1,0 +1,19 @@
+﻿<SectionBase Id=@Id BGLighter=@BGLighter>
+	<BigMudPaper>
+		<MudStack AlignItems="AlignItems.Center" Class="spaced-block">
+			<ResponsiveTitle>Get in Touch</ResponsiveTitle>
+			<MudText Align="Align.Center">I’m always available for contact, whether you have questions or an exciting opportunity. Please don’t hesitate to contact me.</MudText>
+
+			<MudButton Variant="Variant.Filled" Color="Color.Secondary" Href="mailto:hello@WilliamSullivan.dev">Contact</MudButton>
+
+			<SocialMedia />
+		</MudStack>
+	</BigMudPaper>
+</SectionBase>
+
+@code {
+	[Parameter]
+	public string? Id { get; set; }
+	[Parameter]
+	public bool BGLighter { get; set; }
+}

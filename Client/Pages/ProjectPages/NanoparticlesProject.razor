@@ -1,0 +1,60 @@
+﻿@page "/Projects/Nanoparticles"
+
+<PageTitle>William Sullivan - Software Developer</PageTitle>
+
+<MainLayoutSetter Links="@Links" EndBGLighter=true>
+	<Hero>
+		<div class="hero-buffer-small">
+			<MudText Typo="Typo.h4" Class="mono-font">
+				Neural Networks for Categorising <strong>Nanoparticles</strong>
+			</MudText>
+			<MudText Typo="Typo.body1" Class="mono-font">
+				My Master’s project at <strong>University</strong>
+			</MudText>
+		</div>
+	</Hero>
+</MainLayoutSetter>
+
+<SectionBase BGLighter=true>
+	<BigMudPaper Class="spaced-block">
+		<ResponsiveTitle>
+		Overview
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+		For my Master’s project at University, I performed research into neural networks. Specifically, into their capabilities categorising STEM images. This was done in <strong>Python</strong> using <strong>Keras</strong> with <strong>TensorFlow</strong>
+		</MudText>
+
+		<ResponsiveTitle>
+		Details
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+		Scanning Transmission Electron Microscopes are powerful tools, providing 2D images of 3D particles at the atomic scale. However, analysing these images can be time consuming and unreliable as the methods required to infer the structure of the particle may not be obvious, especially when considering multiple images in stereo. My project aimed to show that a neural network can be developed to use images in stereo and reliably categorise particles which would be too difficult identify by a human.
+		</MudText>
+
+		<MudText Typo="Typo.body1">
+		Over the course of the year, I developed a number of scripts and ran various tests on the capabilities  of different network structures, successfully showing that a pair of images could be used together to analyse an image and categorise particles in an experiment.
+		</MudText>
+	</BigMudPaper>
+</SectionBase>
+<SectionBase BGLighter=false>
+	<BigMudPaper Class="spaced-block">
+		<ResponsiveTitle>
+			Files
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			For more details, you can read my final report: <MudLink Class="d-block d-sm-inline" Color=Color.Secondary Href="./files/Master Project-William Sullivan.pdf" Target="_blank">Final Report</MudLink>
+		</MudText>
+
+		<MudText Typo="Typo.body1">
+			You can also take a look at the scripts. Although, looking back, I can see I used to be lax on documentation and readability: <MudLink Class="d-block d-sm-inline" Color=Color.Secondary Href="https://github.com/Rielk/STEM-Machine-Learning" Target="_blank">GitHub - STEM Machine Learning</MudLink>
+		</MudText>
+	</BigMudPaper>
+</SectionBase>
+
+@code {
+	private List<LinkDetails>? Links { get; } = new() {
+		new("./", "Home"),
+		new("./Projects", "Projects"),
+		new("./files/Master Project-William Sullivan.pdf", "Report", true),
+		new("https://github.com/Rielk/STEM-Machine-Learning", "GitHub") };
+}

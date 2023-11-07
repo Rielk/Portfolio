@@ -1,0 +1,28 @@
+﻿<MudHidden Breakpoint="Breakpoint.SmAndDown">
+	<MudStack Row=true Spacing=2 AlignItems="AlignItems.End" Class="title-space">
+		<MudText Typo="Typo.h4">@MainContent</MudText>
+		<MudText Style="padding-bottom: 0.20rem;" Typo="Typo.h5" Class="mud-text-secondary mono-font">@SubContent</MudText>
+	</MudStack>
+</MudHidden>
+<MudHidden Breakpoint="Breakpoint.Sm" Invert=true>
+	<MudStack Row=true Spacing=1 AlignItems="AlignItems.End" Class="title-space">
+		<MudText Typo="Typo.h5">@MainContent</MudText>
+		<MudText Style="padding-bottom: 0.02rem;" Typo="Typo.h6" Class="mud-text-secondary mono-font">@SubContent</MudText>
+	</MudStack>
+</MudHidden>
+<MudHidden Breakpoint="Breakpoint.SmAndUp">
+	<MudStack Spacing="0" Class="title-space">
+		<MudText Typo="Typo.h5">@MainContent</MudText>
+		@if (SubContent != null) @* Needed on this one because of the negative margin. *@
+		{
+			<MudText Typo="Typo.h6" Class="mud-text-secondary mono-font mt-n2">@SubContent</MudText>
+		}
+	</MudStack>
+</MudHidden>
+
+@code {
+	[Parameter]
+	public RenderFragment? MainContent { get; set; }
+	[Parameter]
+	public RenderFragment? SubContent { get; set; }
+}

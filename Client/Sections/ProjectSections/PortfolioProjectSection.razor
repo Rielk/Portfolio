@@ -1,0 +1,16 @@
+﻿<BaseProjectSection Title="Personal Portfolio Website"
+					SubPage="Portfolio"
+					Catchline="This Website"
+					ImageLeft=@ImageLeft
+					Tags="@(new() {"Blazor", "Azure", "C#", "html", "css"})"
+					GitHub="https://github.com/Rielk/Portfolio"
+					Date="August 2023+"
+					ImageSource="images/PortfolioProject.png"
+					ImageAltText="Portfolio Project Picture">
+	A website to showcase my projects and skills.
+</BaseProjectSection>
+
+@code {
+	[Parameter, EditorRequired]
+	public bool ImageLeft { get; set; }
+}
