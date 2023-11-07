@@ -31,24 +31,32 @@ public class SendMessageFunction
 		catch (Exception ex)
 		{
 			HttpResponseData response = req.CreateResponse(HttpStatusCode.BadRequest);
-			response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
+			response.Headers.Add("Content-Type", "text/html; charset=utf-8");
 			response.WriteString("Couldn't read a message from the Request: " + ex.Message);
 			return new(response);
 		}
 		string name = contactMessage.Name;
 		string email = contactMessage.Email;
-		string message = $"Message from: {name}, ({email})" + Environment.NewLine + contactMessage.Message;
+		string plainMessage = @$"Message from: {name}, ({email})
 
-		var mail = new SendGridMessage();
+Message content:
+{contactMessage.Message}";
+		string htmlMessge = $"<p>Message from: {name}, ({email})</p><p>Message content:</p><p>{contactMessage.Message}</p>";
+
+		var mail = new SendGridMessage()
+		{
+			From = new EmailAddress(Environment.GetEnvironmentVariable("SendGridEmailFrom"), Environment.GetEnvironmentVariable("SendGridEmailFromName")),
+			ReplyTo = new(email, name),
+			Subject = $"Website Message: {name}",
+		};
 		mail.AddTo(new EmailAddress(Environment.GetEnvironmentVariable("SendGridEmailTo"), Environment.GetEnvironmentVariable("SendGridEmailToName")));
-		mail.SetFrom(new EmailAddress(Environment.GetEnvironmentVariable("SendGridEmailFrom"), Environment.GetEnvironmentVariable("SendGridEmailFromName")));
-		mail.AddContent("text/html", message);
-		mail.SetSubject($"Website Message: {name}");
+		mail.AddContent("text/plain", plainMessage);
+		mail.AddContent("text/html", htmlMessge);
 
 		return new(OkResult(req), mail);
 	}
 
-	private HttpResponseData OkResult(HttpRequestData req)
+	private static HttpResponseData OkResult(HttpRequestData req)
 	{
 		HttpResponseData response = req.CreateResponse(HttpStatusCode.OK);
 		response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
@@ -65,7 +73,7 @@ public class SendMessageFunction
 			MessageJson = Newtonsoft.Json.JsonConvert.SerializeObject(message);
 		}
 
-		//[SendGridOutput(ApiKey = "AzureSendGridApiKey")]
+		[SendGridOutput(ApiKey = "AzureSendGridApiKey")]
 		public string MessageJson { get; private set; }
 
 		public HttpResponseData HttpResponse { get; private set; }

@@ -1,10 +1,14 @@
-﻿<SectionBase Id=@Id BGLighter=@BGLighter>
+﻿@using System.Text;
+@using System.Net.Mime;
+@inject HttpClient Http
+
+<SectionBase Id=@Id BGLighter=@BGLighter>
 	<BigMudPaper>
 		<MudStack AlignItems="AlignItems.Center" Class="spaced-block">
 			<ResponsiveTitle>Get in Touch</ResponsiveTitle>
 			<MudText Align="Align.Center">I’m always available for contact, whether you have questions or an exciting opportunity. Please don’t hesitate to contact me.</MudText>
 
-			<MudButton Variant="Variant.Filled" Color="Color.Secondary" Href="mailto:hello@WilliamSullivan.dev">Contact</MudButton>
+			<MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick=SendEmail>Contact</MudButton>
 
 			<SocialMedia />
 		</MudStack>
@@ -16,4 +20,24 @@
 	public string? Id { get; set; }
 	[Parameter]
 	public bool BGLighter { get; set; }
+
+	async Task SendEmail()
+	{
+		try
+		{
+			ContactMessage message = new()
+				{
+					Name = "test",
+					Email = "test@WilliamSullivan.dev",
+					Message = "test",
+				};
+
+			var response = await Http.PostAsJsonAsync("/api/SendMessage", message) ?? new() { };
+			Console.WriteLine(await response.Content.ReadAsStringAsync());
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine(ex.ToString());
+		}
+	}
 }
