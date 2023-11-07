@@ -33,3 +33,15 @@
     height: 100vh;
     margin-bottom: -100vh;
 }
+
+.bg-primary {
+    background-color: var(--mud-palette-primary)
+}
+
+::deep .hero-text > * {
+    color: var(--mud-palette-grey-lighter);
+}
+
+    ::deep .hero-text > * > strong {
+        color: var(--mud-palette-secondary-lighten);
+    }
