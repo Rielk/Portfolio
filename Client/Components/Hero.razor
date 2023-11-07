@@ -4,13 +4,13 @@
 	<div class="fill-100" style="grid-column: 1; grid-row: 1;">
 		<div class="skew-20 height-100">
 			<div class="back-colors">
-				<div class="fill-100" style="grid-column: 3; grid-row: 1; background-color: @(Palette.Secondary)" />
+				<div class="fill-100 bg-primary" style="grid-column: 3; grid-row: 1;" />
 				<div class="fill-100" style="grid-column: 4; grid-row: 1;" />
-				<div class="fill-100" style="grid-column: 5; grid-row: 1; background-color: @(Palette.Secondary)" />
+				<div class="fill-100 bg-primary" style="grid-column: 5; grid-row: 1;" />
 			</div>
 		</div>
 	</div>
-	<div @ref=TextBox class="@(bufferClass)" style="grid-column: 1; grid-row: 1; z-index: 1; --buffer-x: @(BufferXPadding)px;">
+	<div @ref=TextBox class="hero-text @(bufferClass)" style="grid-column: 1; grid-row: 1; z-index: 1; --buffer-x: @(BufferXPadding)px;">
 		@ChildContent
 	</div>
 </div>
@@ -22,9 +22,6 @@
 
 	[Parameter]
 	public RenderFragment? ChildContent { get; set; }
-
-	[CascadingParameter]
-	protected MudThemeProvider? MudThemeProvider { get; set; }
 
 	private double BufferXPadding { get; set; } = 40;
 
@@ -56,17 +53,4 @@
 		await RecalculateWidth();
 		await base.OnAfterRenderAsync(firstRender);
 	}
-
-#pragma warning disable CS0618
-	private Palette Palette
-	{
-		get
-		{
-			if (MudThemeProvider?.IsDarkMode ?? false)
-				return MudThemeProvider.Theme?.PaletteDark ?? new PaletteDark();
-			else
-				return MudThemeProvider?.Theme?.Palette ?? new PaletteLight();
-		}
-	}
-#pragma warning restore CS0618
 }
