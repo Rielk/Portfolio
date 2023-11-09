@@ -1,17 +1,31 @@
 ﻿<ResizeWatcher Task=@OnResize />
 
-<div class="hero">
-	<div class="fill-100" style="grid-column: 1; grid-row: 1;">
-		<div class="skew-20 height-100">
-			<div class="back-colors">
-				<div class="fill-100 bg-primary" style="grid-column: 3; grid-row: 1;" />
-				<div class="fill-100" style="grid-column: 4; grid-row: 1;" />
-				<div class="fill-100 bg-primary" style="grid-column: 5; grid-row: 1;" />
-			</div>
-		</div>
+<div @ref=HeroContainer class="hero d-grid width-100" style="grid-template-columns:  minmax(0, 1fr) auto minmax(0, 1fr);">
+	<div class="fill-100 d-grid z-0" style="grid-column: 1; grid-row: 1; grid-template-columns: auto @((SideStraightPadding))px;">
+		<div class="fill-100 bg-primary" style="grid-column: 1; grid-row: 1; border-radius: 100% 0 0 0;" />
+		<div class="fill-100 extend bg-primary" style="grid-column: 2; grid-row: 1;" />
 	</div>
-	<div @ref=TextBox class="hero-text @(bufferClass)" style="grid-column: 1; grid-row: 1; z-index: 1; --buffer-x: @(BufferXPadding)px;">
-		@ChildContent
+	<div class="fill-100 d-grid z-0" style="grid-column: 3; grid-row: 1; grid-template-columns: @((SideStraightPadding))px; auto">
+		<div class="fill-100 extend bg-primary" style="grid-column: 1; grid-row: 1;" />
+	</div>
+
+	<div class="d-grid z-10" style="grid-column: 2; grid-row: 1; grid-template-columns: 32px auto 32px;">
+		<div class="z-0" style="grid-column: 1 / span 3; grid-row: 1;">
+			<div class="fill-100 extend bg-primary" />
+		</div>
+		<div class="skew-20 z-10" style="grid-column: 1 / span 3; grid-row: 1;">
+			<div class="fill-100 extend bg-primary" style="width: calc(100% + 256px); margin-left: -128px; margin-right: -128px;" />
+		</div>
+		<div class="skew-20 z-20" style="grid-column: 2; grid-row: 1;">
+			<div class="fill-100 extend bg-page" />
+		</div>
+		<div class="skew-20 z-20" style="grid-column: 3; grid-row: 1;">
+			<div class="fill-100 extend bg-page" style="width: 16px; margin-left: 16px;" />
+		</div>
+
+		<div @ref=TextBox class="hero-text @(bufferClass) z-100" style="grid-column: 2; grid-row: 1; --buffer-x: @(BufferXPadding)px;">
+			@ChildContent
+		</div>
 	</div>
 </div>
 
@@ -23,7 +37,8 @@
 	[Parameter]
 	public RenderFragment? ChildContent { get; set; }
 
-	private double BufferXPadding { get; set; } = 40;
+	private double BufferXPadding { get; set; } = 8;
+	private double SideStraightPadding { get; set; } = 128;
 
 	private Task OnResize(bool retrigger)
 	{
@@ -34,17 +49,37 @@
 	}
 
 	private ElementReference TextBox;
+	private ElementReference HeroContainer;
 	private static readonly double Tan20 = Math.Tan(Math.PI / 9); //tan(20) in degrees;
 	private async Task RecalculateWidth()
 	{
-		var old = BufferXPadding;
-		var textHeight = (await TextBox.MudGetBoundingClientRectAsync())?.Height ?? 0;
-		var extraSpacing = Tan20 * textHeight / 2;
-		BufferXPadding = extraSpacing + 40;
-		if (old != BufferXPadding)
+		bool hasChanged = await RecalcBufferXPadding() | await RecalcSideStraightPadding();
+		if (hasChanged)
 		{
 			StateHasChanged();
 			await ResizeWatcher.TriggerResize();
+		}
+
+		async Task<bool> RecalcBufferXPadding()
+		{
+			var old = BufferXPadding;
+			var textHeight = (await TextBox.MudGetBoundingClientRectAsync())?.Height ?? 0;
+			var extraSpacing = Tan20 * textHeight / 2;
+			BufferXPadding = extraSpacing + 8;
+			if (old != BufferXPadding)
+				return true;
+			return false;
+		}
+
+		async Task<bool> RecalcSideStraightPadding()
+		{
+			var old = SideStraightPadding;
+			var textHeight = (await HeroContainer.MudGetBoundingClientRectAsync())?.Height ?? 0;
+			var extraSpacing = Tan20 * textHeight / 2;
+			SideStraightPadding = extraSpacing + 128;
+			if (old != SideStraightPadding)
+				return true;
+			return false;
 		}
 	}
 
