@@ -32,6 +32,10 @@
     background-color: var(--primary-color);
 }
 
+.bg-secondary {
+    background-color: var(--secondary-color);
+}
+
 .bg-page {
     background-color: var(--page-background-color);
 }
