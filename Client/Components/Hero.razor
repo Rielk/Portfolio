@@ -1,13 +1,8 @@
 ﻿<ResizeWatcher Task=@OnResize />
 
 <div @ref=HeroContainer class="hero d-grid width-100" style="grid-template-columns:  minmax(0, 1fr) auto minmax(0, 1fr);">
-	<div class="width-100 bg-primary z-0" style="grid-column: 1 / span 3; grid-row: 1; border-radius: @(FullBackground ? "0%": "100%"); height: @(BackCircleCirc)px; top: @(BackCircleTop)px; position: absolute;" />
-
-	<div class="fill-100 d-grid z-0" style="grid-column: 1; grid-row: 1; grid-template-columns: minmax(0, 1fr) @(SideStraightPadding)px;">
-		<div class="bg-secondary" style="grid-column: 1; grid-row: 1; border-radius: 100%; visibility: @(FullBackground ? "hidden" : "visible"); width: 280%; height: 140%; margin-left: -140%; margin-top: @(HeroHeight*0.3)px" />
-	</div>
-	<div class="fill-100 d-grid z-0" style="grid-column: 3; grid-row: 1; grid-template-columns: @((SideStraightPadding))px; minmax(0, 1fr)">
-		<div class="bg-secondary" style="grid-column: 2; grid-row: 1; border-radius: 100%; visibility: @(FullBackground ? "hidden" : "visible"); width: 280%; height: 140%; margin-right: -140%; margin-top: @(HeroHeight*0.3)px" />
+	<div class="fill-100 z-0" style="grid-column: 2; grid-row: 1; position: relative;">
+		<div class="bg-primary" style="border-radius: 100%; height:141.42135623730950488016887242097%; width: calc(1.4142135623730950488016887242097 * (100% + @(2*SideStraightPadding)px)); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" />
 	</div>
 
 	<div class="d-grid z-10" style="grid-column: 2; grid-row: 1; grid-template-columns: 32px auto 32px;">
@@ -35,10 +30,7 @@
 	public RenderFragment? ChildContent { get; set; }
 
 	private double BufferXPadding { get; set; } = 8;
-	private double SideStraightPadding { get; set; } = 128;
-	private double BackCircleCirc { get; set; } = 128;
-	private double BackCircleTop { get; set; } = 0;
-	private double HeroHeight { get; set; } = 0;
+	private double SideStraightPadding { get; set; } = 32;
 	private bool FullBackground = false;
 
 	private Task OnResize(bool retrigger)
@@ -46,30 +38,26 @@
 		if (retrigger)
 			return Task.CompletedTask;
 		else
-			return RecalculateWidth();
+		return RecalculateWidth();
 	}
 
 	private ElementReference TextBox;
 	private ElementReference HeroContainer;
 	private static readonly double Tan20 = Math.Tan(Math.PI / 9); //tan(20) in degrees;
+	private static readonly double Sqrt2 = Math.Sqrt(2);
 	private async Task RecalculateWidth()
 	{
-		var textRect = await TextBox.MudGetBoundingClientRectAsync() ?? new();
-		var heroRect = await HeroContainer.MudGetBoundingClientRectAsync() ?? new();
-
-		HeroHeight = heroRect.Height;
-
-		bool hasChanged = RecalcBufferXPadding() | RecalcStraightPadding() | RecalcBackCircle();
+		bool hasChanged = await RecalcBufferXPadding() | await RecalcStraightPadding();
 		if (hasChanged)
 		{
 			StateHasChanged();
 			await ResizeWatcher.TriggerResize();
 		}
 
-		bool RecalcBufferXPadding()
+		async Task<bool> RecalcBufferXPadding()
 		{
 			var old = BufferXPadding;
-			var textHeight = textRect.Height;
+			var textHeight = (await TextBox.MudGetBoundingClientRectAsync())?.Height ?? 0;
 			var extraSpacing = Tan20 * textHeight / 2;
 			BufferXPadding = extraSpacing + 8;
 			if (old != BufferXPadding)
@@ -77,56 +65,14 @@
 			return false;
 		}
 
-		bool RecalcStraightPadding()
+		async Task<bool> RecalcStraightPadding()
 		{
 			var old = SideStraightPadding;
-			var textHeight = heroRect.Height;
-			var extraSpacing = Tan20 * ((textHeight / 2) + 8);
-			SideStraightPadding = extraSpacing + 64;
+			var heroHeight = (await HeroContainer.MudGetBoundingClientRectAsync())?.Height ?? 0;
+			var extraSpacing = Tan20 * heroHeight / 2;
+			SideStraightPadding = extraSpacing + 32;
 			if (old != SideStraightPadding)
 				return true;
-			return false;
-		}
-
-		bool RecalcBackCircle()
-		{
-			var old = BackCircleCirc;
-
-			var heroHeight = heroRect.Height;
-			var hh2 = heroHeight * heroHeight;
-
-			var halfHeroWidth = heroRect.Width / 2;
-			var hhw2 = halfHeroWidth * halfHeroWidth;
-
-			var textHeight = textRect.Height;
-			var th2 = textHeight * textHeight;
-
-			var widthToCorner = (textRect.Width / 2) + BufferXPadding + 96 + (Tan20 * heroRect.Height / 2);
-			var wtc2 = widthToCorner * widthToCorner;
-
-			var distanceToCorner2 = wtc2 + th2;
-
-			if (distanceToCorner2 > hhw2)
-			{
-				hhw2 = distanceToCorner2;
-				FullBackground = true;
-			}
-			else
-				FullBackground = false;
-
-			if (hhw2 == 0)
-				BackCircleCirc = 0;
-			else
-				BackCircleCirc = 2 * Math.Sqrt((hhw2 * hh2) / (hhw2 - wtc2));
-
-			if (double.IsNaN(BackCircleCirc))
-				return false;
-
-			if (old != BackCircleCirc)
-			{
-				BackCircleTop = -((BackCircleCirc / 2) - heroHeight);
-				return true;
-			}
 			return false;
 		}
 	}
