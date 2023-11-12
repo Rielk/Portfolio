@@ -7,10 +7,10 @@
 
 	<div class="d-grid z-10" style="grid-column: 2; grid-row: 1; grid-template-columns: 32px auto 32px;">
 		<div class="skew-20 z-20" style="grid-column: 2; grid-row: 1;">
-			<div class="fill-100 extend bg-page" />
+			<div class="fill-100 extend bg-page indent" />
 		</div>
 		<div class="skew-20 z-20" style="grid-column: 3; grid-row: 1;">
-			<div class="fill-100 extend bg-page" style="width: 16px; margin-left: 16px;" />
+			<div class="fill-100 extend bg-page indent" style="width: 16px; margin-left: 16px;" />
 		</div>
 
 		<div class="hero-text @(bufferClass) z-100" style="grid-column: 2; grid-row: 1; --buffer-x: @(BufferXPadding)px;">
@@ -31,7 +31,6 @@
 
 	private double BufferXPadding { get; set; } = 8;
 	private double SideStraightPadding { get; set; } = 32;
-	private bool FullBackground = false;
 
 	private Task OnResize(bool retrigger)
 	{
