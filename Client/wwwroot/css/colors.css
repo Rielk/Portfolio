@@ -1,1 +1,13 @@
 ﻿/*https://coolors.co/f5f5f5-efefef-d5d4d7-1d142e-040306-3e2371-693bc1-ca054d */
+
+.bg-primary {
+    background-color: var(--primary-color);
+}
+
+.bg-secondary {
+    background-color: var(--secondary-color);
+}
+
+.bg-page {
+    background-color: var(--page-background-color);
+}
