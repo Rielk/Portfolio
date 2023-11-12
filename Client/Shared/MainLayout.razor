@@ -635,7 +635,7 @@
 
 	private Task OnSystemPreferenceChanged(bool newValue)
 	{
-		isDarkMode = newValue;
+		isDarkMode = false;// newValue;
 		StateHasChanged();
 		return Task.CompletedTask;
 	}
