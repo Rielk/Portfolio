@@ -1,15 +1,19 @@
 ﻿<ResizeWatcher Task=@OnResize />
 
 <div @ref=HeroContainer class="hero d-grid width-100" style="grid-template-columns:  minmax(0, 1fr) auto minmax(0, 1fr);">
-	<div class="fill-100 z-0" style="grid-column: 2; grid-row: 1; position: relative;">
-		<div class="bg-primary elipse-back" style="--extra-padding: @(2*SideStraightPadding)px;" />
+	<div class="fill-100 z-0" style="grid-column: 1 / span 3; grid-row: 1;">
+		<div class="fill-100 extend bg-spots" />
 	</div>
 
-	<div class="d-grid z-10" style="grid-column: 2; grid-row: 1; grid-template-columns: 32px auto 32px;">
-		<div class="skew-20 z-20" style="grid-column: 2; grid-row: 1;">
+	<div class="fill-100 z-10" style="grid-column: 2; grid-row: 1; position: relative;">
+		<div class="bg-primary elipse-bg" style="--extra-padding: @(2*SideStraightPadding)px;" />
+	</div>
+
+	<div class="d-grid z-20" style="grid-column: 2; grid-row: 1; grid-template-columns: 32px auto 32px;">
+		<div class="skew-20 z-0" style="grid-column: 2; grid-row: 1;">
 			<div class="fill-100 extend bg-page indent" />
 		</div>
-		<div class="skew-20 z-20" style="grid-column: 3; grid-row: 1;">
+		<div class="skew-20 z-0" style="grid-column: 3; grid-row: 1;">
 			<div class="fill-100 extend bg-page indent" style="width: 16px; margin-left: 16px;" />
 		</div>
 
@@ -37,7 +41,7 @@
 		if (retrigger)
 			return Task.CompletedTask;
 		else
-		return RecalculateWidth();
+			return RecalculateWidth();
 	}
 
 	private ElementReference TextBox;
