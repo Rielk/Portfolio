@@ -633,7 +633,7 @@
 	{
 		if (firstRender)
 		{
-			isDarkMode = await MudThemeProvider.GetSystemPreference();
+			isDarkMode = false; // await MudThemeProvider.GetSystemPreference();
 			await MudThemeProvider.WatchSystemPreference(OnSystemPreferenceChanged);
 			StateHasChanged();
 		}
@@ -643,7 +643,7 @@
 
 	private Task OnSystemPreferenceChanged(bool newValue)
 	{
-		isDarkMode = false;// newValue;
+		isDarkMode = false; // newValue;
 		StateHasChanged();
 		return Task.CompletedTask;
 	}
