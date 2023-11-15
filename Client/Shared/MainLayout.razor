@@ -16,6 +16,7 @@
 		--page-background-color: @AppbarColor;
 		--primary-color: @Theme.Palette.Primary;
 		--secondary-color: @Theme.Palette.Secondary;
+		--header-height: @AppBarHeightString;
 	}
 </style>
 
@@ -29,7 +30,7 @@
 				<span class="logo-circle pa-4 mud-elevation-1">
 					<MudLink Href="./"><MudImage Src="images/WillSullDev_Logo.png" Alt="Logo" Height="48" /></MudLink>
 				</span>
-				<MudSpacer />
+				<div @ref=AppBarSpacer class="height-100 flex-grow-1" />
 				<TopLinks Links="@Links" />
 			</MudAppBar>
 			<MudMainContent Class="d-flex flex-column">
@@ -68,6 +69,9 @@
 	private RenderFragment? Hero { get; set; }
 	private ElementReference HeroContainer { get; set; }
 	private double HeroHeight { get; set; }
+	private ElementReference AppBarSpacer { get; set; }
+	private double AppBarHeight { get; set; }
+	private string AppBarHeightString => $"{AppBarHeight}px";
 
 	private bool EndBGLighter { get; set; }
 
@@ -641,10 +645,22 @@
 		return Task.CompletedTask;
 	}
 
-	private Task OnResize(bool retrigger) => SetHeroHeight();
-
-	public async void SetHero(RenderFragment? hero)
+	private async Task OnResize(bool retrigger)
 	{
+		await SetHeroHeight();
+		await SetAppBarHeight();
+	}
+
+	public async Task SetAppBarHeight()
+	{
+		var old = AppBarHeight;
+		AppBarHeight = (await AppBarSpacer.MudGetBoundingClientRectAsync())?.Height ?? 0;
+		if (AppBarHeight != old)
+			StateHasChanged();
+	}
+
+    public async void SetHero(RenderFragment? hero)
+    {
 		Hero = hero;
 		await SetHeroHeight();
 		StateHasChanged();
