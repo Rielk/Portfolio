@@ -7,9 +7,16 @@
 		<PageTitle>Not found</PageTitle>
 		<LayoutView Layout="@typeof(MainLayout)">
 			<MainLayoutSetter>
-				<Hero>
-					<div class="hero-buffer-small" />
-				</Hero>
+				<DisplayHero>
+					<Hero Large=false>
+						<Title>
+							Error <strong>404</strong>:
+						</Title>
+						<SubTitle>
+							page not found
+						</SubTitle>
+					</Hero>
+				</DisplayHero>
 			</MainLayoutSetter>
 			<SectionBase>
 				<BigMudPaper>

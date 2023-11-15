@@ -4,14 +4,25 @@
     flex-direction: column;
     height: 100%;
     width: 100%;
-
+    /**/
     min-height: 100vh;
+}
+
+.page-background, .page {
+    background-color: var(--page-background-color);
+}
+
+.logo-circle {
+    background-color: var(--appbar-color);
 }
 
 .cover {
     position: relative;
     width: 100%;
-    flex:1;
+    z-index: 4;
+    /**/
+    --space-before: 0px;
+    margin-top: var(--space-before);
 }
 
 .logo-circle {

@@ -1,0 +1,97 @@
+﻿<ResizeWatcher Task=@OnResize />
+
+<div @ref=HeroContainer class="hero d-grid width-100" style="grid-template-columns:  minmax(0, 1fr) auto minmax(0, 1fr);">
+	<div class="fill-100 z-0" style="grid-column: 1 / span 3; grid-row: 1;">
+		<div class="fill-100 extend bg-spots" />
+	</div>
+
+	<div class="fill-100 z-10" style="grid-column: 2; grid-row: 1; position: relative;">
+		<div class="bg-primary elipse-bg" style="--extra-padding: @(2*SideStraightPadding)px;" />
+	</div>
+
+	<div class="d-grid z-20" style="grid-column: 2; grid-row: 1; grid-template-columns: 32px auto 32px;">
+		<div class="skew-20 z-0" style="grid-column: 2; grid-row: 1;">
+			<div class="fill-100 extend bg-page indent" />
+		</div>
+		<div class="skew-20 z-0" style="grid-column: 3; grid-row: 1;">
+			<div class="fill-100 extend bg-page indent" style="width: 16px; margin-left: 16px;" />
+		</div>
+
+		<div class="@(bufferClass) z-100" style="grid-column: 2; grid-row: 1; --buffer-x: @(BufferXPadding)px;">
+			<div @ref=TextBox>
+				<MudText Typo="Typo.h4" Class="hero-text mono-font">
+					@Title
+				</MudText>
+				<div class="d-flex">
+					<MudText Typo="Typo.body1" Class="flex-grow-1 hero-text mono-font" Style="width: 0; word-wrap: break-word">
+						@SubTitle
+					</MudText>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@code {
+	[Parameter]
+	public bool Large { get; set; } = true;
+	private string bufferClass => Large ? "buffer-large" : "buffer-small";
+
+	[Parameter]
+	public RenderFragment? Title { get; set; }
+	[Parameter]
+	public RenderFragment? SubTitle { get; set; }
+
+	private double BufferXPadding { get; set; } = 8;
+	private double SideStraightPadding { get; set; } = 32;
+
+	private Task OnResize(bool retrigger)
+	{
+		if (retrigger)
+			return Task.CompletedTask;
+		else
+			return RecalculateWidth();
+	}
+
+	private ElementReference TextBox;
+	private ElementReference HeroContainer;
+	private static readonly double Tan20 = Math.Tan(Math.PI / 9); //tan(20) in degrees;
+	private static readonly double Sqrt2 = Math.Sqrt(2);
+	private async Task RecalculateWidth()
+	{
+		bool hasChanged = await RecalcBufferXPadding() | await RecalcStraightPadding();
+		if (hasChanged)
+		{
+			StateHasChanged();
+			await ResizeWatcher.TriggerResize();
+		}
+
+		async Task<bool> RecalcBufferXPadding()
+		{
+			var old = BufferXPadding;
+			var textHeight = (await TextBox.MudGetBoundingClientRectAsync())?.Height ?? 0;
+			var extraSpacing = Tan20 * textHeight / 2;
+			BufferXPadding = extraSpacing + 8;
+			if (old != BufferXPadding)
+				return true;
+			return false;
+		}
+
+		async Task<bool> RecalcStraightPadding()
+		{
+			var old = SideStraightPadding;
+			var heroHeight = (await HeroContainer.MudGetBoundingClientRectAsync())?.Height ?? 0;
+			var extraSpacing = Tan20 * heroHeight / 2;
+			SideStraightPadding = extraSpacing + 32;
+			if (old != SideStraightPadding)
+				return true;
+			return false;
+		}
+	}
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		await RecalculateWidth();
+		await base.OnAfterRenderAsync(firstRender);
+	}
+}

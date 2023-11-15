@@ -1,41 +1,13 @@
-﻿using BlazorApp.Client.Components;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.JSInterop;
 
-namespace BlazorApp.Client.Shared;
-
-public class MainLayoutSetter : ComponentBase
-{
-	[CascadingParameter(Name = "Layout")]
-	public MainLayout Layout { get; set; } = null!;
-
-	[Parameter]
-	public RenderFragment? Hero { get; set; }
-
-	[Parameter]
-	public List<LinkDetails>? Links { get; set; }
-
-	[Parameter]
-	public bool EndBGLighter { get; set; } = true;
-
-	protected override void OnInitialized()
-	{
-		Layout.SetHero(Hero);
-		Layout.SetLinks(Links);
-		Layout.SetEndBGLighter(EndBGLighter);
-		base.OnInitialized();
-	}
-
-	protected override void OnParametersSet()
-	{
-		Layout.SetEndBGLighter(EndBGLighter);
-		base.OnParametersSet();
-	}
-}
+namespace BlazorApp.Client.Components;
 
 public class HashRoutingManager : ComponentBase, IDisposable
 {
+	protected override bool ShouldRender() => false;
+
 	[Inject] private NavigationManager NavManager { get; set; } = null!;
 	[Inject] private IJSRuntime JSRuntime { get; set; } = null!;
 
@@ -84,10 +56,23 @@ public class HashRoutingManager : ComponentBase, IDisposable
 		return JSRuntime.InvokeVoidAsync("scrollToId", uri.Fragment[1..]);
 	}
 
-	void IDisposable.Dispose()
+	private bool disposedValue;
+	protected virtual void Dispose(bool disposing)
 	{
-		NavManager.LocationChanged -= OnLocationChanged;
-		ChangingRegistration?.Dispose();
+		if (!disposedValue)
+		{
+			if (disposing)
+			{
+				NavManager.LocationChanged -= OnLocationChanged;
+				ChangingRegistration?.Dispose();
+			}
+			disposedValue = true;
+		}
+	}
+
+	public void Dispose()
+	{
+		Dispose(disposing: true);
 		GC.SuppressFinalize(this);
 	}
 }

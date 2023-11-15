@@ -1,12 +1,13 @@
-﻿    /*https://coolors.co/f5f5f5-efefef-d5d4d7-1d142e-040306-7743db-ca054d */
-    
-    /*--colors-light0: #F5F5F5;
-    --colors-light1: #EFEFEF;
-    --colors-light2: #D5D4D7;*/
+﻿/*https://coolors.co/f5f5f5-efefef-d5d4d7-1d142e-040306-3e2371-693bc1-ca054d */
 
-    /* Shouldn't use these now that MudBlazor is used for themes, left for reference
-    --colors-black: #040306;
-    --colors-primary: #7743DB;
-    --colors-secondary: #CA054D;
+.bg-primary {
+    background-color: var(--primary-color);
+}
 
-    */
+.bg-secondary {
+    background-color: var(--secondary-color);
+}
+
+.bg-page {
+    background-color: var(--page-background-color);
+}

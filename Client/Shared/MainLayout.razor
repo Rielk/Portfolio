@@ -6,46 +6,49 @@
 <MudSnackbarProvider />
 
 <HashRoutingManager />
+<ResizeWatcher Task=@OnResize />
 
 <style>
-	strong {
-		color: @Theme.Palette.Primary;
+	:root {
+		--text-color: @Theme.Palette.TextPrimary;
+		--strong-text-color: @Theme.Palette.Primary;
+		--appbar-color: @AppbarColor;
+		--page-background-color: @AppbarColor;
+		--primary-color: @Theme.Palette.Primary;
+		--secondary-color: @Theme.Palette.Secondary;
 	}
 </style>
 
 <CascadingValue Value="this" Name="Layout">
 	<CascadingValue Value="@MudThemeProvider">
-		<div class="page" style="background-color: @AppbarColor;">
+		<div class="page">
 			<MudScrollToTop Style="z-index: 1301;">
-				<MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.KeyboardArrowUp" />
+				<MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.KeyboardArrowUp" />
 			</MudScrollToTop>
-			<MudAppBar Elevation="0">
-				<span class="logo-circle pa-4" style="background-color: @AppbarColor;">
+			<MudAppBar Elevation="1">
+				<span class="logo-circle pa-4 mud-elevation-1">
 					<MudLink Href="./"><MudImage Src="images/WillSullDev_Logo.png" Alt="Logo" Height="48" /></MudLink>
 				</span>
 				<MudSpacer />
 				<TopLinks Links="@Links" />
 			</MudAppBar>
 			<MudMainContent Class="d-flex flex-column">
-				<div class="fixed width-100" style="background-color: @AppbarColor;">
+				<div @ref=HeroContainer class="fixed width-100" onchange="">
 					@Hero
 				</div>
 
-				@* This feels like a hacky fix to create space for the Hero. But I can't find a better way right now.*@
-				<div class="invisible">
-					@Hero
-				</div>
-
-				<div class="cover">
-					<div class="pt-8 pt-lg-12 rounded-t-xl" style="background-color: @GetBackColor(true);" />
-					<MudContainer MaxWidth="MaxWidth.False" Class="mx-0 px-0 py-xl-16">
+				<div class="cover" style="--space-before: @(HeroHeight)px">
+					<div class="pt-4 pt-lg-8 rounded-t-xl" style="background-color: @GetBackColor(true);" />
+					<MudStack Spacing="0" Class="mx-0 my-0 px-0 py-0">
 						@Body
-					</MudContainer>
-					<div class="pb-8 pb-lg-12 rounded-b-xl" style="background-color: @GetBackColor(@EndBGLighter);" />
+					</MudStack>
+					<div class="page-background">
+						<div class="pb-4 pb-lg-8 rounded-b-xl mud-elevation-1" style="background-color: @GetBackColor(EndBGLighter);" />
+					</div>
 				</div>
 
-				<MudSpacer />
-				<MudAppBar Elevation="0" Bottom="true" Fixed="false" Class="pb-3">
+				<div class="pb-2 flex-grow-1 page-background" style="z-index:1;" />
+				<MudAppBar Elevation="1" Bottom="true" Fixed="false" Class="pb-3">
 					<MudLink Href="./"><MudImage Class="mt-4 mx-4" Src="images/WillSullDev_Logo.png" Alt="Logo" Height="48" /></MudLink>
 				</MudAppBar>
 			</MudMainContent>
@@ -55,16 +58,20 @@
 
 @code
 {
+	[Inject] private IJSRuntime JSRuntime { get; set; } = null!;
+
 	private List<LinkDetails>? Links { get; set; }
 
 	private bool isDarkMode;
 	private MudThemeProvider MudThemeProvider = null!;
 
 	private RenderFragment? Hero { get; set; }
+	private ElementReference HeroContainer { get; set; }
+	private double HeroHeight { get; set; }
 
 	private bool EndBGLighter { get; set; }
 
-	string AppbarColor =>(isDarkMode ? Theme.PaletteDark : Theme.Palette).AppbarBackground.ToString();
+	string AppbarColor => (isDarkMode ? Theme.PaletteDark : Theme.Palette).AppbarBackground.ToString();
 
 	MudTheme Theme = new MudTheme()
 		{
@@ -77,19 +84,19 @@
 				White = Colors.Shades.White,
 
 				/// Gets or sets the primary color.
-				Primary = "#7743DB", //"#594AE2"
+				Primary = "#3E2371", //"#594AE2"
 
 				/// Gets or sets the contrast text color for the primary color.
 				PrimaryContrastText = Colors.Shades.White,
 
 				/// Gets or sets the secondary color.
-				Secondary = "#CA054D", // Colors.Pink.Accent2
+				Secondary = "#693BC1", // Colors.Pink.Accent2
 
 				/// Gets or sets the contrast text color for the secondary color.
 				SecondaryContrastText = Colors.Shades.White,
 
 				/// Gets or sets the tertiary color.
-				Tertiary = "#1EC8A5",
+				Tertiary = "#CA054D",  // "#1EC8A5"
 
 				/// Gets or sets the contrast text color for the tertiary color.
 				TertiaryContrastText = Colors.Shades.White,
@@ -623,19 +630,32 @@
 			await MudThemeProvider.WatchSystemPreference(OnSystemPreferenceChanged);
 			StateHasChanged();
 		}
+		await SetHeroHeight();
+		await base.OnAfterRenderAsync(firstRender);
 	}
 
 	private Task OnSystemPreferenceChanged(bool newValue)
 	{
-		isDarkMode = newValue;
+		isDarkMode = false;// newValue;
 		StateHasChanged();
 		return Task.CompletedTask;
 	}
 
-	public void SetHero(RenderFragment? hero)
+	private Task OnResize(bool retrigger) => SetHeroHeight();
+
+	public async void SetHero(RenderFragment? hero)
 	{
 		Hero = hero;
+		await SetHeroHeight();
 		StateHasChanged();
+	}
+
+	public async Task SetHeroHeight()
+	{
+		var old = HeroHeight;
+		HeroHeight = (await HeroContainer.MudGetBoundingClientRectAsync())?.Height ?? 0;
+		if (HeroHeight != old)
+			StateHasChanged();
 	}
 
 	public void SetLinks(List<LinkDetails>? links)
