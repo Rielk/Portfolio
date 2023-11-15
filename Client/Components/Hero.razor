@@ -17,9 +17,16 @@
 			<div class="fill-100 extend bg-page indent" style="width: 16px; margin-left: 16px;" />
 		</div>
 
-		<div class="hero-text @(bufferClass) z-100" style="grid-column: 2; grid-row: 1; --buffer-x: @(BufferXPadding)px;">
+		<div class="@(bufferClass) z-100" style="grid-column: 2; grid-row: 1; --buffer-x: @(BufferXPadding)px;">
 			<div @ref=TextBox>
-				@ChildContent
+				<MudText Typo="Typo.h4" Class="hero-text mono-font">
+					@Title
+				</MudText>
+				<div class="d-flex">
+					<MudText Typo="Typo.body1" Class="flex-grow-1 hero-text mono-font" Style="width: 0; word-wrap: break-word">
+						@SubTitle
+					</MudText>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -31,7 +38,9 @@
 	private string bufferClass => Large ? "buffer-large" : "buffer-small";
 
 	[Parameter]
-	public RenderFragment? ChildContent { get; set; }
+	public RenderFragment? Title { get; set; }
+	[Parameter]
+	public RenderFragment? SubTitle { get; set; }
 
 	private double BufferXPadding { get; set; } = 8;
 	private double SideStraightPadding { get; set; } = 32;

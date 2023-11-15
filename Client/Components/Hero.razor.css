@@ -58,10 +58,6 @@
     top: 50%;
 }
 
-::deep .hero-text > * {
-    /*color: var(--mud-palette-grey-lighter);*/
+::deep .hero-text > strong {
+    color: var(--secondary-color);
 }
-
-    ::deep .hero-text > * > strong {
-        color: var(--secondary-color);
-    }
