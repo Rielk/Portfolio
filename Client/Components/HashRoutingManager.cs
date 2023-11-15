@@ -33,8 +33,8 @@ public class HashRoutingManager : ComponentBase, IDisposable
 		{
 			context.PreventNavigation();
 
-			if (newUri.Fragment.Length == 1)
-				return JSRuntime.InvokeVoidAsync("scrollToId", "page");
+			if (newUri.Fragment.Length <= 1)
+				return JSRuntime.InvokeVoidAsync("scrollToId", "pageTop");
 			else
 				return JSRuntime.InvokeVoidAsync("scrollToId", newUri.Fragment[1..]);
 		}
