@@ -15,7 +15,7 @@ public class HttpTrigger
 	}
 
 	[Function("ping")]
-	public HttpResponseData Run([HttpTrigger(AuthorizationLevel.User, "get")] HttpRequestData req)
+	public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Function, "get")] HttpRequestData req)
 	{
 		_logger.Log(LogLevel.Information, "API was pinged");
 		return req.CreateResponse(HttpStatusCode.OK); ;
