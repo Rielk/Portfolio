@@ -1,9 +1,0 @@
-{
-  "compilerOptions": {
-    "lib": [ "ES5", "es2018", "dom" ],
-    "module": "commonjs",
-    "sourceMap": true,
-    "allowJs": true,
-    "outDir": "generatedJava"
-  }
-}
