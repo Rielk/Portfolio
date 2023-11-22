@@ -1,18 +1,20 @@
 ﻿<BigMudPaper>
-	<ResponsiveSubTitle>
-		<MainContent>
-			<strong>@JobTitle</strong>
-		</MainContent>
-		<SubContent>
-			<i>@@@Company</i>
-		</SubContent>
-	</ResponsiveSubTitle>
+	<div class="d-inline-block">
+		<ResponsiveSubTitle>
+			<MainContent>
+				<strong>@JobTitle</strong>
+			</MainContent>
+			<SubContent>
+				<i>@@@Company</i>
+			</SubContent>
+		</ResponsiveSubTitle>
 
-	@if (AdditionalInfo != null)
-	{
-		<MudText Typo="Typo.body1"><i>@AdditionalInfo</i></MudText>
-	}
-	<MudText Typo="Typo.body2" Class="pb-3"><i>@Dates</i></MudText>
+		@if (AdditionalInfo != null)
+		{
+			<MudText Typo="Typo.body1"><i>@AdditionalInfo</i></MudText>
+		}
+		<MudText Typo="Typo.body2" Class="pb-3"><i>@Dates</i></MudText>
+	</div>
 
 	<MudText>
 		<ul class="bullet-points">
