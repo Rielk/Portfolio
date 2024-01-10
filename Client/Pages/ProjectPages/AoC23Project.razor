@@ -1,0 +1,63 @@
+﻿@page "/Projects/AoC23"
+
+<PageTitle>William Sullivan - Software Developer</PageTitle>
+
+<MainLayoutSetter Links="@Links" EndBGLighter=true>
+	<DisplayHero>
+		<Hero Large=false>
+			<Title>
+				Advent Of Code <strong>2023</strong>
+			</Title>
+			<SubTitle>
+				A programming <strong>challenge</strong>, advent calender
+			</SubTitle>
+		</Hero>
+	</DisplayHero>
+</MainLayoutSetter>
+
+<SectionBase>
+	<BigMudPaper Class="spaced-block">
+		<ResponsiveTitle>
+			Overview
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			An annual set of challenges for a variety of skill sets and levels. I was introduced to it at the end of 2022 and was looking forward to them this year. I solved them using <strong>C#</strong>. The full list of challenges can be found <MudLink Color="Color.Secondary" Href="https://adventofcode.com/2022" Target="_blank">here</MudLink>
+		</MudText>
+		<MudText Typo="Typo.body1">
+			The challenges were interesting and I think I came up with some neat solutions. A few of the days were a little annoying and I think general solutions would have taken far too long to run. However, I tried to stick to assumptions which I thought would apply to any input provided by the official site.
+		</MudText>
+
+		<ResponsiveTitle>
+			Description
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			There are too many to go into all of them, so I will highlight a few of the ones I found more interesting.
+		</MudText>
+		<MudText Typo="Typo.body1">
+			Day 7 was when it started getting interesting. While still not really a challenge, I’m happy with my solution. I think it’s neat and easy to understand and it’s a good representation of what I try to aim for. Day 13 was another example of this. Although, I got slightly distracted making it run asynchronously.
+		</MudText>
+		<MudText Typo="Typo.body1">
+			Day 14 was the first puzzle which required any significant optimisation. By simplifying the state of the Dish into a hash code so that it could be quickly compared and placed in a Dictionary, it was simple to retain previous states and compare them in order to identify a loop. From there it was simple to skip most of the cycles and find the answer.
+		</MudText>
+		<MudText Typo="Typo.body1">
+			Day 23 was my favourite problem this year. A twist on the regular algorithms, instead aiming to find the longest path. I didn’t do anything particularly clever for this one, it was mostly just about optimising the algorithm and trying to find the answer with as few iterations as possible. It still takes a few seconds to run my solutions, however, I think I’ve got it fairly optimal at this point.
+		</MudText>
+	</BigMudPaper>
+</SectionBase>
+<SectionBase BGLighter=false>
+	<BigMudPaper>
+		<ResponsiveTitle>
+			GitHub
+		</ResponsiveTitle>
+		<MudText Typo="Typo.body1">
+			A repository with all of my solutions in can be found here: <MudLink Class="d-block d-sm-inline" Color="Color.Secondary" Href="https://github.com/Rielk/AdventOfCode23" Target="_blank">GitHub - Advent of Code 2023</MudLink>
+		</MudText>
+	</BigMudPaper>
+</SectionBase>
+
+@code {
+	private List<LinkDetails>? Links { get; } = new() {
+		new("./", "Home"),
+		new("./Projects", "Projects"),
+		new("https://github.com/Rielk/AdventOfCode23", "GitHub") };
+}
