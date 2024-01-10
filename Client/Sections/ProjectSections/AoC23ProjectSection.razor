@@ -1,0 +1,16 @@
+﻿<BaseProjectSection Title="Advent Of Code 2023"
+					SubPage="AoC23"
+					Catchline="Puzzles and Challenges"
+					ImageLeft=@ImageLeft
+					Tags="@(new() {"C#", "Large Data", "Optimisation"})"
+					GitHub="https://github.com/Rielk/AdventOfCode23"
+					Date="Dec 2023"
+					ImageSource="images/AoC23Project.png"
+					ImageAltText="AoC Project Picture">
+	Another year of challenges involving large data and optimisation techniques.
+</BaseProjectSection>
+
+@code {
+	[Parameter, EditorRequired]
+	public bool ImageLeft { get; set; }
+}
