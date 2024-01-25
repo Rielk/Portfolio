@@ -33,14 +33,15 @@
 
 					<MudHidden Breakpoint="Breakpoint.LgAndUp" Invert=true>
 						<MudDivider Class="my-3" />
-						<AboutMeLinks />
+						<AboutMeLinks Large=@LargeLinks />
 					</MudHidden>
 				</MudItem>
 			</MudGrid>
 			<MudHidden Breakpoint="Breakpoint.LgAndUp">
 				<MudDivider Class="my-3" />
-				<AboutMeLinks />
+				<AboutMeLinks Large=@LargeLinks />
 			</MudHidden>
+			<MudHidden Breakpoint="Breakpoint.MdAndUp" @bind-IsHidden=LargeLinks />
 		</BigMudPaper>
 	</MudStack>
 </SectionBase>
@@ -50,4 +51,6 @@
 	public string? Id { get; set; }
 	[Parameter]
 	public bool BGLighter { get; set; }
+
+	private bool LargeLinks { get; set; }
 }
