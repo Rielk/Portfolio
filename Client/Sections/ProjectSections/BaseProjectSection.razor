@@ -1,7 +1,7 @@
 ﻿<div class="grid" grid-left=@ImageLeftString>
 	<MudLink Href="@($"Projects/{SubPage}")" Underline="Underline.None" Class="image-container" image-container-left=@ImageLeftString>
 		<MudPaper Class="pa-0 pt-md-5 px-md-5 overflow-y-hidden width-100 image-paper" Style=@PaperHeightStyle Square=@ImageTextHidden>
-			<MudStack AlignItems="AlignItems.Center">
+			<MudStack AlignItems="AlignItems.Center" Spacing="2">
 				<MudHidden Breakpoint="Breakpoint.SmAndDown" @bind-IsHidden=ImageTextHidden>
 					<MudText Style="width: calc(80% + 32px)" Typo="Typo.h4" Color="Color.Primary" Class="mono-font" Align="Align.Center"><strong>@Title</strong></MudText>
 					<MudText Style="width: calc(80% + 32px)" Typo="Typo.body1" Class="mud-text-secondary mono-font" Align="Align.Center"><i>@Catchline</i></MudText>
