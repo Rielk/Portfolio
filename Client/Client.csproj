@@ -25,4 +25,8 @@
     <None Include="wwwroot\css\colors.css" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\files\LotteryPicker\" />
+  </ItemGroup>
+
 </Project>
